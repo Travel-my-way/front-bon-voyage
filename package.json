@@ -1,6 +1,6 @@
 {
   "name": "bon-voyage-webapp",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -10,7 +10,6 @@
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
-    "@material-ui/styles": "^4.11.3",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
   },
