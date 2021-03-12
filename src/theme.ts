@@ -28,6 +28,15 @@ const theme = createMuiTheme({
     red: '#FC4E40',
     yellow: '#FED13F',
   },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 800,
+      md: 960,
+      lg: 1280,
+      xl: 1920,
+    },
+  },
 })
 
 export default theme
