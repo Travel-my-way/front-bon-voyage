@@ -5,11 +5,21 @@ import { BlueBoxes } from '../Components'
 import Flag from '../Assets/Logos/flag_bon_voyage.svg'
 
 const useStyles = createStyles(
-  makeStyles(({ palette }: Theme) => ({
+  makeStyles(({ palette, breakpoints }: Theme) => ({
     container: {
+      [breakpoints.up('md')]: {
+        paddingLeft: '200px',
+        paddingRight: '200px',
+      },
+      [breakpoints.up('xs')]: {
+        paddingLeft: '120px',
+        paddingRight: '120px',
+      },
+      [breakpoints.only('xs')]: {
+        paddingLeft: '20px',
+        paddingRight: '20px',
+      },
       backgroundColor: palette.paper,
-      paddingLeft: '200px',
-      paddingRight: '200px',
       minHeight: '100vh',
     },
     flag: {
@@ -18,7 +28,6 @@ const useStyles = createStyles(
       marginTop: '55px',
       width: '315px',
     },
-
     title1: {
       color: palette.blue,
       fontSize: '50px',
