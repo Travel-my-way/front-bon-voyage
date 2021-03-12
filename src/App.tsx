@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
+
 import logo from './logo.svg'
 import './App.css'
 
-function App() {
+function App(): JSX.Element {
   const [count, setCount] = useState(0)
 
   return (
@@ -11,21 +12,13 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>Hello Vite + React!</p>
         <p>
-          <button onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
+          <button onClick={() => setCount((count) => count + 1)}>count is: {count}</button>
         </p>
         <p>
           Edit <code>App.tsx</code> and save to test HMR updates.
         </p>
         <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-          </a>
+          <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer"></a>
           {' | '}
           <a
             className="App-link"
