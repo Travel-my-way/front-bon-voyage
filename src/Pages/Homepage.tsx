@@ -11,7 +11,7 @@ const useStyles = createStyles(
         paddingLeft: '200px',
         paddingRight: '200px',
       },
-      [breakpoints.up('xs')]: {
+      [breakpoints.up('sm')]: {
         paddingLeft: '120px',
         paddingRight: '120px',
       },
@@ -20,7 +20,6 @@ const useStyles = createStyles(
         paddingRight: '20px',
       },
       backgroundColor: palette.paper,
-      minHeight: '100vh',
     },
     flag: {
       height: '100px',
