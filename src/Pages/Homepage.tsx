@@ -1,9 +1,9 @@
-import React from 'react';
-import { makeStyles, Theme } from '@material-ui/core/styles';
+import React, { Fragment } from 'react';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
-import { BlueBoxes } from '../Components';
-import Flag from '../Assets/Logos/flag_bon_voyage.svg';
+import { BlueBoxes, Footer } from '../Components';
 import WhySection from '../Components/WhySection/WhySection';
+import Flag from '../Assets/Logos/flag_bon_voyage.svg';
 
 const useStyles = makeStyles(({ palette, breakpoints }: Theme) => ({
   container: {
@@ -55,13 +55,16 @@ function Homepage(): JSX.Element {
   const styles = useStyles();
 
   return (
-    <div className={styles.container}>
-      <img alt="flag" src={Flag} className={styles.flag} />
-      <h1 className={styles.title1}>En route pour des voyages</h1>
-      <h2 className={styles.title2}>bas carbone</h2>
-      <BlueBoxes />
-      <WhySection />
-    </div>
+    <Fragment>
+      <div className={styles.container}>
+        <img src={Flag} className={styles.flag} />
+        <h1 className={styles.title1}>En route pour des voyages</h1>
+        <h2 className={styles.title2}>bas carbone</h2>
+        <BlueBoxes />
+        <WhySection />
+      </div>
+      <Footer />
+    </Fragment>
   );
 }
 
