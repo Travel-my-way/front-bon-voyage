@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Hidden } from '@material-ui/core';
+
 import NoPlaneSticker from '../Assets/Logos/no_plain_no_pain.svg';
 import KeepCoolSticker from '../Assets/Logos/keep_cool.svg';
 import ByeByePlaneSticker from '../Assets/Logos/bye_bye_plane.svg';
@@ -151,7 +152,7 @@ const useStyles = makeStyles(({ breakpoints, palette }: Theme) => ({
   },
 }));
 
-const BlueBoxes = () => {
+const BlueBoxes = (): JSX.Element => {
   const styles = useStyles();
 
   return (

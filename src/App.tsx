@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Homepage } from './Pages'
 
-function App() {
+function App(): JSX.Element {
   return <Homepage />
 }
 
