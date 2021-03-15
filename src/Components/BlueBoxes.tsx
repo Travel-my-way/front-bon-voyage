@@ -1,160 +1,158 @@
-import React, { Fragment } from 'react'
+import React, { Fragment } from 'react';
 
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
-import { Hidden } from '@material-ui/core'
-import NoPlaneSticker from '../Assets/Logos/no_plain_no_pain.svg'
-import KeepCoolSticker from '../Assets/Logos/keep_cool.svg'
-import ByeByePlaneSticker from '../Assets/Logos/bye_bye_plane.svg'
-import BonVoyage from '../Assets/Logos/bon_voyage.svg'
+import { makeStyles, Theme } from '@material-ui/core/styles';
+import { Hidden } from '@material-ui/core';
+import NoPlaneSticker from '../Assets/Logos/no_plain_no_pain.svg';
+import KeepCoolSticker from '../Assets/Logos/keep_cool.svg';
+import ByeByePlaneSticker from '../Assets/Logos/bye_bye_plane.svg';
+import BonVoyage from '../Assets/Logos/bon_voyage.svg';
 
-const useStyles = createStyles(
-  makeStyles(({ breakpoints, palette }: Theme) => ({
-    bonVoyageSticker: {
-      display: 'flex',
-      justifyContent: 'center',
+const useStyles = makeStyles(({ breakpoints, palette }: Theme) => ({
+  bonVoyageSticker: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  bonVoyageTM: {
+    fontStyle: 'italic',
+    fontWeight: 600,
+  },
+  boxBackground: {
+    backgroundColor: palette.blue,
+    border: `solid 8px ${palette.blue}`,
+    height: 'fit-content',
+    position: 'relative',
+  },
+  boxBackground1: {
+    left: '40px',
+    width: '55%',
+  },
+  boxBackground2: {
+    marginTop: 165,
+    right: '40px',
+    width: '45%',
+  },
+  boxContent: {
+    backgroundColor: palette.paper,
+    height: 'fit-content',
+    padding: 65,
+    position: 'relative',
+    zIndex: 1,
+  },
+  byeByePlaneSticker: {
+    height: 50,
+    left: -30,
+    position: 'relative',
+    top: -40.5,
+    width: 150,
+    zIndex: 1,
+  },
+  container: {
+    [breakpoints.up('md')]: {
+      width: '110%',
+      left: '-5%',
     },
-    bonVoyageTM: {
-      fontStyle: 'italic',
-      fontWeight: 600,
-    },
-    boxBackground: {
-      backgroundColor: palette.blue,
-      border: `solid 8px ${palette.blue}`,
-      height: 'fit-content',
+    display: 'flex',
+    position: 'relative',
+  },
+  keepCoolSticker: {
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop: '77px',
+  },
+  noPlaneSticker: {
+    [breakpoints.down('md')]: {
+      height: 125,
       position: 'relative',
+      width: 125,
+      zIndex: 2,
     },
-    boxBackground1: {
-      left: '40px',
-      width: '55%',
-    },
-    boxBackground2: {
-      marginTop: 165,
-      right: '40px',
-      width: '45%',
-    },
-    boxContent: {
-      backgroundColor: palette.paper,
-      height: 'fit-content',
-      padding: 65,
-      position: 'relative',
-      zIndex: 1,
-    },
-    byeByePlaneSticker: {
-      height: 50,
-      left: -30,
-      position: 'relative',
-      top: -40.5,
-      width: 150,
-      zIndex: 1,
-    },
-    container: {
-      [breakpoints.up('md')]: {
-        width: '110%',
-        left: '-5%',
-      },
-      display: 'flex',
-      position: 'relative',
-    },
-    keepCoolSticker: {
-      display: 'flex',
-      justifyContent: 'center',
-      marginTop: '77px',
-    },
-    noPlaneSticker: {
-      [breakpoints.down('md')]: {
-        height: 125,
-        position: 'relative',
-        width: 125,
-        zIndex: 2,
-      },
-      [breakpoints.up('lg')]: {
-        bottom: -72.5,
-        height: 145,
-        left: -72.5,
-        position: 'absolute',
-        width: 145,
-      },
-    },
-    subtitle: {
-      [breakpoints.down('md')]: {
-        textAlign: 'center',
-        '&::after': {
-          borderBottom: `solid 4px ${palette.yellow}`,
-          content: "''",
-          width: '25px',
-          display: 'block',
-          marginBottom: '30px !important',
-          marginTop: '20px !important',
-          margin: 'auto',
-        },
-      },
-      color: palette.black,
-      fontFamily: 'Monument Extended',
-      fontSize: '20px',
-      fontStyle: 'normal',
-      fontWeight: 'normal',
-      lineHeight: '25px',
-      textTransform: 'uppercase',
-    },
-    subtitleDash: {
-      backgroundColor: palette.yellow,
-      display: 'inline-block',
-      height: '4px',
-      marginRight: '15px',
-      width: '25px',
-    },
-    SMContainer: {
-      border: `solid 8px ${palette.blue}`,
-    },
-    SMstickers: {
-      left: 'calc(50% - 132.5px)',
+    [breakpoints.up('lg')]: {
+      bottom: -72.5,
+      height: 145,
+      left: -72.5,
       position: 'absolute',
-      top: -62.5,
+      width: 145,
     },
-    text: {
-      [breakpoints.down('md')]: {
-        textAlign: 'center',
-      },
-      fontFamily: 'Libre Franklin',
-      fontSize: '18px',
-      fontStyle: 'normal',
-      fontWeight: 'normal',
-      lineHeight: '27px',
-    },
-    title: {
-      [breakpoints.between('lg', 'xl')]: {
-        '&::after': {
-          width: '50px',
-        },
-      },
-      [breakpoints.down('md')]: {
-        '&::after': {
-          margin: 'auto',
-          width: '75px',
-        },
-        textAlign: 'center',
-      },
+  },
+  subtitle: {
+    [breakpoints.down('md')]: {
+      textAlign: 'center',
       '&::after': {
-        borderBottom: `solid 8px ${palette.yellow}`,
+        borderBottom: `solid 4px ${palette.yellow}`,
         content: "''",
+        width: '25px',
         display: 'block',
-        marginBottom: '50px !important',
-        marginTop: '35px !important',
+        marginBottom: '30px !important',
+        marginTop: '20px !important',
+        margin: 'auto',
       },
-      color: palette.black,
-      fontSize: '45px',
-      fontStyle: 'normal',
-      fontWeight: 900,
-      lineHeight: '100%',
-      marginBottom: '5px',
-      marginTop: '5px',
-      textAlign: 'left',
     },
-  }))
-)
+    color: palette.black,
+    fontFamily: 'Monument Extended',
+    fontSize: '20px',
+    fontStyle: 'normal',
+    fontWeight: 'normal',
+    lineHeight: '25px',
+    textTransform: 'uppercase',
+  },
+  subtitleDash: {
+    backgroundColor: palette.yellow,
+    display: 'inline-block',
+    height: '4px',
+    marginRight: '15px',
+    width: '25px',
+  },
+  SMContainer: {
+    border: `solid 8px ${palette.blue}`,
+  },
+  SMstickers: {
+    left: 'calc(50% - 132.5px)',
+    position: 'absolute',
+    top: -62.5,
+  },
+  text: {
+    [breakpoints.down('md')]: {
+      textAlign: 'center',
+    },
+    fontFamily: 'Libre Franklin',
+    fontSize: '18px',
+    fontStyle: 'normal',
+    fontWeight: 'normal',
+    lineHeight: '27px',
+  },
+  title: {
+    [breakpoints.between('lg', 'xl')]: {
+      '&::after': {
+        width: '50px',
+      },
+    },
+    [breakpoints.down('md')]: {
+      '&::after': {
+        margin: 'auto',
+        width: '75px',
+      },
+      textAlign: 'center',
+    },
+    '&::after': {
+      borderBottom: `solid 8px ${palette.yellow}`,
+      content: "''",
+      display: 'block',
+      marginBottom: '50px !important',
+      marginTop: '35px !important',
+    },
+    color: palette.black,
+    fontSize: '45px',
+    fontStyle: 'normal',
+    fontWeight: 900,
+    lineHeight: '100%',
+    marginBottom: '5px',
+    marginTop: '5px',
+    textAlign: 'left',
+  },
+}));
 
 const BlueBoxes = () => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   return (
     <Fragment>
@@ -255,7 +253,7 @@ const BlueBoxes = () => {
         </div>
       </Hidden>
     </Fragment>
-  )
-}
+  );
+};
 
-export default BlueBoxes
+export default BlueBoxes;

@@ -1,8 +1,7 @@
 {
   "bracketSpacing": true,
   "printWidth": 120,
-  "semi": false,
-  "semicolon": false,
+  "semi": true,
   "singleQuote": true,
   "tabWidth": 2,
   "trailingComma": "es5"
