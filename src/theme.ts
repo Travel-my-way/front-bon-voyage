@@ -1,21 +1,21 @@
-import { createMuiTheme } from '@material-ui/core/styles'
+import { createMuiTheme } from '@material-ui/core/styles';
 
 declare module '@material-ui/core/styles/createPalette' {
   interface Palette {
-    black: string
-    blue: string
-    green: string
-    paper: string
-    red: string
-    yellow: string
+    black: string;
+    blue: string;
+    green: string;
+    paper: string;
+    red: string;
+    yellow: string;
   }
   interface PaletteOptions {
-    black: string
-    blue: string
-    green: string
-    paper: string
-    red: string
-    yellow: string
+    black: string;
+    blue: string;
+    green: string;
+    paper: string;
+    red: string;
+    yellow: string;
   }
 }
 
@@ -37,6 +37,9 @@ const theme = createMuiTheme({
       xl: 1920,
     },
   },
-})
+  typography: {
+    fontFamily: ['-apple-system', 'Monument Extended'].join(','),
+  },
+});
 
-export default theme
+export default theme;

@@ -7,6 +7,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow: scroll;
 }
+
+h3 {
+  margin: unset;
+}
+
 @font-face {
   font-family: 'Monument Extended';
   src: local('Monument Extended'), url('./Fonts/MonumentExtended-Regular.otf') format('truetype');
