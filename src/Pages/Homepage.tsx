@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { makeStyles, Theme } from '@material-ui/core/styles';
 
 import { BlueBoxes, Footer } from '../Components';
 import WhySection from '../Components/WhySection/WhySection';

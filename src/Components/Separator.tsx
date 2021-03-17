@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(({ palette, spacing }: Theme) => ({
+const useStyles = makeStyles(({ palette }: Theme) => ({
   separator: {
     backgroundColor: palette.yellow,
     width: '50px',

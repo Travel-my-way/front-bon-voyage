@@ -1,7 +1,7 @@
-import React from 'react'
-import { createStyles, makeStyles } from '@material-ui/core/styles'
-import { Link } from '@material-ui/core'
-import Flag from '../Assets/Logos/flag_bon_voyage.svg'
+import React from 'react';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
+import { Link } from '@material-ui/core';
+import Flag from '../Assets/Logos/flag_bon_voyage.svg';
 
 const useStyles = createStyles(
   makeStyles(({ breakpoints, palette }) => ({
@@ -109,15 +109,15 @@ const useStyles = createStyles(
       zIndex: 1,
     },
   }))
-)
+);
 
 type Props = {
-  backgroundColor?: string
-  logo?: string
-}
+  backgroundColor?: string;
+  logo?: string;
+};
 
 const Footer = ({ backgroundColor = 'blue', logo = Flag }: Props): JSX.Element => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   return (
     <div className={styles.container}>
@@ -140,18 +140,13 @@ const Footer = ({ backgroundColor = 'blue', logo = Flag }: Props): JSX.Element =
             </Link>
           </ul>
           <div className={styles.citationContainer}>
-            <p className={styles.citation}>
-              L’important ce n’est pas la destination c’est le voyage.
-              <span className={styles.initialling}>
-                <br />
-                Robert Louis Stevenson
-              </span>
-            </p>
+            <p className={styles.citation}>L’important ce n’est pas la destination c’est le voyage. </p>
+            <p className={styles.initialling}>Robert Louis Stevenson</p>
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

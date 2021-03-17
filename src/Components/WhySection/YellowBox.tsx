@@ -63,7 +63,7 @@ interface YellowBoxProps {
   label: string;
 }
 
-const YellowBox = ({ index, label }: YellowBoxProps) => {
+const YellowBox = ({ index, label }: YellowBoxProps): JSX.Element => {
   const styles = useStyles();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up('lg'));
