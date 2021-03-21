@@ -43,7 +43,7 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing }: Theme) => ({
   },
 }));
 
-const HeadingText = () => {
+const HeadingText = (): JSX.Element => {
   const styles = useStyles();
 
   return (

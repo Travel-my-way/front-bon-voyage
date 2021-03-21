@@ -5,7 +5,7 @@ body {
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow: scroll;
+  overflow-x: hidden;
 }
 
 h3 {
@@ -15,6 +15,11 @@ h3 {
 @font-face {
   font-family: 'Monument Extended';
   src: local('Monument Extended'), url('./Fonts/MonumentExtended-Regular.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Clattering';
+  src: local('Clattering'), url('./Fonts/Clattering.ttf') format('truetype');
 }
 
 code {

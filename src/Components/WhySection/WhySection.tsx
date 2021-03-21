@@ -43,7 +43,7 @@ const WhySection = (): JSX.Element => {
       <HeadingText />
       <div className={styles.boxContainer}>
         {boxLabels.map((boxLabel, index) => {
-          return <YellowBox label={boxLabel} index={index + 1} />;
+          return <YellowBox label={boxLabel} index={index + 1} key={boxLabel} />;
         })}
       </div>
     </div>
