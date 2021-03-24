@@ -15,10 +15,12 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react', '@typescript-eslint'],
-  rules: {},
+  rules: {
+    'no-irregular-whitespace': 0,
+  },
   settings: {
     react: {
       version: 'detect',
     },
   },
-}
+};
