@@ -64,12 +64,12 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
     textStroke: `0.1px ${palette.blue}`,
   },
   question: {
-    '&:last-child': {
+    '&:first-child': {
       backgroundImage: 'none',
     },
     alignItems: 'center',
     backgroundImage: `repeating-linear-gradient(to right, ${palette.blue} 0 3px, transparent 3px 12px)`,
-    backgroundPosition: 'bottom',
+    backgroundPosition: 'top',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'auto 1px',
     cursor: 'pointer',
@@ -167,7 +167,7 @@ const SmallScreenQuestions = (): JSX.Element => {
   );
 };
 
-const XlScreenQuestions = () => {
+const LargeScreenQuestions = () => {
   const styles = useStyles();
   const [answerIndex, setSelectedAnswerIndex] = useState(0);
 
@@ -217,7 +217,7 @@ const Questions = (): JSX.Element => {
       </h3>
       <div className={styles.container}>
         <Hidden lgUp>{SmallScreenQuestions()}</Hidden>
-        <Hidden mdDown>{XlScreenQuestions()}</Hidden>
+        <Hidden mdDown>{LargeScreenQuestions()}</Hidden>
       </div>
     </Fragment>
   );
