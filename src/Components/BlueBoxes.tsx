@@ -166,7 +166,7 @@ const BlueBoxes = (): JSX.Element => {
             </div>
             <h3 className={styles.title}>Pourquoi Bon voyage ?</h3>
             <p className={styles.text}>
-              Allons-en au fait. Le jus de tomates à 10 000 mètres d’altitude, ce n’est plus possible. Si l’on veut
+              Allons-en au fait. Le jus de tomates à 10 000 mètres d’altitude, ce n’est plus possible. Si l’on veut
               sauver la planète, il va falloir renoncer à l’avion.
             </p>
             <p className={styles.text}>
@@ -185,7 +185,7 @@ const BlueBoxes = (): JSX.Element => {
               no pain.
             </p>
             <p className={styles.text}>
-              Notre objectif ? Vous donner les raisons et les alternatives pour ne plus prendre l’avion à tort et à
+              Notre objectif ? Vous donner les raisons et les alternatives pour ne plus prendre l’avion à tort et à
               travers et vous en trouver mieux.
             </p>
             <h4 className={styles.subtitle}>Voyager léger</h4>
@@ -208,7 +208,7 @@ const BlueBoxes = (): JSX.Element => {
             <div className={styles.boxContent}>
               <h3 className={styles.title}>Pourquoi Bon voyage ?</h3>
               <p className={styles.text}>
-                Allons-en au fait. Le jus de tomates à 10 000 mètres d’altitude, ce n’est plus possible. Si l’on veut
+                Allons-en au fait. Le jus de tomates à 10 000 mètres d’altitude, ce n’est plus possible. Si l’on veut
                 sauver la planète, il va falloir renoncer à l’avion.
               </p>
               <p className={styles.text}>
@@ -232,7 +232,7 @@ const BlueBoxes = (): JSX.Element => {
                 plane no pain.
               </p>
               <p className={styles.text}>
-                Notre objectif ? Vous donner les raisons et les alternatives pour ne plus prendre l’avion à tort et à
+                Notre objectif ? Vous donner les raisons et les alternatives pour ne plus prendre l’avion à tort et à
                 travers et vous en trouver mieux.
               </p>
               <h4 className={styles.subtitle}>
