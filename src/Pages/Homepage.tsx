@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 
-import { BlueBoxes, Footer, Questions } from '../Components';
+import { BlueBoxes, Footer, SearchBar, Questions } from '../Components';
 import WhySection from '../Components/WhySection/WhySection';
 import Flag from '../Assets/Logos/flag_bon_voyage.svg';
 
@@ -60,6 +60,7 @@ function Homepage(): JSX.Element {
         <img src={Flag} className={styles.flag} />
         <h1 className={styles.title1}>En route pour des voyages</h1>
         <h2 className={styles.title2}>bas carbone</h2>
+        <SearchBar />
         <BlueBoxes />
         <WhySection />
         <Questions />
