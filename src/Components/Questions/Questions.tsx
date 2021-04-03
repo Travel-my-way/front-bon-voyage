@@ -1,16 +1,13 @@
 import React, { Fragment, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Collapse, Hidden } from '@material-ui/core';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-import AddIcon from '@material-ui/icons/Add';
+
+import ArrowInCircle from '../../Assets/Icons/ArrowInCircle.svg';
+import AddIconInCircle from '../../Assets/Icons/AddIconInCircle.svg';
 
 import questions from './Questions.json';
 
 const useStyles = makeStyles(({ breakpoints, palette }) => ({
-  addIcon: {
-    color: palette.yellow,
-    padding: 4,
-  },
   answer: {
     fontFamily: 'Libre Franklin',
     fontSize: 18,
@@ -37,10 +34,6 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
     fontWeight: 900,
     lineHeight: '120%',
   },
-  arrowIcon: {
-    color: palette.blue,
-    padding: 8,
-  },
   container: {
     [breakpoints.only('xs')]: {
       padding: 20,
@@ -51,12 +44,7 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
     justifyContent: 'space-between',
   },
   icon: {
-    border: `1px dashed ${palette.blue}`,
-    borderRadius: '50%',
-    boxSizing: 'border-box',
-    height: 40,
-    marginLeft: 16,
-    width: 40,
+    marginLeft: 28,
   },
   keyword: {
     boxSizing: 'border-box',
@@ -137,20 +125,20 @@ const SmallScreenQuestions = (): JSX.Element => {
 
   return (
     <div className={styles.questions}>
-      {questions.map((question: Question, index: number) => {
+      {questions.map(({ question }: Question, index: number) => {
         let customTextStyles = styles.question;
-        let Icon = <AddIcon className={`${styles.icon} ${styles.addIcon}`} />;
+        let Icon = AddIconInCircle;
 
         if (index === answerIndex) {
           customTextStyles = styles.selectedQuestion;
-          Icon = <ArrowForwardIosIcon className={`${styles.icon} ${styles.arrowIcon}`} />;
+          Icon = ArrowInCircle;
         }
 
         return (
-          <Fragment key={question.question}>
+          <Fragment key={question}>
             <div className={`${styles.question} ${customTextStyles}`} onClick={() => handleClick(index)}>
-              {question.question}
-              {Icon}
+              {question}
+              <img src={Icon} className={styles.icon} />
             </div>
             <Collapse in={answerIndex === index}>
               {typeof answerIndex === 'number' &&
@@ -180,17 +168,17 @@ const LargeScreenQuestions = () => {
       <div className={styles.questions}>
         {questions.map(({ question }: Question, index: number) => {
           let customTextStyles = styles.question;
-          let Icon = <AddIcon className={`${styles.icon} ${styles.addIcon}`} />;
+          let Icon = AddIconInCircle;
 
           if (index === answerIndex) {
             customTextStyles = styles.selectedQuestion;
-            Icon = <ArrowForwardIosIcon className={`${styles.icon} ${styles.arrowIcon}`} />;
+            Icon = ArrowInCircle;
           }
 
           return (
             <div key={question} className={`${styles.question} ${customTextStyles}`} onClick={() => handleClick(index)}>
               {question}
-              {Icon}
+              <img src={Icon} className={styles.icon} />
             </div>
           );
         })}
