@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 
-import { BlueBoxes, Footer } from '../Components';
+import { BlueBoxes, Footer, Questions } from '../Components';
 import WhySection from '../Components/WhySection/WhySection';
 import Flag from '../Assets/Logos/flag_bon_voyage.svg';
 
@@ -62,6 +62,7 @@ function Homepage(): JSX.Element {
         <h2 className={styles.title2}>bas carbone</h2>
         <BlueBoxes />
         <WhySection />
+        <Questions />
       </div>
       <Footer />
     </Fragment>

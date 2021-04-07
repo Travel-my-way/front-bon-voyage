@@ -21,4 +21,4 @@ module.exports = {
       version: 'detect',
     },
   },
-}
+};
