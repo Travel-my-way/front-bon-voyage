@@ -34,7 +34,7 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
 }));
 
 type Props = {
-  handleClick: Function;
+  handleClick: () => void;
   isDisable?: boolean;
   isLoading?: boolean;
 };

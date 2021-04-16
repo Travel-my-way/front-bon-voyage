@@ -20,11 +20,11 @@ const useStyles = makeStyles(({ palette }) => ({
 
 type Props = {
   logo: string;
-  selectedDate?: Date;
-  handleChange: Function;
+  selectedDate: Date | null;
+  handleChange: (date: Date | null) => void;
 };
 
-const DateTimePicker = ({ logo, selectedDate, handleChange }: Props) => {
+const DateTimePicker = ({ logo, selectedDate, handleChange }: Props): JSX.Element => {
   const styles = useStyles();
 
   return (
@@ -37,7 +37,7 @@ const DateTimePicker = ({ logo, selectedDate, handleChange }: Props) => {
           disableToolbar
           format={'dd MMMM yyyy p'}
           value={selectedDate}
-          onChange={(value: any) => {
+          onChange={(value: Date | null) => {
             handleChange(value);
           }}
           InputProps={{

@@ -125,9 +125,9 @@ const SearchBar = ({ width }: Props) => {
   const [numberOfVoyagers, setNumberOfVoyager] = useState(1);
   const [arrivalLatlng, setArrivalLatlng] = useState<SelectedDestination | undefined>();
   const [departureLatlng, setDepartureLatlng] = useState<SelectedDestination | undefined>();
-  const [selectedDate, handleDateChange] = useState(new Date());
+  const [selectedDate, handleDateChange] = useState<Date | null>(new Date());
 
-  const isButtonDisable = [numberOfVoyagers, arrivalLatlng, departureLatlng, selectedDate.valueOf()].some(
+  const isButtonDisable = [numberOfVoyagers, arrivalLatlng, departureLatlng, selectedDate?.valueOf()].some(
     (value) => !value
   );
 
@@ -136,7 +136,7 @@ const SearchBar = ({ width }: Props) => {
       numberOfVoyagers,
       arrivalLatlng,
       departureLatlng,
-      selectedDate: selectedDate.valueOf(),
+      selectedDate: selectedDate?.valueOf(),
     });
   };
 

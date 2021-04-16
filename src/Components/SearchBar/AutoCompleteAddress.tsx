@@ -21,13 +21,6 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 }));
 
-type Props = {
-  placeholder: string;
-  handleChanges: Function;
-  logo: string;
-  customClasses: string;
-};
-
 type Suggestion = {
   suggestion: {
     value: string;
@@ -36,6 +29,22 @@ type Suggestion = {
       lng: number;
     };
   };
+};
+
+type Props = {
+  placeholder: string;
+  handleChanges: ({
+    name,
+    latlng,
+  }: {
+    name: string;
+    latlng: {
+      lat: number;
+      lng: number;
+    };
+  }) => void;
+  logo: string;
+  customClasses: string;
 };
 
 const AutoCompleteAddress = ({ handleChanges, placeholder, customClasses, logo }: Props): JSX.Element => {
