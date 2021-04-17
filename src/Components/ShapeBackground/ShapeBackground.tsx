@@ -70,6 +70,7 @@ const renderFormattedShapes = (styles: Record<string, string>) => {
 
     formattedShapes.push(
       <img
+        key={i}
         className={styles.shape}
         src={shapes[shapeIndex]}
         style={{ top: yPosition, left: xPosition, transform: `rotate(${rotation}deg)` }}
