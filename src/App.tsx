@@ -4,11 +4,7 @@ import DateFnsUtils from '@date-io/date-fns';
 import { Homepage } from './Pages';
 
 function App(): JSX.Element {
-  return (
-    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-      <Homepage />
-    </MuiPickersUtilsProvider>
-  );
+  return <Homepage />;
 }
 
 export default App;
