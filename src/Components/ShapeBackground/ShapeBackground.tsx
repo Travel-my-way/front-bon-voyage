@@ -48,7 +48,7 @@ type Props = {
   children: JSX.Element;
 };
 
-const getRandomIntBetweenInterval = ([minInt = 0, maxInt = 1]) => {
+const getRandomIntBetweenInterval = (minInt = 0, maxInt = 1) => {
   return Math.round(Math.random() * (maxInt - minInt + 1) + minInt);
 };
 
@@ -59,14 +59,14 @@ const renderFormattedShapes = (styles: Record<string, string>) => {
 
   for (let i = 0; i < NumberOfShapes; i++) {
     const isEven = i % 2 === 0;
-    const shapeIndex = getRandomIntBetweenInterval([0, shapes.length]);
+    const shapeIndex = getRandomIntBetweenInterval(0, shapes.length - 1);
     const rotation = 360 * Math.random();
 
     const xPosition = isEven
-      ? getRandomIntBetweenInterval([150, thirdScreenWidth])
-      : getRandomIntBetweenInterval([screenWidth - thirdScreenWidth, screenWidth - 150]); // minus 150 so shape will not be cut by the screen border
+      ? getRandomIntBetweenInterval(150, thirdScreenWidth)
+      : getRandomIntBetweenInterval(screenWidth - thirdScreenWidth, screenWidth - 150); // minus 150 so shape will not be cut by the screen border
 
-    const yPosition = getRandomIntBetweenInterval([(intervalY * i) / 2, intervalY + intervalY * (i / 2)]);
+    const yPosition = getRandomIntBetweenInterval((intervalY * i) / 2, intervalY + intervalY * (i / 2));
 
     formattedShapes.push(
       <img
