@@ -2,6 +2,8 @@ import React from 'react';
 import AlgoliaPlaces from 'algolia-places-react';
 import { makeStyles } from '@material-ui/core/styles';
 
+import config from '../../config';
+
 const useStyles = makeStyles(({ palette }) => ({
   container: {
     display: 'relative',
@@ -63,8 +65,8 @@ const AutoCompleteAddress = ({ handleChanges, placeholder, customClasses, logo }
         placeholder={placeholder}
         className={styles.input}
         options={{
-          appId: 'plIMLBK6SAIV',
-          apiKey: '3eafdf4bffe092bb1a6141c4eda52f9f',
+          appId: config.appId,
+          apiKey: config.apiKey,
           language: 'fr',
           // Other options from https://community.algolia.com/places/documentation.html#options
         }}
