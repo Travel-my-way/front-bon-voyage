@@ -15,6 +15,7 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
     lineHeight: '27px',
   },
   answers: {
+    backgroundColor: palette.paper,
     padding: 32,
     paddingBottom: 16,
     paddingTop: 32,
@@ -74,6 +75,7 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
       width: '100%',
     },
     alignItems: 'space-between',
+    backgroundColor: palette.paper,
     display: 'flex',
     flexDirection: 'column',
     padding: 32,
