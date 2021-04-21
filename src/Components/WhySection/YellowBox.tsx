@@ -17,6 +17,7 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing }: Theme) => ({
       width: '80%',
     },
     alignContent: 'center',
+    backgroundColor: palette.paper,
     backgroundImage: `repeating-linear-gradient(0deg, ${palette.yellow}, ${palette.yellow} 12px, transparent 12px, transparent 25px, ${palette.yellow} 25px), repeating-linear-gradient(90deg, ${palette.yellow}, ${palette.yellow} 12px, transparent 12px, transparent 25px, ${palette.yellow} 25px), repeating-linear-gradient(180deg, ${palette.yellow}, ${palette.yellow} 12px, transparent 12px, transparent 25px, ${palette.yellow} 25px), repeating-linear-gradient(270deg, ${palette.yellow}, ${palette.yellow} 12px, transparent 12px, transparent 25px, ${palette.yellow} 25px)`,
     backgroundPosition: '0 0, 0 0, 100% 0, 0 100%',
     backgroundRepeat: 'no-repeat',
