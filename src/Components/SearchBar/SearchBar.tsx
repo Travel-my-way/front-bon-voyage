@@ -7,6 +7,7 @@ import GreenFlag from '../../Assets/Icons/greenFlag.svg';
 import RedWatch from '../../Assets/Icons/redWatch.svg';
 import MSN from '../../Assets/Icons/MSN.svg';
 import OuiAuTrain from '../../Assets/Logos/oui_au_train.svg';
+import config from '../../config';
 
 import { CallToAction } from './CallToAction';
 import { AutoCompleteAddress } from './AutoCompleteAddress';
@@ -106,13 +107,20 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
 }));
 
 type SelectedDestination = {
-  latlng: { lat: number; lng: number };
+  latlng: {
+    lat: number;
+    lng: number;
+  };
   name: string;
 };
 
-type Props = WithWidth;
+type Props = {
+  customStylesWrapper?: string;
+  withoutInputLogo?: boolean;
+  withoutLogo?: boolean;
+} & WithWidth;
 
-const SearchBar = ({ width }: Props) => {
+const SearchBar = ({ customStylesWrapper, width, withoutInputLogo, withoutLogo }: Props) => {
   const styles = useStyles();
 
   const placeholder = {
@@ -127,9 +135,7 @@ const SearchBar = ({ width }: Props) => {
   const [departureLatlng, setDepartureLatlng] = useState<SelectedDestination | undefined>();
   const [selectedDate, handleDateChange] = useState<Date | null>(new Date());
 
-  const isButtonDisable = [numberOfVoyagers, arrivalLatlng, departureLatlng, selectedDate?.valueOf()].some(
-    (value) => !value
-  );
+  const isButtonDisable = [numberOfVoyagers, arrivalLatlng, departureLatlng, selectedDate?.valueOf()].some(Boolean);
 
   const handleSubmit = () => {
     console.log({
@@ -140,25 +146,21 @@ const SearchBar = ({ width }: Props) => {
     });
   };
 
+  const renderDropdownLabel = (number: number) => {
+    if (number === 1) {
+      return isWidthUp('md', width) ? '1 voyageur' : 1;
+    }
+
+    return isWidthUp('md', width) ? `${number} voyageurs` : number;
+  };
+
   const getSelectItems = (numberOfItem = 10) => {
-    const renderLabel = (number: number) => {
-      if (number === 1) {
-        return isWidthUp('md', width) ? '1 voyageur' : 1;
-      }
+    const result = [];
 
-      return isWidthUp('md', width) ? `${number} voyageurs` : number;
-    };
-
-    const result = [
-      <MenuItem className={styles.textField} key={1} value={1} onClick={() => setNumberOfVoyager(1)}>
-        {renderLabel(1)}
-      </MenuItem>,
-    ];
-
-    for (let i = 2; i <= numberOfItem; i++) {
+    for (let i = 1; i <= numberOfItem; i++) {
       result.push(
         <MenuItem className={styles.textField} onClick={() => setNumberOfVoyager(i)} value={i} key={i}>
-          {renderLabel(i)}
+          {renderDropdownLabel(i)}
         </MenuItem>
       );
     }
@@ -167,29 +169,27 @@ const SearchBar = ({ width }: Props) => {
   };
 
   return (
-    <div className={styles.container}>
-      <Hidden smDown>
-        <img src={OuiAuTrain} className={styles.logo} />
-      </Hidden>
+    <div className={customStylesWrapper || styles.container}>
+      <Hidden smDown>{!withoutLogo && <img src={OuiAuTrain} className={styles.logo} />}</Hidden>
       <AutoCompleteAddress
         customClasses={`${styles.firstRow} ${styles.margin} ${styles.textField}`}
+        handleChanges={setDepartureLatlng}
         logo={YellowFlag}
         placeholder={placeholder.departure}
-        handleChanges={setDepartureLatlng}
       />
       <AutoCompleteAddress
         customClasses={`${styles.secondRow} ${styles.margin} ${styles.textField}`}
+        handleChanges={setArrivalLatlng}
         logo={GreenFlag}
         placeholder={placeholder.arrival}
-        handleChanges={setArrivalLatlng}
       />
       <div className={styles.thirdRowContainer}>
-        <DateTimePicker logo={RedWatch} selectedDate={selectedDate} handleChange={handleDateChange} />
+        <DateTimePicker handleChange={handleDateChange} logo={RedWatch} selectedDate={selectedDate} />
         <div className={styles.travellerCTAContainer}>
           <div className={`${styles.textFieldContainer} ${styles.textFieldLeftBottom} ${styles.thirdRow}`}>
             <img className={styles.textFieldLogo} src={MSN} />
             <Select value={numberOfVoyagers} className={styles.textField} defaultValue={1} fullWidth>
-              {getSelectItems(9)}
+              {getSelectItems(config.maxTravelers)}
             </Select>
           </div>
           <CallToAction isDisable={isButtonDisable} handleClick={handleSubmit} />
