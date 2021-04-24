@@ -14,16 +14,16 @@ const useStyles = makeStyles(({ palette }) => ({
     flexDirection: 'column',
     justifyContent: 'center',
   },
+  commonTravelMiniature: {
+    borderRadius: 0,
+    margin: 4,
+    marginbottom: 18,
+    maxHeight: 115,
+    maxWidth: 200,
+  },
   logo: {
     marginLeft: 4,
     marginRight: 4,
-  },
-  travelCategories: {
-    fontFamily: 'Libre Franklin',
-    fontSize: 14,
-    fontStyle: 'normal',
-    fontWeight: 'normal',
-    textAlign: 'center',
   },
   selectedTravelMiniature: {
     backgroundColor: palette.green,
@@ -33,18 +33,18 @@ const useStyles = makeStyles(({ palette }) => ({
     fontSize: 18,
     fontWeight: 'bold',
   },
+  travelCategories: {
+    fontFamily: 'Libre Franklin',
+    fontSize: 14,
+    fontStyle: 'normal',
+    fontWeight: 'normal',
+    textAlign: 'center',
+  },
   travelMiniature: {
     backgroundColor: palette.paper,
     border: `1px solid ${palette.black}`,
     boxSizing: 'border-box',
     color: palette.black,
-  },
-  commonTravelMiniature: {
-    borderRadius: 0,
-    maxHeight: 115,
-    maxWidth: 200,
-    margin: 4,
-    marginbottom: 18,
   },
 }));
 

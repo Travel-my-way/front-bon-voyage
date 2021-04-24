@@ -9,24 +9,24 @@ import TravelMiniature from './TravelMiniature';
 
 import 'pure-react-carousel/dist/react-carousel.es.css';
 
-const useStyles = makeStyles(({ palette }) => ({
-  previousButton: {
-    position: 'absolute',
-    left: -75,
-    top: 25,
+const useStyles = makeStyles(() => ({
+  hidden: {
+    display: 'none',
   },
   nextButton: {
     position: 'absolute',
     right: -75,
     top: 25,
   },
-  travelsWrapper: {
-    maxWidth: 1040,
-    margin: 'auto',
-    position: 'relative',
+  previousButton: {
+    left: -75,
+    position: 'absolute',
+    top: 25,
   },
-  hidden: {
-    display: 'none',
+  travelsWrapper: {
+    margin: 'auto',
+    maxWidth: 1040,
+    position: 'relative',
   },
 }));
 
