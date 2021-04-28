@@ -3,9 +3,7 @@ import { Card, CardContent, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Slide } from 'pure-react-carousel';
 
-import SubwayIcon from '../../Assets/Icons/subway.svg';
-import TrainIcon from '../../Assets/Icons/train.svg';
-import CarIcon from '../../Assets/Icons/car.svg';
+import TravelIcon from '../TravelIcons';
 
 const useStyles = makeStyles(({ palette }) => ({
   cardContent: {
@@ -24,6 +22,8 @@ const useStyles = makeStyles(({ palette }) => ({
   logo: {
     marginLeft: 4,
     marginRight: 4,
+    width: 32,
+    height: 32,
   },
   selectedTravelMiniature: {
     backgroundColor: palette.green,
@@ -48,15 +48,14 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 }));
 
-const mappedIconByType: Record<TravelCategory, string> = {
-  Carpooling: CarIcon,
-  Car: CarIcon,
-  Train: TrainIcon,
+type Props = {
+  travel: Travel;
+  index: number;
+  selectedTravel: Travel;
+  handleClick: (travel: Travel, index: number) => null;
 };
 
-type Props = any;
-
-const TravelMiniature = ({ travel, index, selectedTravel, handleCardClick }: Props) => {
+const TravelMiniature = ({ travel, index, selectedTravel, handleClick }: Props): JSX.Element => {
   const styles = useStyles();
   const customClasses = selectedTravel.id === travel.id ? styles.selectedTravelMiniature : styles.travelMiniature;
 
@@ -64,13 +63,13 @@ const TravelMiniature = ({ travel, index, selectedTravel, handleCardClick }: Pro
     <Slide index={index}>
       <Card
         className={`${customClasses} ${styles.commonTravelMiniature}`}
-        onClick={() => handleCardClick(travel, index)}
+        onClick={() => handleClick(travel, index)}
         key={travel.id}
       >
         <CardContent className={styles.cardContent}>
           <div>
             {travel.category.map((category: TravelCategory) => (
-              <img key={category} className={styles.logo} src={mappedIconByType[category]} />
+              <TravelIcon category={category} classes={styles.logo} />
             ))}
           </div>
           <div>

@@ -47,9 +47,11 @@ const Results = (): JSX.Element => {
   const [selectedTravel, setSelectedTravel] = useState(travelsSortedByCo2[0]);
 
   useEffect(() => {
-    const sortedTravels: Travel[] = [...travels].sort((travel1: Travel, travel2: Travel) => {
-      return sortCrescendo(travel1.total_gCO2 as number, travel2.total_gCO2 as number);
-    });
+    const sortedTravels: Travel[] = [...travels]
+      .sort((travel1: Travel, travel2: Travel) => {
+        return sortCrescendo(travel1.total_gCO2 as number, travel2.total_gCO2 as number);
+      })
+      .map((travel) => ({ ...travel, category: [...new Set(travel.category)] }));
 
     setTravelsSortedByCo2(sortedTravels);
     setSelectedTravel(sortedTravels[0]);
