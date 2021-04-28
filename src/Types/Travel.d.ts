@@ -29,8 +29,8 @@ interface Travel {
   journey_steps: JourneyStep[];
   label: string;
   score: string;
-  total_distance: number | string;
+  total_distance?: number;
   total_duration: string;
-  total_gCO2: string;
+  total_gCO2: number;
   total_price_EUR: string;
 }
