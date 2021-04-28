@@ -4,7 +4,6 @@ import { CarouselProvider, Slider } from 'pure-react-carousel';
 import { makeStyles } from '@material-ui/core/styles';
 import { IconButton } from '@material-ui/core';
 
-import Arrow from '../../Assets/Icons/ArrowInCircle.svg';
 import TravelMiniature from './TravelMiniature';
 
 import 'pure-react-carousel/dist/react-carousel.es.css';
@@ -16,12 +15,16 @@ const useStyles = makeStyles(() => ({
   nextButton: {
     position: 'absolute',
     right: -75,
-    top: 25,
+    top: 35,
+    width: 50,
+    height: 50,
   },
   previousButton: {
     left: -75,
     position: 'absolute',
-    top: 25,
+    top: 35,
+    width: 50,
+    height: 50,
   },
   travelsWrapper: {
     margin: 'auto',
@@ -31,44 +34,45 @@ const useStyles = makeStyles(() => ({
 }));
 
 type Props = {
-  travels: Travel[];
+  sortedTravels: Travel[];
+  setSelectedTravel: (travel: Travel) => null;
+  selectedTravel: Travel;
 };
 
-const TravelsMiniatures = ({ travels }: Props) => {
+const TravelsMiniatures = ({ sortedTravels, selectedTravel, setSelectedTravel }: Props): JSX.Element => {
   const styles = useStyles();
-  const [selectedTravel, setSelectedTravel] = useState(travels[0]);
   const [preSelectedTravelIndex, setPreSelectedTravelIndex] = useState(0);
 
   const handleCardClick = (travel: Travel, index: number) => {
     setSelectedTravel(travel);
-    setPreSelectedTravelIndex(Math.min(travels.length - 4, index));
+    setPreSelectedTravelIndex(Math.min(sortedTravels.length - 4, index));
   };
 
   const handleNextButtonClick = () => {
     const nextSlideIndex = preSelectedTravelIndex + 1;
 
-    if (nextSlideIndex > travels.length - 1) {
+    if (nextSlideIndex > sortedTravels.length - 1) {
       setPreSelectedTravelIndex(0);
     } else {
-      setPreSelectedTravelIndex(Math.min(travels.length - 4, nextSlideIndex));
+      setPreSelectedTravelIndex(Math.min(sortedTravels.length - 4, nextSlideIndex));
     }
   };
 
   const handlePreviousButtonClick = () => {
     const previousSlideIndex = preSelectedTravelIndex - 1;
 
-    if (previousSlideIndex > 0) {
+    if (previousSlideIndex >= 0) {
       setPreSelectedTravelIndex(previousSlideIndex);
     }
   };
 
   const nextButtonCustomClasses = className({
-    [styles.hidden]: travels.length < 5,
+    [styles.hidden]: sortedTravels.length < 5,
     [styles.nextButton]: true,
   });
 
   const previousButtonCustomClasses = className({
-    [styles.hidden]: travels.length < 5,
+    [styles.hidden]: sortedTravels.length < 5,
     [styles.previousButton]: true,
   });
 
@@ -76,27 +80,27 @@ const TravelsMiniatures = ({ travels }: Props) => {
     <CarouselProvider
       className={styles.travelsWrapper}
       currentSlide={preSelectedTravelIndex}
-      naturalSlideHeight={200}
+      naturalSlideHeight={150}
       naturalSlideWidth={200}
-      totalSlides={travels.length}
+      totalSlides={sortedTravels.length}
       visibleSlides={5}
     >
       <IconButton className={previousButtonCustomClasses} onClick={handlePreviousButtonClick}>
-        <img src={Arrow} />
+        {'<'}
       </IconButton>
       <Slider>
-        {travels.map((travel: Travel, index: number) => (
+        {sortedTravels?.map((travel: Travel, index: number) => (
           <TravelMiniature
             index={index}
             selectedTravel={selectedTravel}
-            handleCardClick={handleCardClick}
+            handleClick={handleCardClick}
             travel={travel}
+            key={travel.id}
           />
         ))}
       </Slider>
-
       <IconButton className={nextButtonCustomClasses} onClick={handleNextButtonClick}>
-        <img src={Arrow} />
+        {'>'}
       </IconButton>
     </CarouselProvider>
   );

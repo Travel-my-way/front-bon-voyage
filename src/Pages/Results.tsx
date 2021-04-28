@@ -1,7 +1,7 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { Footer, TravelsMiniatures, SearchBar } from '../Components';
+import { Footer, TravelsComparison, TravelsMiniatures, SearchBar } from '../Components';
 import Flag from '../Assets/Logos/flag_bon_voyage.svg';
 import MockedResponse from './MockedResponse.json';
 
@@ -36,15 +36,36 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
   },
 }));
 
-const Results = () => {
+const sortCrescendo = (int1: number, int2: number): number => {
+  return int1 - int2;
+};
+
+const Results = (): JSX.Element => {
+  const travels = MockedResponse.results;
   const styles = useStyles();
+  const [travelsSortedByCo2, setTravelsSortedByCo2] = useState<Travel[]>([]);
+  const [selectedTravel, setSelectedTravel] = useState(travelsSortedByCo2[0]);
+
+  useEffect(() => {
+    const sortedTravels: Travel[] = [...travels].sort((travel1: Travel, travel2: Travel) => {
+      return sortCrescendo(travel1.total_gCO2 as number, travel2.total_gCO2 as number);
+    });
+
+    setTravelsSortedByCo2(sortedTravels);
+    setSelectedTravel(sortedTravels[0]);
+  }, [travels]);
 
   return (
     <Fragment>
       <div className={styles.container}>
         <img src={Flag} className={styles.flag} />
-        <SearchBar customStylesWrapper={styles.customSearchBarWrapper} withoutInputLogo withoutLogo />
-        <TravelsMiniatures travels={MockedResponse.results} />
+        <SearchBar customStylesWrapper={styles.customSearchBarWrapper} withoutLogo />
+        <TravelsMiniatures
+          selectedTravel={selectedTravel}
+          setSelectedTravel={setSelectedTravel}
+          sortedTravels={travelsSortedByCo2}
+        />
+        <TravelsComparison sortedTravels={travelsSortedByCo2} selectedTravel={selectedTravel} />
       </div>
       <Footer />
     </Fragment>

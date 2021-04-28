@@ -47,7 +47,7 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
     right: -100,
     top: -100,
     width: 160,
-    zIndex: 1,
+    zIndex: 3,
   },
   margin: {
     marginLeft: '30px',
@@ -116,11 +116,10 @@ type SelectedDestination = {
 
 type Props = {
   customStylesWrapper?: string;
-  withoutInputLogo?: boolean;
   withoutLogo?: boolean;
 } & WithWidth;
 
-const SearchBar = ({ customStylesWrapper, width, withoutInputLogo, withoutLogo }: Props) => {
+const SearchBar = ({ customStylesWrapper, width, withoutLogo }: Props) => {
   const styles = useStyles();
 
   const placeholder = {
