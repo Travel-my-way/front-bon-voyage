@@ -69,7 +69,7 @@ const TravelMiniature = ({ travel, index, selectedTravel, handleClick }: Props):
         <CardContent className={styles.cardContent}>
           <div>
             {travel.category.map((category: TravelCategory) => (
-              <TravelIcon category={category} classes={styles.logo} />
+              <TravelIcon category={category} classes={styles.logo} key={category} />
             ))}
           </div>
           <div>

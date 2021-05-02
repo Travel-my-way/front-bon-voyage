@@ -94,7 +94,7 @@ const TravelsComparison = ({ sortedTravels, selectedTravel }: Props): JSX.Elemen
           const rightPosition = -(14 + (travel.category.length - 1) * 16);
 
           const Icons = travel.category.map((category) => {
-            return <TravelIcon classes={styles.icon} key={travel.id} category={category} />;
+            return <TravelIcon classes={styles.icon} key={category} category={category} />;
           });
 
           return (
