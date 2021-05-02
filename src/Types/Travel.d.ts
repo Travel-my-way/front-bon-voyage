@@ -1,6 +1,6 @@
 type TravelCategory = 'Carpooling' | 'Car' | 'Train';
 
-interface JourneyStep {
+interface TravelStep {
   arrival_date: number;
   arrival_point: number[];
   arrival_stop_name: string;
@@ -26,11 +26,11 @@ interface Travel {
   departure_point: number[];
   id: string | number;
   is_real_journey: boolean;
-  journey_steps: JourneyStep[];
+  journey_steps: TravelStep[];
   label: string;
   score: string;
   total_distance?: number;
-  total_duration: string;
+  total_duration: number;
   total_gCO2: number;
   total_price_EUR: string;
 }
