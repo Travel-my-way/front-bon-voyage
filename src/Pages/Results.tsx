@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { Footer, TravelsComparison, TravelsMiniatures, SearchBar } from '../Components';
+import { Footer, TravelsComparison, TravelsMiniatures, SearchBar, QuickTravelDetails } from '../Components';
 import Flag from '../Assets/Logos/flag_bon_voyage.svg';
 import MockedResponse from './MockedResponse.json';
 
@@ -68,6 +68,7 @@ const Results = (): JSX.Element => {
           sortedTravels={travelsSortedByCo2}
         />
         <TravelsComparison sortedTravels={travelsSortedByCo2} selectedTravel={selectedTravel} />
+        <QuickTravelDetails travel={selectedTravel} />
       </div>
       <Footer />
     </Fragment>
