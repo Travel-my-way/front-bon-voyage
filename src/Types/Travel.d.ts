@@ -14,7 +14,7 @@ interface TravelStep {
   label: string;
   price_EUR: number[];
   trip_code: string;
-  type: string;
+  type: TravelCategory;
 }
 
 interface Travel {
