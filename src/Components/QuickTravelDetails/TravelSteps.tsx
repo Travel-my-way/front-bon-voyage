@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles, Typography } from '@material-ui/core';
 
-import { formatHoursAndMinutes } from './utils';
+import { formatHoursAndMinutes } from '../../utils';
 import TravelIcon from '../TravelIcon';
 import GreenCircle from '../../Assets/Shapes/greenCircle.svg';
 

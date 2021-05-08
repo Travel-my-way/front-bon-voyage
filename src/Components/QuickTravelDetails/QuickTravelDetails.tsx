@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 
-import { formatHoursAndMinutes } from './utils';
+import { formatHoursAndMinutes } from '../../utils';
 import TravelSteps from './TravelSteps';
 import TravelIcon from '../TravelIcon';
 
