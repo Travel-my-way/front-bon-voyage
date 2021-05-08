@@ -3,7 +3,7 @@ import { Card, CardContent, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Slide } from 'pure-react-carousel';
 
-import TravelIcon from '../TravelIcons';
+import TravelIcon from '../TravelIcon';
 
 const useStyles = makeStyles(({ palette }) => ({
   cardContent: {

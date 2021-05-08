@@ -4,7 +4,7 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import { Zoom } from '@material-ui/core';
 
 import sticker from '../../Assets/Logos/le_moins_polluant.svg';
-import TravelIcon from '../TravelIcons';
+import TravelIcon from '../TravelIcon';
 
 const HEIGHT_BAR = 12;
 
