@@ -27,6 +27,9 @@ const theme = createMuiTheme({
     paper: '#FCFCF2',
     red: '#FC4E40',
     yellow: '#FED13F',
+    primary: {
+      main: '#002CC7',
+    },
   },
   breakpoints: {
     values: {
@@ -37,6 +40,7 @@ const theme = createMuiTheme({
       xl: 1920,
     },
   },
+
   typography: {
     fontFamily: ['-apple-system', 'Monument Extended'].join(','),
   },
