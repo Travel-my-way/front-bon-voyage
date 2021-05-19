@@ -58,6 +58,9 @@ type Props = {
 const TravelMiniature = ({ travel, index, selectedTravel, handleClick }: Props): JSX.Element => {
   const styles = useStyles();
   const customClasses = selectedTravel.id === travel.id ? styles.selectedTravelMiniature : styles.travelMiniature;
+  const formattedCo2 = `${String(travel.total_gCO2 / 1000)
+    .replace('.', ',')
+    .slice(0, 4)} Kg co2e`;
 
   return (
     <Slide index={index}>
@@ -74,7 +77,7 @@ const TravelMiniature = ({ travel, index, selectedTravel, handleClick }: Props):
           </div>
           <div>
             <Typography className={styles.travelCategories}>{travel?.category?.join(' + ')}</Typography>
-            <Typography className={styles.travelCategories}>{travel?.total_gCO2} Kg co2e</Typography>
+            <Typography className={styles.travelCategories}>{formattedCo2}</Typography>
           </div>
         </CardContent>
       </Card>

@@ -67,8 +67,10 @@ const QuickTravelDetails = ({ travel }: Props): JSX.Element | null => {
     return null;
   }
 
-  const formattedCo2 = `${String(travel.total_gCO2 / 1000).replace('.', ',')} Kg co2e`;
   const duration = formatHoursAndMinutes(travel.total_duration);
+  const formattedCo2 = `${String(travel.total_gCO2 / 1000)
+    .replace('.', ',')
+    .slice(0, 4)} Kg co2e`;
 
   return (
     <div className={styles.container}>
