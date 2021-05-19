@@ -7,27 +7,33 @@ import GreenCircle from '../../Assets/Shapes/greenCircle.svg';
 
 const useStyles = makeStyles(({ palette }) => ({
   container: {
-    marginTop: 24,
     borderLeft: `dotted 2px ${palette.green}`,
     marginLeft: -1,
+    marginTop: 24,
   },
   greenDot: {
-    width: 8,
     height: 8,
     marginRight: 4,
+    width: 8,
+  },
+  travelArrival: {
+    bottom: -3,
   },
   travelContainer: {
-    position: 'relative',
+    borderLeft: `solid 2px ${palette.green}`,
     left: -2,
     paddingLeft: 8,
-    borderLeft: `solid 2px ${palette.green}`,
+    position: 'relative',
     marginBottom: 30,
   },
+  travelDeparture: {
+    top: -5,
+  },
   travelLogo: {
+    color: palette.green,
+    left: -28,
     position: 'absolute',
     top: 12,
-    left: -28,
-    color: palette.green,
   },
   travelStepDuration: {
     fontFamily: 'Libre Franklin',
@@ -41,15 +47,9 @@ const useStyles = makeStyles(({ palette }) => ({
     fontFamily: 'Libre Franklin',
     fontSize: 13,
     fontWeight: 400,
+    left: -13,
     lineHeight: '16px',
     position: 'relative',
-    left: -13,
-  },
-  travelArrival: {
-    bottom: -3,
-  },
-  travelDeparture: {
-    top: -5,
   },
 }));
 

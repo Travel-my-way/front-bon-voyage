@@ -10,9 +10,9 @@ const useStyles = makeStyles(({ palette }) => ({
   categories: {
     color: palette.blue,
     fontSize: 18,
+    fontStyle: 'normal',
     fontWeight: 400,
     lineHeight: '25px',
-    fontStyle: 'normal',
   },
   co2: {
     color: palette.blue,
@@ -22,11 +22,7 @@ const useStyles = makeStyles(({ palette }) => ({
   container: {
     display: 'flex',
     justifyContent: 'center',
-  },
-  title: {
-    marginTop: 80,
-    marginLeft: -28,
-    display: 'flex',
+    marginTop: 30,
   },
   icon: {
     color: palette.blue,
@@ -36,22 +32,27 @@ const useStyles = makeStyles(({ palette }) => ({
   iconsContainer: {
     marginRight: 8,
   },
-  travelSteps: {
-    color: palette.blue,
-    marginTop: 16,
+  map: {
+    background: 'green',
+    height: 328,
+    marginTop: 20,
+    width: 405,
+  },
+  title: {
+    display: 'flex',
+    marginLeft: -28,
+    marginTop: 80,
   },
   travelDetails: {
     width: 450,
   },
   travelDuration: {
-    fontSize: 14,
     fontFamily: 'Libre Franklin',
+    fontSize: 14,
   },
-  map: {
-    width: 405,
-    height: 328,
-    background: 'green',
-    marginTop: 20,
+  travelSteps: {
+    color: palette.blue,
+    marginTop: 16,
   },
 }));
 
