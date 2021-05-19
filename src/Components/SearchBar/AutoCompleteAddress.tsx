@@ -6,7 +6,7 @@ import config from '../../config';
 
 const useStyles = makeStyles(({ palette }) => ({
   container: {
-    display: 'relative',
+    position: 'relative',
     zIndex: 2,
     paddingLeft: 20,
   },
@@ -18,8 +18,8 @@ const useStyles = makeStyles(({ palette }) => ({
   },
   logo: {
     position: 'absolute',
-    left: 32,
-    marginTop: 12,
+    left: 0,
+    top: 12,
   },
 }));
 
@@ -49,7 +49,7 @@ type Props = {
   customClasses: string;
 };
 
-const AutoCompleteAddress = ({ handleChanges, placeholder, customClasses, logo }: Props): JSX.Element => {
+const AutoCompleteAddress = ({ customClasses, handleChanges, logo, placeholder }: Props): JSX.Element => {
   const styles = useStyles();
 
   return (
