@@ -63,7 +63,7 @@ const TravelSteps = ({ travelSteps }: Props): JSX.Element => {
     <div className={styles.container}>
       {travelSteps.map((travelStep: TravelStep) => {
         return (
-          <div className={styles.travelContainer}>
+          <div className={styles.travelContainer} key={travelStep.id}>
             <Typography className={`${styles.travelStepName} ${styles.travelDeparture}`}>
               <img src={GreenCircle} className={styles.greenDot} />
               {travelStep.departure_stop_name || 'no_departure'}

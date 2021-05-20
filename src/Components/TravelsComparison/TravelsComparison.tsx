@@ -57,6 +57,9 @@ const useStyles = makeStyles(({ palette }) => ({
     width: 32,
     height: 32,
   },
+  img: {
+    paddingBottom: 28,
+  },
 }));
 
 type Props = {
@@ -117,7 +120,7 @@ const TravelsComparison = ({ sortedTravels, selectedTravel }: Props): JSX.Elemen
 
   return (
     <div className={styles.container}>
-      <img src={sticker} />
+      <img src={sticker} className={styles.img} />
       <LinearProgress
         classes={{ bar: styles.bar }}
         className={styles.graphLine}
