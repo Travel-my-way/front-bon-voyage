@@ -54,7 +54,7 @@ type Props = {
   selectedTravel: Travel;
 };
 
-const TravelStepDetails = ({ selectedTravel }: Props) => {
+const TravelStepDetails = ({ selectedTravel }: Props): JSX.Element => {
   if (!selectedTravel) return null;
 
   const styles = useStyles();

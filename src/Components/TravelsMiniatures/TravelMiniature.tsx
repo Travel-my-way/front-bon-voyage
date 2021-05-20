@@ -52,7 +52,7 @@ type Props = {
   travel: Travel;
   index: number;
   selectedTravel: Travel;
-  handleClick: (travel: Travel, index: number) => null;
+  handleClick: (travel: Travel, index: number) => void;
 };
 
 const TravelMiniature = ({ travel, index, selectedTravel, handleClick }: Props): JSX.Element => {

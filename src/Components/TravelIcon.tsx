@@ -9,11 +9,11 @@ type Props = {
 };
 
 type LogoByCaterogy = {
-  Train: OverridableComponent<SvgIconTypeMap<{}, 'svg'>>;
-  Carpooling: OverridableComponent<SvgIconTypeMap<{}, 'svg'>>;
-  Car: OverridableComponent<SvgIconTypeMap<{}, 'svg'>>;
-  Plane: OverridableComponent<SvgIconTypeMap<{}, 'svg'>>;
-  Ferry: OverridableComponent<SvgIconTypeMap<{}, 'svg'>>;
+  Train: OverridableComponent<SvgIconTypeMap<string, 'svg'>>;
+  Carpooling: OverridableComponent<SvgIconTypeMap<string, 'svg'>>;
+  Car: OverridableComponent<SvgIconTypeMap<string, 'svg'>>;
+  Plane: OverridableComponent<SvgIconTypeMap<string, 'svg'>>;
+  Ferry: OverridableComponent<SvgIconTypeMap<string, 'svg'>>;
 };
 
 const logoByCaterogy: LogoByCaterogy = {

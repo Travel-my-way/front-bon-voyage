@@ -49,7 +49,7 @@ const RenderMarkers = ({ travel }: { travel: Travel }): JSX.Element => {
   );
 };
 
-const LeafletMap = ({ travel }: Props) => {
+const LeafletMap = ({ travel }: Props): JSX.Element => {
   if (!travel) {
     return null;
   }
