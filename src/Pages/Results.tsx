@@ -3,11 +3,11 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import {
   Footer,
+  QuickTravelDetails,
+  SearchBar,
   TravelsComparison,
   TravelsMiniatures,
   TravelStepDetails,
-  SearchBar,
-  QuickTravelDetails,
 } from '../Components';
 import Flag from '../Assets/Logos/flag_bon_voyage.svg';
 import MockedResponse from './MockedResponse.json';
