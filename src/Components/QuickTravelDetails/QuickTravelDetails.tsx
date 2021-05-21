@@ -1,10 +1,11 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 
 import { formatHoursAndMinutes } from '../../utils';
 import TravelSteps from './TravelSteps';
 import TravelIcon from '../TravelIcon';
+import TravelMap from '../TravelMap/LeafletMap';
 
 const useStyles = makeStyles(({ palette }) => ({
   categories: {
@@ -93,7 +94,7 @@ const QuickTravelDetails = ({ travel }: Props): JSX.Element | null => {
           </div>
         </div>
       </div>
-      <div className={styles.map}></div>
+      <TravelMap travel={travel} />
     </div>
   );
 };

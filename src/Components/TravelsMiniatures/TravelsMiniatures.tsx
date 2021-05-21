@@ -35,16 +35,16 @@ const useStyles = makeStyles(() => ({
 
 type Props = {
   sortedTravels: Travel[];
-  setSelectedTravel: (travel: Travel) => null;
+  selectTravel: (travel: Travel) => void;
   selectedTravel: Travel;
 };
 
-const TravelsMiniatures = ({ sortedTravels, selectedTravel, setSelectedTravel }: Props): JSX.Element => {
+const TravelsMiniatures = ({ sortedTravels, selectedTravel, selectTravel }: Props): JSX.Element => {
   const styles = useStyles();
   const [preSelectedTravelIndex, setPreSelectedTravelIndex] = useState(0);
 
   const handleCardClick = (travel: Travel, index: number) => {
-    setSelectedTravel(travel);
+    selectTravel(travel);
     setPreSelectedTravelIndex(Math.min(sortedTravels.length - 4, index));
   };
 

@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { Zoom } from '@material-ui/core';
@@ -56,6 +56,9 @@ const useStyles = makeStyles(({ palette }) => ({
     color: palette.black,
     width: 32,
     height: 32,
+  },
+  img: {
+    paddingBottom: 28,
   },
 }));
 
@@ -117,7 +120,7 @@ const TravelsComparison = ({ sortedTravels, selectedTravel }: Props): JSX.Elemen
 
   return (
     <div className={styles.container}>
-      <img src={sticker} />
+      <img src={sticker} className={styles.img} />
       <LinearProgress
         classes={{ bar: styles.bar }}
         className={styles.graphLine}

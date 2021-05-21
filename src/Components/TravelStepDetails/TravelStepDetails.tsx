@@ -54,8 +54,10 @@ type Props = {
   selectedTravel: Travel;
 };
 
-const TravelStepDetails = ({ selectedTravel }: Props) => {
-  if (!selectedTravel) return null;
+const TravelStepDetails = ({ selectedTravel }: Props): JSX.Element | null => {
+  if (!selectedTravel) {
+    return null;
+  }
 
   const styles = useStyles();
 
@@ -63,7 +65,7 @@ const TravelStepDetails = ({ selectedTravel }: Props) => {
     <div className={styles.container}>
       {selectedTravel.journey_steps.map((step: TravelStep) => {
         return (
-          <Grid container className={styles.row}>
+          <Grid container className={styles.row} key={step.id}>
             <Grid item xs={3} className={styles.textContainer}>
               <Typography className={`${styles.hour}`}>
                 {format(step.departure_date, "HH'h'mm")} - {format(step.arrival_date, "HH'h'mm")}
