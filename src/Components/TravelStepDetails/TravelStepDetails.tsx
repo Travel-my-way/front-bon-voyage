@@ -1,18 +1,16 @@
 import React from 'react';
 import { format } from 'date-fns';
-import { Grid, Button, Typography } from '@material-ui/core';
+import { Grid, Button, Typography, Link } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 import { formatHoursAndMinutes } from '../../utils';
 
 const useStyles = makeStyles((theme) => ({
   bookButton: {
-    background: `${theme.palette.blue} !important`,
     color: 'white',
     fontFamily: 'Libre Franklin',
     fontWeight: 700,
     size: 18,
-    width: 170,
   },
   container: {
     color: theme.palette.blue,
@@ -80,9 +78,11 @@ const TravelStepDetails = ({ selectedTravel }: Props): JSX.Element | null => {
               <Typography className={styles.text}>{step.price_EUR} €</Typography>
             </Grid>
             <Grid item xs={4} className={styles.textContainer}>
-              <Button color="primary" variant="contained">
-                Voir le trajet
-              </Button>
+              <Link className={styles.bookButton} href={selectedTravel.booking_link}>
+                <Button color="primary" variant="contained">
+                  Voir le trajet
+                </Button>
+              </Link>
             </Grid>
           </Grid>
         );
