@@ -48,10 +48,6 @@ const useStyles = makeStyles(({ breakpoints, palette }: Theme) => ({
     zIndex: 1,
   },
   container: {
-    [breakpoints.up('md')]: {
-      width: '110%',
-      left: '-5%',
-    },
     display: 'flex',
     position: 'relative',
   },

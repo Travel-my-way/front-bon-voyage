@@ -9,11 +9,11 @@ const useStyles = makeStyles(({ palette }) => ({
     paddingLeft: 172,
   },
   container: {
-    marginTop: -4,
-    position: 'sticky',
-    right: 0,
-    top: 0,
+    top: -4,
+    position: 'fixed',
+    width: '100vw',
     transform: 'rotate(90deg) translate(48vw, calc(-50vw + 24px))',
+    zIndex: 2,
   },
   forum: {
     backgroundColor: palette.yellow,
