@@ -8,6 +8,18 @@ import Flag from '../Assets/Logos/flag_bon_voyage.svg';
 import TravelLine from '../Assets/Logos/travel_line.svg';
 
 const useStyles = makeStyles(({ palette, breakpoints }: Theme) => ({
+  basCarboneButton: {
+    borderRadius: 0,
+    fontFamily: 'Libre Franklin',
+    marginBottom: 172,
+    marginTop: 88,
+    textTransform: 'none',
+  },
+  buttonContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    width: '100%',
+  },
   container: {
     [breakpoints.up('md')]: {
       paddingLeft: 200,
@@ -21,8 +33,8 @@ const useStyles = makeStyles(({ palette, breakpoints }: Theme) => ({
       paddingLeft: 20,
       paddingRight: 20,
     },
-    maxWidth: 1400,
     margin: '0 auto',
+    maxWidth: 1400,
   },
   flag: {
     height: 80,
@@ -56,21 +68,9 @@ const useStyles = makeStyles(({ palette, breakpoints }: Theme) => ({
   },
   travelLine: {
     backgroundImage: `url(${TravelLine})`,
+    backgroundPosition: '0px 160px',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'contain',
-    backgroundPosition: '0px 160px',
-  },
-  buttonContainer: {
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  basCarboneButton: {
-    fontFamily: 'Libre Franklin',
-    textTransform: 'none',
-    marginBottom: 172,
-    marginTop: 88,
-    borderRadius: 0,
   },
 }));
 
