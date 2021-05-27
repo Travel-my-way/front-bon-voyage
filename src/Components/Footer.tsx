@@ -34,6 +34,7 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
   container: {
     marginTop: 100,
     overflow: 'hidden',
+    width: '100vw',
   },
   content: {
     [breakpoints.up('md')]: {

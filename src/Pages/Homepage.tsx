@@ -20,10 +20,6 @@ const useStyles = makeStyles(({ palette, breakpoints }: Theme) => ({
       paddingLeft: 20,
       paddingRight: 20,
     },
-    backgroundImage: `url(${TravelLine})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'contain',
-    backgroundPosition: '0px 160px',
     maxWidth: 1400,
     margin: '0 auto',
   },
@@ -56,7 +52,12 @@ const useStyles = makeStyles(({ palette, breakpoints }: Theme) => ({
     textShadow: `-4px 0px 0px ${palette.yellow}`,
     textStroke: `1.5px ${palette.blue}`,
   },
-  test: {},
+  travelLine: {
+    backgroundImage: `url(${TravelLine})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'contain',
+    backgroundPosition: '0px 160px',
+  },
 }));
 
 function Homepage(): JSX.Element {
@@ -65,16 +66,16 @@ function Homepage(): JSX.Element {
   return (
     <ShapeBackground>
       <Fragment>
-        <div className={styles.container}>
-          <img src={Flag} className={styles.flag} />
-          <div className={styles.test}>
+        <div className={styles.travelLine}>
+          <div className={styles.container}>
+            <img src={Flag} className={styles.flag} />
             <h1 className={styles.title1}>En route pour des voyages</h1>
             <h2 className={styles.title2}>bas carbone</h2>
             <SearchBar />
+            <BlueBoxes />
+            <WhySection />
+            <Questions />
           </div>
-          <BlueBoxes />
-          <WhySection />
-          <Questions />
         </div>
         <Footer />
       </Fragment>
