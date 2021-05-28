@@ -9,10 +9,10 @@ const useStyles = makeStyles(({ palette }) => ({
     paddingLeft: 172,
   },
   container: {
-    top: -4,
     position: 'fixed',
-    width: '100vw',
+    top: -4,
     transform: 'rotate(90deg) translate(48vw, calc(-50vw + 24px))',
+    width: '100vw',
     zIndex: 2,
   },
   forum: {
@@ -27,6 +27,7 @@ const useStyles = makeStyles(({ palette }) => ({
     height: 24,
     justifyContent: 'flex-start',
     textTransform: 'uppercase',
+    width: '100vh',
   },
 }));
 
