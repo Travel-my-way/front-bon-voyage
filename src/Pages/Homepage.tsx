@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
+import { Button, Link } from '@material-ui/core';
 
-import { BlueBoxes, Footer, Questions, SearchBar, SideMenus, ShapeBackground } from '../Components';
+import { BlueBoxes, Footer, Questions, SearchBar, ShapeBackground } from '../Components';
 import WhySection from '../Components/WhySection/WhySection';
 import Flag from '../Assets/Logos/flag_bon_voyage.svg';
 import TravelLine from '../Assets/Logos/travel_line.svg';
@@ -31,6 +32,7 @@ const useStyles = makeStyles(({ palette, breakpoints }: Theme) => ({
   },
   title1: {
     color: palette.blue,
+    fontFamily: 'Monument Extended',
     fontSize: 50,
     fontStyle: 'normal',
     fontWeight: 500,
@@ -58,6 +60,18 @@ const useStyles = makeStyles(({ palette, breakpoints }: Theme) => ({
     backgroundSize: 'contain',
     backgroundPosition: '0px 160px',
   },
+  buttonContainer: {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  basCarboneButton: {
+    fontFamily: 'Libre Franklin',
+    textTransform: 'none',
+    marginBottom: 172,
+    marginTop: 88,
+    borderRadius: 0,
+  },
 }));
 
 function Homepage(): JSX.Element {
@@ -72,6 +86,13 @@ function Homepage(): JSX.Element {
             <h1 className={styles.title1}>En route pour des voyages</h1>
             <h2 className={styles.title2}>bas carbone</h2>
             <SearchBar />
+            <div className={styles.buttonContainer}>
+              <Link>
+                <Button color="primary" variant="contained" className={styles.basCarboneButton}>
+                  C’est quoi, voyager bas carbone ?
+                </Button>
+              </Link>
+            </div>
             <BlueBoxes />
             <WhySection />
             <Questions />

@@ -29,7 +29,6 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
     },
     background: palette.paper,
     border: `solid 3px ${palette.blue}`,
-    marginBottom: 232,
     marginTop: 110,
     position: 'relative',
   },
