@@ -72,6 +72,18 @@ const useStyles = makeStyles(({ palette, breakpoints }: Theme) => ({
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'contain',
   },
+  buttonContainer: {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  basCarboneButton: {
+    fontFamily: 'Libre Franklin',
+    textTransform: 'none',
+    marginBottom: 172,
+    marginTop: 88,
+    borderRadius: 0,
+  },
 }));
 
 function Homepage(): JSX.Element {
