@@ -4,11 +4,14 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import { getDepartureAndArrivalCoordinateAverage } from './utils';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(({ breakpoints }) => ({
   container: {
     height: 328,
     marginTop: 20,
-    width: 405,
+    width: '100%',
+    [breakpoints.up('md')]: {
+      width: 405,
+    },
   },
 }));
 

@@ -26,6 +26,7 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
       paddingLeft: '20px',
       paddingRight: '20px',
     },
+    margin: '0 auto',
     maxWidth: 1440,
   },
   customSearchBarWrapper: {
@@ -65,7 +66,7 @@ const Results = (): JSX.Element => {
     <Fragment>
       <div className={styles.container}>
         <img src={Flag} className={styles.flag} />
-        <SearchBar customStylesWrapper={styles.customSearchBarWrapper} withoutLogo />
+        <SearchBar inlineDisplay customStylesWrapper={styles.customSearchBarWrapper} withoutLogo />
         <TravelsMiniatures
           selectedTravel={selectedTravel}
           selectTravel={setSelectedTravel}

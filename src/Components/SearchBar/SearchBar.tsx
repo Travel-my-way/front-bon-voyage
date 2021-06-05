@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Hidden, isWidthUp, withWidth, Select, MenuItem, WithWidth } from '@material-ui/core';
+import classNames from 'classnames';
 
 import YellowFlag from '../../Assets/Icons/yellowFlag.svg';
 import GreenFlag from '../../Assets/Icons/greenFlag.svg';
@@ -27,18 +28,43 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
       marginLeft: 20,
       marginRight: 20,
     },
-    background: palette.paper,
     border: `solid 3px ${palette.blue}`,
-    marginTop: 110,
-    position: 'relative',
   },
   firstRow: {
+    backgroundSize: '100% 1px',
     height: 54,
     marginTop: 12,
-    backgroundImage: `repeating-linear-gradient(to right, ${palette.blue} 0 3px, transparent 3px 12px)`,
-    backgroundPosition: 'bottom',
+    zIndex: 3,
+  },
+  fullContainer: {
+    background: palette.paper,
+    margin: 'auto',
+    marginTop: '110px !important',
+    maxWidth: 860,
+    position: 'relative',
+  },
+  inlineBorderPosition: {
+    backgroundPosition: '0 16px',
+  },
+  inlineContainer: {
+    alignItems: 'center',
+    borderWidth: 1,
+    display: 'flex',
+    flexGrow: 2,
+    height: 64,
+    justifyContent: 'space-between',
+    margin: 'auto',
+    marginBottom: 44,
+    maxWidth: 1040,
+    paddingLeft: 20,
+  },
+  leftBorder: {
+    backgroundImage: `repeating-linear-gradient(to bottom, ${palette.blue} 0 4px, transparent 4px 12px)`,
+    backgroundPosition: '0 11px',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: '100% 1px',
+    backgroundSize: '1px 29px',
+    height: '100%',
+    paddingLeft: 16,
   },
   logo: {
     height: 160,
@@ -46,42 +72,39 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
     right: -100,
     top: -100,
     width: 160,
-    zIndex: 3,
+    zIndex: 4,
   },
   margin: {
-    marginLeft: '30px',
-    marginRight: '30px',
+    marginLeft: 30,
+    marginRight: 30,
   },
-  secondRow: {
-    height: 48,
-    marginTop: 8,
+  row: {
     backgroundImage: `repeating-linear-gradient(to right, ${palette.blue} 0 3px, transparent 3px 12px)`,
     backgroundPosition: 'bottom',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: 'calc(100% - 100px) 1px',
-    backgroundPositionX: 'left',
+  },
+  secondRow: {
     [breakpoints.down('sm')]: {
       backgroundSize: 'calc(100% - 70px) 1px',
     },
+    backgroundPositionX: 'left',
+    backgroundSize: 'calc(100% - 100px) 1px',
+    height: 48,
+    marginTop: 8,
   },
   textField: {
+    '&:before': {
+      borderBottom: 'none',
+    },
     color: palette.blue,
     fontFamily: 'Libre Franklin',
     fontWeight: 400,
     marginRight: 12,
-    '&:before': {
-      borderBottom: 'none',
-    },
+    position: 'relative',
   },
   textFieldContainer: {
     alignItems: 'center',
     display: 'flex',
-  },
-  textFieldLeftBottom: {
-    backgroundImage: `repeating-linear-gradient(to bottom, ${palette.blue} 0 3px, transparent 3px 12px)`,
-    backgroundPosition: '0 100%',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: '1px 100%',
   },
   textFieldLogo: {
     marginRight: 12,
@@ -91,7 +114,6 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
       width: 80,
     },
     height: 51,
-    paddingLeft: 16,
     width: 200,
   },
   thirdRowContainer: {
@@ -116,9 +138,10 @@ type SelectedDestination = {
 type Props = {
   customStylesWrapper?: string;
   withoutLogo?: boolean;
+  inlineDisplay?: boolean;
 } & WithWidth;
 
-const SearchBar = ({ customStylesWrapper, width, withoutLogo }: Props) => {
+const SearchBar = ({ customStylesWrapper, inlineDisplay, width, withoutLogo }: Props) => {
   const styles = useStyles();
 
   const placeholder = {
@@ -166,17 +189,49 @@ const SearchBar = ({ customStylesWrapper, width, withoutLogo }: Props) => {
     return result;
   };
 
+  if (inlineDisplay && !['xs', 'md'].includes(width)) {
+    return (
+      <div className={classNames(styles.inlineContainer, styles.container)}>
+        <AutoCompleteAddress handleChanges={setDepartureLatlng} logo={GreenFlag} placeholder={placeholder.departure} />
+        <AutoCompleteAddress
+          customClasses={classNames(styles.leftBorder, styles.inlineBorderPosition)}
+          handleChanges={setArrivalLatlng}
+          placeholder={placeholder.arrival}
+        />
+        <DateTimePicker
+          customClasses={classNames(styles.leftBorder, styles.inlineBorderPosition)}
+          handleChange={handleDateChange}
+          selectedDate={selectedDate}
+        />
+        <div className={classNames(styles.textFieldContainer, styles.leftBorder, styles.inlineBorderPosition)}>
+          <Select value={numberOfVoyagers} className={styles.textField} defaultValue={1} fullWidth>
+            {getSelectItems(config.maxTravelers)}
+          </Select>
+        </div>
+        <CallToAction isDisable={isButtonDisable} handleClick={handleSubmit} />
+      </div>
+    );
+  }
+
   return (
-    <div className={customStylesWrapper || styles.container}>
+    <div
+      className={
+        customStylesWrapper ||
+        classNames({
+          [styles.fullContainer]: true,
+          [styles.container]: true,
+        })
+      }
+    >
       <Hidden smDown>{!withoutLogo && <img src={OuiAuTrain} className={styles.logo} />}</Hidden>
       <AutoCompleteAddress
-        customClasses={`${styles.firstRow} ${styles.margin} ${styles.textField}`}
+        customClasses={classNames(styles.firstRow, styles.margin, styles.textField, styles.row)}
         handleChanges={setDepartureLatlng}
         logo={YellowFlag}
         placeholder={placeholder.departure}
       />
       <AutoCompleteAddress
-        customClasses={`${styles.secondRow} ${styles.margin} ${styles.textField}`}
+        customClasses={classNames(styles.secondRow, styles.margin, styles.textField, styles.row)}
         handleChanges={setArrivalLatlng}
         logo={GreenFlag}
         placeholder={placeholder.arrival}
@@ -184,7 +239,7 @@ const SearchBar = ({ customStylesWrapper, width, withoutLogo }: Props) => {
       <div className={styles.thirdRowContainer}>
         <DateTimePicker handleChange={handleDateChange} logo={RedWatch} selectedDate={selectedDate} />
         <div className={styles.travellerCTAContainer}>
-          <div className={`${styles.textFieldContainer} ${styles.textFieldLeftBottom} ${styles.thirdRow}`}>
+          <div className={classNames(styles.textFieldContainer, styles.leftBorder, styles.thirdRow)}>
             <img className={styles.textFieldLogo} src={MSN} />
             <Select value={numberOfVoyagers} className={styles.textField} defaultValue={1} fullWidth>
               {getSelectItems(config.maxTravelers)}

@@ -24,13 +24,13 @@ const useStyles = makeStyles(({ breakpoints, palette }: Theme) => ({
     position: 'relative',
   },
   boxBackground1: {
-    left: '40px',
-    width: '55%',
+    left: 40,
+    width: 'calc(55% + 40px)',
   },
   boxBackground2: {
     marginTop: 165,
-    right: '40px',
-    width: '45%',
+    right: 40,
+    width: 'calc(45% + 40px)',
   },
   boxContent: {
     backgroundColor: palette.paper,
@@ -49,12 +49,13 @@ const useStyles = makeStyles(({ breakpoints, palette }: Theme) => ({
   },
   container: {
     display: 'flex',
+    justifyContent: 'center',
     position: 'relative',
   },
   keepCoolSticker: {
     display: 'flex',
     justifyContent: 'center',
-    marginTop: '77px',
+    marginTop: 77,
   },
   noPlaneSticker: {
     [breakpoints.down('md')]: {
@@ -71,18 +72,26 @@ const useStyles = makeStyles(({ breakpoints, palette }: Theme) => ({
       width: 145,
     },
   },
+  SMContainer: {
+    border: `solid 8px ${palette.blue}`,
+  },
+  SMstickers: {
+    left: 'calc(50% - 132.5px)',
+    position: 'absolute',
+    top: -62.5,
+  },
   subtitle: {
     [breakpoints.down('md')]: {
-      textAlign: 'center',
       '&::after': {
         borderBottom: `solid 4px ${palette.yellow}`,
         content: "''",
-        width: '25px',
         display: 'block',
+        margin: 'auto',
         marginBottom: '30px !important',
         marginTop: '20px !important',
-        margin: 'auto',
+        width: 25,
       },
+      textAlign: 'center',
     },
     color: palette.black,
     fontFamily: 'Monument Extended',
@@ -95,17 +104,9 @@ const useStyles = makeStyles(({ breakpoints, palette }: Theme) => ({
   subtitleDash: {
     backgroundColor: palette.yellow,
     display: 'inline-block',
-    height: '4px',
-    marginRight: '15px',
-    width: '25px',
-  },
-  SMContainer: {
-    border: `solid 8px ${palette.blue}`,
-  },
-  SMstickers: {
-    left: 'calc(50% - 132.5px)',
-    position: 'absolute',
-    top: -62.5,
+    height: 4,
+    marginRight: 15,
+    width: 25,
   },
   text: {
     [breakpoints.down('md')]: {
@@ -120,13 +121,13 @@ const useStyles = makeStyles(({ breakpoints, palette }: Theme) => ({
   title: {
     [breakpoints.between('lg', 'xl')]: {
       '&::after': {
-        width: '50px',
+        width: 50,
       },
     },
     [breakpoints.down('md')]: {
       '&::after': {
         margin: 'auto',
-        width: '75px',
+        width: 75,
       },
       textAlign: 'center',
     },
@@ -142,8 +143,8 @@ const useStyles = makeStyles(({ breakpoints, palette }: Theme) => ({
     fontStyle: 'normal',
     fontWeight: 900,
     lineHeight: '100%',
-    marginBottom: '5px',
-    marginTop: '5px',
+    marginBottom: 5,
+    marginTop: 5,
     textAlign: 'left',
   },
 }));

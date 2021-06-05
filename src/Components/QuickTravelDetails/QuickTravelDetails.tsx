@@ -7,23 +7,31 @@ import TravelSteps from './TravelSteps';
 import TravelIcon from '../TravelIcon';
 import TravelMap from '../TravelMap/LeafletMap';
 
-const useStyles = makeStyles(({ palette }) => ({
+const useStyles = makeStyles(({ palette, breakpoints }) => ({
   categories: {
-    color: palette.blue,
     fontSize: 18,
     fontStyle: 'normal',
     fontWeight: 400,
     lineHeight: '25px',
   },
   co2: {
-    color: palette.blue,
     fontWeight: 900,
     size: 24,
   },
   container: {
+    [breakpoints.up('md')]: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+    },
+    alignItems: 'center',
+    color: palette.blue,
     display: 'flex',
+    flexDirection: 'column-reverse',
     justifyContent: 'center',
     marginTop: 30,
+    margin: 'auto',
+    width: '100%',
+    maxWidth: 810,
   },
   icon: {
     color: palette.blue,
@@ -33,19 +41,10 @@ const useStyles = makeStyles(({ palette }) => ({
   iconsContainer: {
     marginRight: 8,
   },
-  map: {
-    background: 'green',
-    height: 328,
-    marginTop: 20,
-    width: 405,
-  },
   title: {
     display: 'flex',
     marginLeft: -28,
     marginTop: 80,
-  },
-  travelDetails: {
-    width: 450,
   },
   travelDuration: {
     fontFamily: 'Libre Franklin',
@@ -68,6 +67,7 @@ const QuickTravelDetails = ({ travel }: Props): JSX.Element | null => {
     return null;
   }
 
+  const formattedTravelCategories = travel.category.join(' + ');
   const duration = formatHoursAndMinutes(travel.total_duration);
   const formattedCo2 = `${String(travel.total_gCO2 / 1000)
     .replace('.', ',')
@@ -75,7 +75,7 @@ const QuickTravelDetails = ({ travel }: Props): JSX.Element | null => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.travelDetails}>
+      <div>
         <div className={styles.title}>
           <div className={styles.iconsContainer}>
             {travel.category.map((category: TravelCategory) => {
@@ -83,7 +83,7 @@ const QuickTravelDetails = ({ travel }: Props): JSX.Element | null => {
             })}
           </div>
           <div>
-            <Typography className={styles.categories}>{travel.category.join(' + ').toUpperCase()}</Typography>
+            <Typography className={styles.categories}>{formattedTravelCategories.toUpperCase()}</Typography>
             <Typography className={styles.co2}>{formattedCo2}</Typography>
           </div>
         </div>
