@@ -58,6 +58,9 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
     maxWidth: 1040,
     paddingLeft: 20,
   },
+  inlineleftBorder: {
+    backgroundPosition: '0 16px !important',
+  },
   leftBorder: {
     backgroundImage: `repeating-linear-gradient(to bottom, ${palette.blue} 0 4px, transparent 4px 12px)`,
     backgroundPosition: '0 11px',
@@ -156,7 +159,8 @@ const SearchBar = ({ customStylesWrapper, inlineDisplay, width, withoutLogo }: P
   const [departureLatlng, setDepartureLatlng] = useState<SelectedDestination | undefined>();
   const [selectedDate, handleDateChange] = useState<Date | null>(new Date());
 
-  const isButtonDisable = [numberOfVoyagers, arrivalLatlng, departureLatlng, selectedDate?.valueOf()].some(Boolean);
+  const isButtonDisable = ![numberOfVoyagers, arrivalLatlng, departureLatlng, selectedDate?.valueOf()].filter(Boolean)
+    .length;
 
   const handleSubmit = () => {
     console.log({
@@ -194,16 +198,23 @@ const SearchBar = ({ customStylesWrapper, inlineDisplay, width, withoutLogo }: P
       <div className={classNames(styles.inlineContainer, styles.container)}>
         <AutoCompleteAddress handleChanges={setDepartureLatlng} logo={GreenFlag} placeholder={placeholder.departure} />
         <AutoCompleteAddress
-          customClasses={classNames(styles.leftBorder, styles.inlineBorderPosition)}
+          customClasses={classNames(styles.leftBorder, styles.inlineleftBorder, styles.inlineBorderPosition)}
           handleChanges={setArrivalLatlng}
           placeholder={placeholder.arrival}
         />
         <DateTimePicker
-          customClasses={classNames(styles.leftBorder, styles.inlineBorderPosition)}
+          customClasses={classNames(styles.leftBorder, styles.inlineleftBorder, styles.inlineBorderPosition)}
           handleChange={handleDateChange}
           selectedDate={selectedDate}
         />
-        <div className={classNames(styles.textFieldContainer, styles.leftBorder, styles.inlineBorderPosition)}>
+        <div
+          className={classNames(
+            styles.inlineBorderPosition,
+            styles.leftBorder,
+            styles.inlineleftBorder,
+            styles.textFieldContainer
+          )}
+        >
           <Select value={numberOfVoyagers} className={styles.textField} defaultValue={1} fullWidth>
             {getSelectItems(config.maxTravelers)}
           </Select>
