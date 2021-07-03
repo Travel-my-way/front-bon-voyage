@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet';
 import { makeStyles } from '@material-ui/core/styles';
 import GreenFlag from '../../Assets/Icons/greenFlag.svg';
@@ -37,6 +37,7 @@ const redMarkerIcon = L.icon({
   iconSize: [32, 32],
   iconAnchor: [6, 32],
 });
+let lines = [];
 
 const RenderMarkers = ({ travel }: { travel: Travel }): JSX.Element => {
   const map = useMap();
@@ -45,20 +46,31 @@ const RenderMarkers = ({ travel }: { travel: Travel }): JSX.Element => {
 
   map.setView(mapCenterCoordinates, mapZoom);
 
+  useEffect(() => {
+    travel.journey_steps.forEach((step: TravelStep) => {
+      const pointA = new L.LatLng(step.departure_point[0], step.departure_point[1]);
+      const pointB = new L.LatLng(step.arrival_point[0], step.arrival_point[1]);
+      const line = new L.Polyline([pointA, pointB], {
+        color: 'black',
+        dashArray: '4, 12',
+        opacity: 0.5,
+        smoothFactor: 1,
+        weight: 3,
+      });
+
+      line.addTo(map);
+      lines.push(line);
+    });
+
+    return () => {
+      lines.forEach((elem) => elem.remove(map));
+      lines = [];
+    };
+  });
+
   return (
     <Fragment>
       {travel.journey_steps.map((step: TravelStep, index: number) => {
-        const pointA = new L.LatLng(step.departure_point[0], step.departure_point[1]);
-        const pointB = new L.LatLng(step.arrival_point[0], step.arrival_point[1]);
-        const firstpolyline = new L.Polyline([pointA, pointB], {
-          color: 'black',
-          weight: 3,
-          opacity: 0.5,
-          smoothFactor: 1,
-          dashArray: '4, 12',
-        });
-        firstpolyline.addTo(map);
-
         const isLastElem = index === travel.journey_steps.length - 1;
 
         if (index === 0) {
