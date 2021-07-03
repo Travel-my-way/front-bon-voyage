@@ -1,6 +1,9 @@
 import React, { Fragment } from 'react';
 import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet';
 import { makeStyles } from '@material-ui/core/styles';
+import GreenFlag from '../../Assets/Icons/greenFlag.svg';
+import YellowFlag from '../../Assets/Icons/yellowFlag.svg';
+import RedFlag from '../../Assets/Icons/redFlag.svg';
 
 import { getDepartureAndArrivalCoordinateAverage } from './utils';
 
@@ -19,6 +22,22 @@ interface Props {
   travel: Travel;
 }
 
+const greenMarkerIcon = L.icon({
+  iconUrl: GreenFlag,
+  iconSize: [32, 32],
+  iconAnchor: [6, 32],
+});
+const yellowMarkerIcon = L.icon({
+  iconUrl: YellowFlag,
+  iconSize: [32, 32],
+  iconAnchor: [6, 32],
+});
+const redMarkerIcon = L.icon({
+  iconUrl: RedFlag,
+  iconSize: [32, 32],
+  iconAnchor: [6, 32],
+});
+
 const RenderMarkers = ({ travel }: { travel: Travel }): JSX.Element => {
   const map = useMap();
   const mapCenterCoordinates = getDepartureAndArrivalCoordinateAverage(travel.departure_point, travel.arrival_point);
@@ -28,23 +47,44 @@ const RenderMarkers = ({ travel }: { travel: Travel }): JSX.Element => {
 
   return (
     <Fragment>
-      {travel.journey_steps.map((travelStep: TravelStep, index: number) => {
+      {travel.journey_steps.map((step: TravelStep, index: number) => {
+        const pointA = new L.LatLng(step.departure_point[0], step.departure_point[1]);
+        const pointB = new L.LatLng(step.arrival_point[0], step.arrival_point[1]);
+        const firstpolyline = new L.Polyline([pointA, pointB], {
+          color: 'black',
+          weight: 3,
+          opacity: 0.5,
+          smoothFactor: 1,
+          dashArray: '4, 12',
+        });
+        firstpolyline.addTo(map);
+
+        const isLastElem = index === travel.journey_steps.length - 1;
+
         if (index === 0) {
           return (
             <Fragment>
-              <Marker key={travelStep.departure_date} position={travelStep.departure_point}>
-                <Popup>{travelStep.departure_stop_name || 'unknown'}</Popup>
+              <Marker icon={greenMarkerIcon} key={step.departure_date} position={step.departure_point}>
+                <Popup>{step.departure_stop_name || 'unknown'}</Popup>
               </Marker>
-              <Marker key={travelStep.arrival_date} position={travelStep.arrival_point}>
-                <Popup>{travelStep.arrival_stop_name || 'unknown'}</Popup>
+              <Marker
+                icon={isLastElem ? redMarkerIcon : yellowMarkerIcon}
+                key={step.arrival_date}
+                position={step.arrival_point}
+              >
+                <Popup>{step.arrival_stop_name || 'unknown'}</Popup>
               </Marker>
             </Fragment>
           );
         }
 
         return (
-          <Marker key={travelStep.arrival_date} position={travelStep.arrival_point}>
-            <Popup>{travelStep.arrival_stop_name || 'unknown'}</Popup>
+          <Marker
+            icon={isLastElem ? redMarkerIcon : yellowMarkerIcon}
+            key={step.arrival_date}
+            position={step.arrival_point}
+          >
+            <Popup>{step.arrival_stop_name || 'unknown'}</Popup>
           </Marker>
         );
       })}
