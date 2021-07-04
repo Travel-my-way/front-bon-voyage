@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Button, Link } from '@material-ui/core';
 
-import { BlueBoxes, Footer, Questions, SearchBar, ShapeBackground } from '../Components';
+import { BlueBoxes, Co2Comparison, Footer, Questions, SearchBar, ShapeBackground } from '../Components';
 import WhySection from '../Components/WhySection/WhySection';
 import Flag from '../Assets/Logos/flag_bon_voyage.svg';
 import TravelLine from '../Assets/Logos/travel_line.svg';
@@ -14,6 +14,18 @@ const useStyles = makeStyles(({ palette, breakpoints }: Theme) => ({
     marginBottom: 172,
     marginTop: 88,
     textTransform: 'none',
+  },
+  basCarboneButton: {
+    borderRadius: 0,
+    fontFamily: 'Libre Franklin',
+    marginBottom: 172,
+    marginTop: 88,
+    textTransform: 'none',
+  },
+  buttonContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    width: '100%',
   },
   buttonContainer: {
     display: 'flex',
@@ -72,18 +84,6 @@ const useStyles = makeStyles(({ palette, breakpoints }: Theme) => ({
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'contain',
   },
-  buttonContainer: {
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  basCarboneButton: {
-    fontFamily: 'Libre Franklin',
-    textTransform: 'none',
-    marginBottom: 172,
-    marginTop: 88,
-    borderRadius: 0,
-  },
 }));
 
 function Homepage(): JSX.Element {
@@ -106,6 +106,7 @@ function Homepage(): JSX.Element {
               </Link>
             </div>
             <BlueBoxes />
+            <Co2Comparison />
             <WhySection />
             <Questions />
           </div>

@@ -13,3 +13,7 @@ export const formatHoursAndMinutes = (duration: number, options: Record<string, 
     .replace('minute', 'min')
     .replaceAll(' ', '');
 };
+
+export const convertToPercent = (numerator: number, denominateur: number) => {
+  return Math.round((numerator * 100) / denominateur);
+};

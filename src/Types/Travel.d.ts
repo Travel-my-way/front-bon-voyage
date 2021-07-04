@@ -1,4 +1,4 @@
-type TravelCategory = 'Carpooling' | 'Car' | 'Train';
+type TravelCategory = 'Carpooling' | 'Car' | 'Train' | 'Plane' | 'Bus';
 
 interface TravelStep {
   arrival_date: number;
