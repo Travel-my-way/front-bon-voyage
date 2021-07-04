@@ -7,12 +7,13 @@ import { SideMenus } from './Components';
 function App(): JSX.Element {
   return (
     <Router>
-      <SideMenus />
       <Switch>
         <Route path="/results">
+          <SideMenus />
           <Results />
         </Route>
         <Route path="/">
+          <SideMenus />
           <Homepage />
         </Route>
       </Switch>

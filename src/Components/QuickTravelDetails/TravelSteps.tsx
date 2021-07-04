@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles, Typography } from '@material-ui/core';
+import classnames from 'classnames';
 
 import { formatHoursAndMinutes } from '../../utils';
 import TravelIcon from '../TravelIcon';
@@ -15,6 +16,9 @@ const useStyles = makeStyles(({ palette }) => ({
     height: 8,
     marginRight: 4,
     width: 8,
+  },
+  title: {
+    color: palette.blue,
   },
   travelArrival: {
     bottom: -3,
@@ -59,12 +63,13 @@ type Props = {
 
 const TravelSteps = ({ travelSteps }: Props): JSX.Element => {
   const styles = useStyles();
+
   return (
     <div className={styles.container}>
       {travelSteps.map((travelStep: TravelStep) => {
         return (
           <div className={styles.travelContainer} key={travelStep.id}>
-            <Typography className={`${styles.travelStepName} ${styles.travelDeparture}`}>
+            <Typography className={classnames(styles.travelStepName, styles.travelDeparture)}>
               <img src={GreenCircle} className={styles.greenDot} />
               {travelStep.departure_stop_name || 'no_departure'}
             </Typography>
@@ -73,7 +78,7 @@ const TravelSteps = ({ travelSteps }: Props): JSX.Element => {
               {formatHoursAndMinutes(travelStep.duration_s)}
             </Typography>
 
-            <Typography className={`${styles.travelStepName} ${styles.travelArrival}`}>
+            <Typography className={classnames(styles.travelStepName, styles.travelArrival)}>
               <img src={GreenCircle} className={styles.greenDot} />
               {travelStep.arrival_stop_name || 'no_arrival'}
             </Typography>
