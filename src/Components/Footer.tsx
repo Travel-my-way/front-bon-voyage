@@ -60,10 +60,10 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
   },
   flexbox: {
     [breakpoints.up('sm')]: {
-      flexDirection: 'row',
-      display: 'flex',
-      justifyContent: 'space-between',
       alignItems: 'flex-start',
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
     },
     borderBottom: `1px dashed ${palette.paper}`,
     flexDirection: 'column',

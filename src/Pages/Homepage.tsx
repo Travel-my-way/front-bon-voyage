@@ -1,9 +1,11 @@
 import React, { Fragment } from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
+import { Button, Link } from '@material-ui/core';
 
-import { BlueBoxes, Footer, Questions, SearchBar, SideMenus, ShapeBackground } from '../Components';
+import { BlueBoxes, Footer, Questions, SearchBar, ShapeBackground } from '../Components';
 import WhySection from '../Components/WhySection/WhySection';
 import Flag from '../Assets/Logos/flag_bon_voyage.svg';
+import TravelLine from '../Assets/Logos/travel_line.svg';
 
 const useStyles = makeStyles(({ palette, breakpoints }: Theme) => ({
   container: {
@@ -19,15 +21,18 @@ const useStyles = makeStyles(({ palette, breakpoints }: Theme) => ({
       paddingLeft: 20,
       paddingRight: 20,
     },
+    maxWidth: 1400,
+    margin: '0 auto',
   },
   flag: {
-    height: 100,
-    marginBottom: 115,
-    marginTop: 55,
-    width: 315,
+    height: 80,
+    marginBottom: 120,
+    marginTop: 40,
+    width: 240,
   },
   title1: {
     color: palette.blue,
+    fontFamily: 'Monument Extended',
     fontSize: 50,
     fontStyle: 'normal',
     fontWeight: 500,
@@ -43,10 +48,29 @@ const useStyles = makeStyles(({ palette, breakpoints }: Theme) => ({
     fontStyle: 'normal',
     fontWeight: 500,
     lineHeight: '150%',
-    marginTop: '0',
+    marginBottom: 0,
+    marginTop: 0,
     textAlign: 'center',
     textShadow: `-4px 0px 0px ${palette.yellow}`,
     textStroke: `1.5px ${palette.blue}`,
+  },
+  travelLine: {
+    backgroundImage: `url(${TravelLine})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'contain',
+    backgroundPosition: '0px 160px',
+  },
+  buttonContainer: {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  basCarboneButton: {
+    fontFamily: 'Libre Franklin',
+    textTransform: 'none',
+    marginBottom: 172,
+    marginTop: 88,
+    borderRadius: 0,
   },
 }));
 
@@ -56,15 +80,23 @@ function Homepage(): JSX.Element {
   return (
     <ShapeBackground>
       <Fragment>
-        <SideMenus />
-        <div className={styles.container}>
-          <img src={Flag} className={styles.flag} />
-          <h1 className={styles.title1}>En route pour des voyages</h1>
-          <h2 className={styles.title2}>bas carbone</h2>
-          <SearchBar />
-          <BlueBoxes />
-          <WhySection />
-          <Questions />
+        <div className={styles.travelLine}>
+          <div className={styles.container}>
+            <img src={Flag} className={styles.flag} />
+            <h1 className={styles.title1}>En route pour des voyages</h1>
+            <h2 className={styles.title2}>bas carbone</h2>
+            <SearchBar />
+            <div className={styles.buttonContainer}>
+              <Link>
+                <Button color="primary" variant="contained" className={styles.basCarboneButton}>
+                  C’est quoi, voyager bas carbone ?
+                </Button>
+              </Link>
+            </div>
+            <BlueBoxes />
+            <WhySection />
+            <Questions />
+          </div>
         </div>
         <Footer />
       </Fragment>

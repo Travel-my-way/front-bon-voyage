@@ -14,16 +14,15 @@ const useStyles = makeStyles(({ palette }) => ({
   },
   commonTravelMiniature: {
     borderRadius: 0,
+    boxShadow: 'none',
     margin: 4,
     marginbottom: 18,
-    maxHeight: 115,
-    maxWidth: 200,
   },
   logo: {
+    height: 32,
     marginLeft: 4,
     marginRight: 4,
     width: 32,
-    height: 32,
   },
   selectedTravelMiniature: {
     backgroundColor: palette.green,

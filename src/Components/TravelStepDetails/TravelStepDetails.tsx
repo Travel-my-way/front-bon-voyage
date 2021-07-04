@@ -52,6 +52,16 @@ type Props = {
   selectedTravel: Travel;
 };
 
+const formatTitle = (steps: Array<TravelStep>) => {
+  if (steps.length === 1) {
+    return `1 etape ${steps[0].type}`;
+  }
+
+  const allStepType = Array.from(new Set(steps.map(({ type }: TravelStep) => type))).join(' + ');
+
+  return `${steps.length} étapes ${allStepType}`;
+};
+
 const TravelStepDetails = ({ selectedTravel }: Props): JSX.Element | null => {
   if (!selectedTravel) {
     return null;
@@ -61,6 +71,7 @@ const TravelStepDetails = ({ selectedTravel }: Props): JSX.Element | null => {
 
   return (
     <div className={styles.container}>
+      <h3>{formatTitle(selectedTravel.journey_steps)}</h3>
       {selectedTravel.journey_steps.map((step: TravelStep) => {
         return (
           <Grid container className={styles.row} key={step.id}>

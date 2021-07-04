@@ -34,13 +34,14 @@ const NumberOfShapes = 18;
 const intervalY = 400;
 
 const useStyles = makeStyles(() => ({
+  component: {
+    minWidth: '100vw',
+    position: 'absolute',
+    zIndex: 1,
+  },
   shape: {
     position: 'absolute',
     zIndex: 0,
-  },
-  component: {
-    position: 'absolute',
-    zIndex: 1,
   },
 }));
 

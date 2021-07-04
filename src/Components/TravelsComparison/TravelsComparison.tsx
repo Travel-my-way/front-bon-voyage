@@ -13,10 +13,11 @@ const useStyles = makeStyles(({ palette }) => ({
     backgroundColor: palette.green,
   },
   container: {
-    border: ` 1px solid ${palette.green}`,
+    border: `1px solid ${palette.green}`,
+    height: 120,
     margin: 'auto',
     maxWidth: 920,
-    padding: 30,
+    padding: '30px 50px',
   },
   graphContainer: {
     marginTop: 32,
@@ -34,28 +35,28 @@ const useStyles = makeStyles(({ palette }) => ({
     width: '100%',
     zIndex: 2,
   },
-  graphOverlay: {
-    display: 'flex',
-    position: 'relative',
-    zIndex: 3,
-    height: HEIGHT_BAR,
-    width: '100%',
-  },
   graphOccurence: {
     backgroundColor: 'white',
+    height: HEIGHT_BAR,
     position: 'absolute',
     width: 2,
-    height: HEIGHT_BAR,
   },
-  icons: {
-    position: 'relative',
+  graphOverlay: {
     display: 'flex',
-    top: -40,
+    height: HEIGHT_BAR,
+    position: 'relative',
+    width: '100%',
+    zIndex: 3,
   },
   icon: {
     color: palette.black,
-    width: 32,
     height: 32,
+    width: 32,
+  },
+  icons: {
+    display: 'flex',
+    position: 'relative',
+    top: -40,
   },
   img: {
     paddingBottom: 28,
