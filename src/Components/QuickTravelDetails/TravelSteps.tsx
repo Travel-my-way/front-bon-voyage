@@ -4,7 +4,7 @@ import classnames from 'classnames';
 
 import { formatHoursAndMinutes } from '../../utils';
 import TravelIcon from '../TravelIcon';
-import GreenCircle from '../../Assets/Shapes/greenCircle.svg';
+import GreenCircle from '../../Assets/Shapes/GreenCircle.svg';
 
 const useStyles = makeStyles(({ palette }) => ({
   container: {
