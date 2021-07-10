@@ -11,6 +11,7 @@ const logoByCaterogy: Record<any, any> = {
   Bus: DirectionsBus,
   Car: DirectionsCar,
   Carpooling: DirectionsCar,
+  Coach: DirectionsBus,
   Ferry: DirectionsBoat,
   Plane: Flight,
   Train: DirectionsSubway,
