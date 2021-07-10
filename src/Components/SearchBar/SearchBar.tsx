@@ -144,7 +144,7 @@ type Props = {
   inlineDisplay?: boolean;
 } & WithWidth;
 
-const SearchBar = ({ customStylesWrapper, inlineDisplay, width, withoutLogo }: Props) => {
+const SearchBar = ({ handleSearchBarValidation, customStylesWrapper, inlineDisplay, width, withoutLogo }: Props) => {
   const styles = useStyles();
 
   const placeholder = {
@@ -159,15 +159,15 @@ const SearchBar = ({ customStylesWrapper, inlineDisplay, width, withoutLogo }: P
   const [departureLatlng, setDepartureLatlng] = useState<SelectedDestination | undefined>();
   const [selectedDate, handleDateChange] = useState<Date | null>(new Date());
 
-  const isButtonDisable = ![numberOfVoyagers, arrivalLatlng, departureLatlng, selectedDate?.valueOf()].filter(Boolean)
-    .length;
+  const isButtonDisable = [numberOfVoyagers, arrivalLatlng, departureLatlng, selectedDate?.valueOf()].some(
+    (value) => !value
+  );
 
   const handleSubmit = () => {
-    console.log({
-      numberOfVoyagers,
-      arrivalLatlng,
-      departureLatlng,
-      selectedDate: selectedDate?.valueOf(),
+    handleSearchBarValidation({
+      from: departureLatlng,
+      to: arrivalLatlng,
+      selectedDate: selectedDate,
     });
   };
 
