@@ -14,6 +14,6 @@ export const formatHoursAndMinutes = (duration: number, options: Record<string, 
     .replaceAll(' ', '');
 };
 
-export const convertToPercent = (numerator: number, denominateur: number) => {
+export const convertToPercent = (numerator: number, denominateur: number): number => {
   return Math.round((numerator * 100) / denominateur);
 };

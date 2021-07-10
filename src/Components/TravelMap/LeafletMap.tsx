@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet';
 import { makeStyles } from '@material-ui/core/styles';
 import GreenFlag from '../../Assets/Icons/greenFlag.svg';
@@ -22,23 +22,30 @@ interface Props {
   travel: Travel;
 }
 
+//@ts-ignore
 const greenMarkerIcon = L.icon({
   iconUrl: GreenFlag,
   iconSize: [32, 32],
   iconAnchor: [6, 32],
 });
+
+//@ts-ignore
 const yellowMarkerIcon = L.icon({
   iconUrl: YellowFlag,
   iconSize: [32, 32],
   iconAnchor: [6, 32],
 });
+
+//@ts-ignore
 const redMarkerIcon = L.icon({
   iconUrl: RedFlag,
   iconSize: [32, 32],
   iconAnchor: [6, 32],
 });
-let lines = [];
 
+type Line = Record<string, any>;
+
+let lines: Line[] = [];
 const RenderMarkers = ({ travel }: { travel: Travel }): JSX.Element => {
   const map = useMap();
   const mapCenterCoordinates = getDepartureAndArrivalCoordinateAverage(travel.departure_point, travel.arrival_point);
@@ -48,8 +55,11 @@ const RenderMarkers = ({ travel }: { travel: Travel }): JSX.Element => {
 
   useEffect(() => {
     travel.journey_steps.forEach((step: TravelStep) => {
+      //@ts-ignore
       const pointA = new L.LatLng(step.departure_point[0], step.departure_point[1]);
+      //@ts-ignore
       const pointB = new L.LatLng(step.arrival_point[0], step.arrival_point[1]);
+      //@ts-ignore
       const line = new L.Polyline([pointA, pointB], {
         color: 'black',
         dashArray: '4, 12',
@@ -63,7 +73,7 @@ const RenderMarkers = ({ travel }: { travel: Travel }): JSX.Element => {
     });
 
     return () => {
-      lines.forEach((elem) => elem.remove(map));
+      lines.forEach((line: Line) => line.remove(map));
       lines = [];
     };
   });

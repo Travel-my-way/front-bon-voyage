@@ -89,7 +89,7 @@ const modeOfTransportations = [
 
 const MAX_VALUE = Math.max(...modeOfTransportations.map(({ value }) => value));
 
-const Co2Comparison = () => {
+const Co2Comparison = (): JSX.Element => {
   const styles = useStyles();
 
   return (
@@ -106,7 +106,7 @@ const Co2Comparison = () => {
         const width = convertToPercent(mode.value, MAX_VALUE);
 
         return (
-          <div className={styles.comparisonContainer} style={{ width: `${width}%` }}>
+          <div key={mode.type} className={styles.comparisonContainer} style={{ width: `${width}%` }}>
             <div className={styles.modeComparisonExplanation}>
               <div className={styles.inline}>
                 <TravelIcon category={mode.type as TravelCategory} colorIcon={mode.color} />

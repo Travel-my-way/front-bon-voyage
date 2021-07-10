@@ -143,7 +143,7 @@ type Props = {
   customStylesWrapper?: string;
   withoutLogo?: boolean;
   inlineDisplay?: boolean;
-  handleSearchBarValidation: Function;
+  handleSearchBarValidation: any;
 } & WithWidth;
 
 const SearchBar = ({ handleSearchBarValidation, customStylesWrapper, inlineDisplay, width, withoutLogo }: Props) => {
