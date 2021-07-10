@@ -126,6 +126,7 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
     marginLeft: 30,
   },
   travellerCTAContainer: {
+    height: 51,
     display: 'flex',
   },
 }));
@@ -142,6 +143,7 @@ type Props = {
   customStylesWrapper?: string;
   withoutLogo?: boolean;
   inlineDisplay?: boolean;
+  handleSearchBarValidation: Function;
 } & WithWidth;
 
 const SearchBar = ({ handleSearchBarValidation, customStylesWrapper, inlineDisplay, width, withoutLogo }: Props) => {
@@ -207,18 +209,20 @@ const SearchBar = ({ handleSearchBarValidation, customStylesWrapper, inlineDispl
           handleChange={handleDateChange}
           selectedDate={selectedDate}
         />
-        <div
-          className={classNames(
-            styles.inlineBorderPosition,
-            styles.leftBorder,
-            styles.inlineleftBorder,
-            styles.textFieldContainer
-          )}
-        >
-          <Select value={numberOfVoyagers} className={styles.textField} defaultValue={1} fullWidth>
-            {getSelectItems(config.maxTravelers)}
-          </Select>
-        </div>
+        {config.isFeatureTravelersActivated && (
+          <div
+            className={classNames(
+              styles.inlineBorderPosition,
+              styles.leftBorder,
+              styles.inlineleftBorder,
+              styles.textFieldContainer
+            )}
+          >
+            <Select value={numberOfVoyagers} className={styles.textField} defaultValue={1} fullWidth>
+              {getSelectItems(config.maxTravelers)}
+            </Select>
+          </div>
+        )}
         <CallToAction isDisable={isButtonDisable} handleClick={handleSubmit} />
       </div>
     );
@@ -250,12 +254,14 @@ const SearchBar = ({ handleSearchBarValidation, customStylesWrapper, inlineDispl
       <div className={styles.thirdRowContainer}>
         <DateTimePicker handleChange={handleDateChange} logo={RedWatch} selectedDate={selectedDate} />
         <div className={styles.travellerCTAContainer}>
-          <div className={classNames(styles.textFieldContainer, styles.leftBorder, styles.thirdRow)}>
-            <img className={styles.textFieldLogo} src={MSN} />
-            <Select value={numberOfVoyagers} className={styles.textField} defaultValue={1} fullWidth>
-              {getSelectItems(config.maxTravelers)}
-            </Select>
-          </div>
+          {config.isFeatureTravelersActivated && (
+            <div className={classNames(styles.textFieldContainer, styles.leftBorder, styles.thirdRow)}>
+              <img className={styles.textFieldLogo} src={MSN} />
+              <Select value={numberOfVoyagers} className={styles.textField} defaultValue={1} fullWidth>
+                {getSelectItems(config.maxTravelers)}
+              </Select>
+            </div>
+          )}
           <CallToAction isDisable={isButtonDisable} handleClick={handleSubmit} />
         </div>
       </div>
