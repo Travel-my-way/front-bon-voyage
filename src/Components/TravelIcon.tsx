@@ -15,6 +15,7 @@ const logoByCaterogy: Record<any, any> = {
   Ferry: DirectionsBoat,
   Plane: Flight,
   Train: DirectionsSubway,
+  Metro: DirectionsSubway,
 };
 
 const TravelIcon = ({ category, classes, colorIcon }: Props): JSX.Element | null => {
