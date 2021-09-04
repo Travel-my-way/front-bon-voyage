@@ -2,12 +2,25 @@ import React, { Fragment } from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Button, Link } from '@material-ui/core';
 
-import { BlueBoxes, Footer, Questions, SearchBar, ShapeBackground } from '../Components';
+import { BlueBoxes, Co2Comparison, Footer, Questions, SearchBar, ShapeBackground } from '../Components';
+import { handleSearchBarValidation } from '../api';
 import WhySection from '../Components/WhySection/WhySection';
 import Flag from '../Assets/Logos/flag_bon_voyage.svg';
 import TravelLine from '../Assets/Logos/travel_line.svg';
 
 const useStyles = makeStyles(({ palette, breakpoints }: Theme) => ({
+  basCarboneButton: {
+    borderRadius: 0,
+    fontFamily: 'Libre Franklin',
+    marginBottom: 172,
+    marginTop: 88,
+    textTransform: 'none',
+  },
+  buttonContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    width: '100%',
+  },
   container: {
     [breakpoints.up('md')]: {
       paddingLeft: 200,
@@ -21,8 +34,8 @@ const useStyles = makeStyles(({ palette, breakpoints }: Theme) => ({
       paddingLeft: 20,
       paddingRight: 20,
     },
-    maxWidth: 1400,
     margin: '0 auto',
+    maxWidth: 1400,
   },
   flag: {
     height: 80,
@@ -56,21 +69,9 @@ const useStyles = makeStyles(({ palette, breakpoints }: Theme) => ({
   },
   travelLine: {
     backgroundImage: `url(${TravelLine})`,
+    backgroundPosition: '0px 160px',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'contain',
-    backgroundPosition: '0px 160px',
-  },
-  buttonContainer: {
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  basCarboneButton: {
-    fontFamily: 'Libre Franklin',
-    textTransform: 'none',
-    marginBottom: 172,
-    marginTop: 88,
-    borderRadius: 0,
   },
 }));
 
@@ -85,7 +86,7 @@ function Homepage(): JSX.Element {
             <img src={Flag} className={styles.flag} />
             <h1 className={styles.title1}>En route pour des voyages</h1>
             <h2 className={styles.title2}>bas carbone</h2>
-            <SearchBar />
+            <SearchBar handleSearchBarValidation={handleSearchBarValidation} />
             <div className={styles.buttonContainer}>
               <Link>
                 <Button color="primary" variant="contained" className={styles.basCarboneButton}>
@@ -94,6 +95,7 @@ function Homepage(): JSX.Element {
               </Link>
             </div>
             <BlueBoxes />
+            <Co2Comparison />
             <WhySection />
             <Questions />
           </div>

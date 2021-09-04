@@ -3,6 +3,7 @@ import { format } from 'date-fns';
 import { Grid, Button, Typography, Link } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
+import Separator from '../Separator';
 import { formatHoursAndMinutes } from '../../utils';
 
 const useStyles = makeStyles((theme) => ({
@@ -11,6 +12,9 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'Libre Franklin',
     fontWeight: 700,
     size: 18,
+  },
+  className: {
+    marginTop: 25,
   },
   container: {
     color: theme.palette.blue,
@@ -72,6 +76,7 @@ const TravelStepDetails = ({ selectedTravel }: Props): JSX.Element | null => {
   return (
     <div className={styles.container}>
       <h3>{formatTitle(selectedTravel.journey_steps)}</h3>
+      <Separator className={styles.className} />
       {selectedTravel.journey_steps.map((step: TravelStep) => {
         return (
           <Grid container className={styles.row} key={step.id}>

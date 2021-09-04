@@ -8,7 +8,7 @@ function App(): JSX.Element {
   return (
     <Router>
       <Switch>
-        <Route path="/results">
+        <Route path="/resultats">
           <SideMenus />
           <Results />
         </Route>
