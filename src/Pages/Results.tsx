@@ -9,6 +9,7 @@ import {
   TravelsMiniatures,
   TravelStepDetails,
 } from '../Components';
+import { handleSearchBarValidation } from '../api';
 import Flag from '../Assets/Logos/flag_bon_voyage.svg';
 import MockedResponse from './MockedResponse.json';
 
@@ -66,7 +67,12 @@ const Results = (): JSX.Element => {
     <Fragment>
       <div className={styles.container}>
         <img src={Flag} className={styles.flag} />
-        <SearchBar inlineDisplay customStylesWrapper={styles.customSearchBarWrapper} withoutLogo />
+        <SearchBar
+          handleSearchBarValidation={handleSearchBarValidation}
+          inlineDisplay
+          customStylesWrapper={styles.customSearchBarWrapper}
+          withoutLogo
+        />
         <TravelsMiniatures
           selectedTravel={selectedTravel}
           selectTravel={setSelectedTravel}

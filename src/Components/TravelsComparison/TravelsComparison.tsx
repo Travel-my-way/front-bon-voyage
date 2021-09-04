@@ -5,6 +5,7 @@ import { Zoom } from '@material-ui/core';
 
 import sticker from '../../Assets/Logos/le_moins_polluant.svg';
 import TravelIcon from '../TravelIcon';
+import { convertToPercent } from '../../utils';
 
 const HEIGHT_BAR = 12;
 
@@ -66,10 +67,6 @@ const useStyles = makeStyles(({ palette }) => ({
 type Props = {
   sortedTravels: Travel[];
   selectedTravel: Travel;
-};
-
-const convertToPercent = (numerator: number, denominateur: number) => {
-  return Math.round((numerator * 100) / denominateur);
 };
 
 const TravelsComparison = ({ sortedTravels, selectedTravel }: Props): JSX.Element | null => {

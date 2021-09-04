@@ -3,21 +3,25 @@ import { DirectionsBoat, DirectionsBus, DirectionsCar, DirectionsSubway, Flight 
 
 type Props = {
   category: TravelCategory;
-  classes: string;
+  classes?: string;
+  colorIcon?: string;
 };
 
 const logoByCaterogy: Record<any, any> = {
-  Car: DirectionsBus,
+  Bus: DirectionsBus,
+  Car: DirectionsCar,
   Carpooling: DirectionsCar,
+  Coach: DirectionsBus,
   Ferry: DirectionsBoat,
   Plane: Flight,
   Train: DirectionsSubway,
+  Metro: DirectionsSubway,
 };
 
-const TravelIcon = ({ category, classes }: Props): JSX.Element | null => {
+const TravelIcon = ({ category, classes, colorIcon }: Props): JSX.Element | null => {
   const Icon = logoByCaterogy[category];
 
-  return Icon ? <Icon className={classes} /> : null;
+  return Icon ? <Icon className={classes} style={{ color: colorIcon }} /> : null;
 };
 
 export default TravelIcon;

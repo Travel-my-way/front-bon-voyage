@@ -58,6 +58,9 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
     maxWidth: 1040,
     paddingLeft: 20,
   },
+  inlineleftBorder: {
+    backgroundPosition: '0 16px !important',
+  },
   leftBorder: {
     backgroundImage: `repeating-linear-gradient(to bottom, ${palette.blue} 0 4px, transparent 4px 12px)`,
     backgroundPosition: '0 11px',
@@ -123,6 +126,7 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
     marginLeft: 30,
   },
   travellerCTAContainer: {
+    height: 51,
     display: 'flex',
   },
 }));
@@ -139,9 +143,10 @@ type Props = {
   customStylesWrapper?: string;
   withoutLogo?: boolean;
   inlineDisplay?: boolean;
+  handleSearchBarValidation: any;
 } & WithWidth;
 
-const SearchBar = ({ customStylesWrapper, inlineDisplay, width, withoutLogo }: Props) => {
+const SearchBar = ({ handleSearchBarValidation, customStylesWrapper, inlineDisplay, width, withoutLogo }: Props) => {
   const styles = useStyles();
 
   const placeholder = {
@@ -156,14 +161,15 @@ const SearchBar = ({ customStylesWrapper, inlineDisplay, width, withoutLogo }: P
   const [departureLatlng, setDepartureLatlng] = useState<SelectedDestination | undefined>();
   const [selectedDate, handleDateChange] = useState<Date | null>(new Date());
 
-  const isButtonDisable = [numberOfVoyagers, arrivalLatlng, departureLatlng, selectedDate?.valueOf()].some(Boolean);
+  const isButtonDisable = [numberOfVoyagers, arrivalLatlng, departureLatlng, selectedDate?.valueOf()].some(
+    (value) => !value
+  );
 
   const handleSubmit = () => {
-    console.log({
-      numberOfVoyagers,
-      arrivalLatlng,
-      departureLatlng,
-      selectedDate: selectedDate?.valueOf(),
+    handleSearchBarValidation({
+      from: departureLatlng,
+      to: arrivalLatlng,
+      selectedDate: selectedDate,
     });
   };
 
@@ -194,20 +200,29 @@ const SearchBar = ({ customStylesWrapper, inlineDisplay, width, withoutLogo }: P
       <div className={classNames(styles.inlineContainer, styles.container)}>
         <AutoCompleteAddress handleChanges={setDepartureLatlng} logo={GreenFlag} placeholder={placeholder.departure} />
         <AutoCompleteAddress
-          customClasses={classNames(styles.leftBorder, styles.inlineBorderPosition)}
+          customClasses={classNames(styles.leftBorder, styles.inlineleftBorder, styles.inlineBorderPosition)}
           handleChanges={setArrivalLatlng}
           placeholder={placeholder.arrival}
         />
         <DateTimePicker
-          customClasses={classNames(styles.leftBorder, styles.inlineBorderPosition)}
+          customClasses={classNames(styles.leftBorder, styles.inlineleftBorder, styles.inlineBorderPosition)}
           handleChange={handleDateChange}
           selectedDate={selectedDate}
         />
-        <div className={classNames(styles.textFieldContainer, styles.leftBorder, styles.inlineBorderPosition)}>
-          <Select value={numberOfVoyagers} className={styles.textField} defaultValue={1} fullWidth>
-            {getSelectItems(config.maxTravelers)}
-          </Select>
-        </div>
+        {config.isFeatureTravelersActivated && (
+          <div
+            className={classNames(
+              styles.inlineBorderPosition,
+              styles.leftBorder,
+              styles.inlineleftBorder,
+              styles.textFieldContainer
+            )}
+          >
+            <Select value={numberOfVoyagers} className={styles.textField} defaultValue={1} fullWidth>
+              {getSelectItems(config.maxTravelers)}
+            </Select>
+          </div>
+        )}
         <CallToAction isDisable={isButtonDisable} handleClick={handleSubmit} />
       </div>
     );
@@ -239,12 +254,14 @@ const SearchBar = ({ customStylesWrapper, inlineDisplay, width, withoutLogo }: P
       <div className={styles.thirdRowContainer}>
         <DateTimePicker handleChange={handleDateChange} logo={RedWatch} selectedDate={selectedDate} />
         <div className={styles.travellerCTAContainer}>
-          <div className={classNames(styles.textFieldContainer, styles.leftBorder, styles.thirdRow)}>
-            <img className={styles.textFieldLogo} src={MSN} />
-            <Select value={numberOfVoyagers} className={styles.textField} defaultValue={1} fullWidth>
-              {getSelectItems(config.maxTravelers)}
-            </Select>
-          </div>
+          {config.isFeatureTravelersActivated && (
+            <div className={classNames(styles.textFieldContainer, styles.leftBorder, styles.thirdRow)}>
+              <img className={styles.textFieldLogo} src={MSN} />
+              <Select value={numberOfVoyagers} className={styles.textField} defaultValue={1} fullWidth>
+                {getSelectItems(config.maxTravelers)}
+              </Select>
+            </div>
+          )}
           <CallToAction isDisable={isButtonDisable} handleClick={handleSubmit} />
         </div>
       </div>
