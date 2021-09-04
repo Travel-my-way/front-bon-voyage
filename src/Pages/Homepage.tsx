@@ -16,18 +16,6 @@ const useStyles = makeStyles(({ palette, breakpoints }: Theme) => ({
     marginTop: 88,
     textTransform: 'none',
   },
-  basCarboneButton: {
-    borderRadius: 0,
-    fontFamily: 'Libre Franklin',
-    marginBottom: 172,
-    marginTop: 88,
-    textTransform: 'none',
-  },
-  buttonContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    width: '100%',
-  },
   buttonContainer: {
     display: 'flex',
     justifyContent: 'center',
