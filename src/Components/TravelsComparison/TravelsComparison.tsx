@@ -126,6 +126,7 @@ const TravelsComparison = ({ sortedTravels, selectedTravel }: Props): JSX.Elemen
         value={convertToPercent(selectedTravel.total_gCO2, biggestPolluter.total_gCO2)}
       />
       <div className={styles.graphOverlay}>{renderSegments()}</div>
+      <div>{selectedTravel.total_gCO2}</div>
     </div>
   );
 };

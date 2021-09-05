@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Slide } from 'pure-react-carousel';
 
 import TravelIcon from '../TravelIcon';
+import { formatCo2 } from '../../utils';
 
 const useStyles = makeStyles(({ palette }) => ({
   cardContent: {
@@ -57,9 +58,7 @@ type Props = {
 const TravelMiniature = ({ travel, index, selectedTravel, handleClick }: Props): JSX.Element => {
   const styles = useStyles();
   const customClasses = selectedTravel.id === travel.id ? styles.selectedTravelMiniature : styles.travelMiniature;
-  const formattedCo2 = `${String(travel.total_gCO2 / 1000)
-    .replace('.', ',')
-    .slice(0, 4)} Kg co2e`;
+  const formattedCo2 = formatCo2(travel.total_gCO2);
 
   return (
     <Slide index={index}>
