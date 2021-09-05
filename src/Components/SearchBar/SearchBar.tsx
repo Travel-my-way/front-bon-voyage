@@ -199,7 +199,7 @@ const SearchBar = ({ handleSearchBarValidation, customStylesWrapper, inlineDispl
     return result;
   };
 
-  if (inlineDisplay && !['xs', 'md'].includes(width)) {
+  if (inlineDisplay && !['xs', 'sm', 'md'].includes(width)) {
     return (
       <div className={classNames(styles.inlineContainer, styles.container)}>
         <AutoCompleteAddress handleChanges={setDepartureLatlng} logo={GreenFlag} placeholder={placeholder.departure} />
