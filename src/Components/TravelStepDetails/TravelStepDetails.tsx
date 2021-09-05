@@ -79,7 +79,7 @@ const TravelStepDetails = ({ selectedTravel }: Props): JSX.Element | null => {
       <Separator className={styles.className} />
       {selectedTravel.journey_steps.map((step: TravelStep) => {
         return (
-          <Grid container className={styles.row} key={step.id}>
+          <Grid container className={styles.row} key={step.departure_date}>
             <Grid item xs={3} className={styles.textContainer}>
               <Typography className={`${styles.hour}`}>
                 {format(step.departure_date, "HH'h'mm")} - {format(step.arrival_date, "HH'h'mm")}

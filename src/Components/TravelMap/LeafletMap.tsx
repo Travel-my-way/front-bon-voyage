@@ -82,18 +82,13 @@ const RenderMarkers = ({ travel }: { travel: Travel }): JSX.Element => {
     <Fragment>
       {travel.journey_steps.map((step: TravelStep, index: number) => {
         const isLastElem = index === travel.journey_steps.length - 1;
-
         if (index === 0) {
           return (
-            <Fragment>
-              <Marker icon={greenMarkerIcon} key={step.departure_date} position={step.departure_point}>
+            <Fragment key={`${step.arrival_date} ${step.id} ${step.distance_m}`}>
+              <Marker icon={greenMarkerIcon} position={step.departure_point}>
                 <Popup>{step.departure_stop_name || 'unknown'}</Popup>
               </Marker>
-              <Marker
-                icon={isLastElem ? redMarkerIcon : yellowMarkerIcon}
-                key={step.arrival_date}
-                position={step.arrival_point}
-              >
+              <Marker icon={isLastElem ? redMarkerIcon : yellowMarkerIcon} position={step.arrival_point}>
                 <Popup>{step.arrival_stop_name || 'unknown'}</Popup>
               </Marker>
             </Fragment>
@@ -103,7 +98,7 @@ const RenderMarkers = ({ travel }: { travel: Travel }): JSX.Element => {
         return (
           <Marker
             icon={isLastElem ? redMarkerIcon : yellowMarkerIcon}
-            key={step.arrival_date}
+            key={`${step.arrival_date} ${step.id} ${step.distance_m}`}
             position={step.arrival_point}
           >
             <Popup>{step.arrival_stop_name || 'unknown'}</Popup>
