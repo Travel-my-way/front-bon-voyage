@@ -5,7 +5,7 @@ import { Zoom } from '@material-ui/core';
 
 import sticker from '../../Assets/Logos/le_moins_polluant.svg';
 import TravelIcon from '../TravelIcon';
-import { convertToPercent } from '../../utils';
+import { convertToPercent, formatCo2 } from '../../utils';
 
 const HEIGHT_BAR = 12;
 
@@ -13,9 +13,14 @@ const useStyles = makeStyles(({ palette }) => ({
   bar: {
     backgroundColor: palette.green,
   },
+  commentary: {
+    marginTop: 24,
+    fontSize: 14,
+    fontStyle: 'italic',
+  },
   container: {
     border: `1px solid ${palette.green}`,
-    height: 120,
+    height: 132,
     margin: 'auto',
     maxWidth: 920,
     padding: '30px 50px',
@@ -82,28 +87,18 @@ const TravelsComparison = ({ sortedTravels, selectedTravel }: Props): JSX.Elemen
   }
 
   const renderSegments = () => {
-    const enhancedTravels = sortedTravels.map((travel: Travel) => {
-      return {
-        ...travel,
-        graphPositionInPercent: convertToPercent(travel.total_gCO2, biggestPolluter.total_gCO2),
-      };
-    });
-
     return (
       <div>
-        {enhancedTravels.map((travel) => {
+        {sortedTravels.map((travel: Travel) => {
           const rightPosition = -(14 + (travel.category.length - 1) * 16);
 
+          const graphPositionInPercent = convertToPercent(travel.total_gCO2, biggestPolluter.total_gCO2);
           const Icons = travel.category.map((category) => {
             return <TravelIcon classes={styles.icon} key={category} category={category} />;
           });
 
           return (
-            <div
-              key={travel.id}
-              className={styles.graphOccurence}
-              style={{ left: `${travel.graphPositionInPercent}%` }}
-            >
+            <div key={travel.id} className={styles.graphOccurence} style={{ left: graphPositionInPercent }}>
               <Zoom in={travel.id === selectedTravel.id}>
                 <span className={styles.icons} style={{ left: rightPosition }}>
                   {Icons}
@@ -116,6 +111,12 @@ const TravelsComparison = ({ sortedTravels, selectedTravel }: Props): JSX.Elemen
     );
   };
 
+  let commentary = '';
+  if (selectedTravel.total_gCO2 === sortedTravels[0].total_gCO2) {
+    const formattedCo2 = formatCo2(selectedTravel.total_gCO2);
+    commentary = `C’est l’option la mois polluante avec ${formattedCo2} émis !`;
+  }
+
   return (
     <div className={styles.container}>
       <img src={sticker} className={styles.img} />
@@ -126,7 +127,7 @@ const TravelsComparison = ({ sortedTravels, selectedTravel }: Props): JSX.Elemen
         value={convertToPercent(selectedTravel.total_gCO2, biggestPolluter.total_gCO2)}
       />
       <div className={styles.graphOverlay}>{renderSegments()}</div>
-      <div>{selectedTravel.total_gCO2}</div>
+      <div className={styles.commentary}>{commentary}</div>
     </div>
   );
 };
