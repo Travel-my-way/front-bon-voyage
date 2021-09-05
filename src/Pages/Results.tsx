@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import {
   Footer,
-  QuickTravelDetails,
+  TravelsStepsTimeline,
   SearchBar,
   TravelsComparison,
   TravelsMiniatures,
@@ -79,7 +79,7 @@ const Results = (): JSX.Element => {
           sortedTravels={travelsSortedByCo2}
         />
         <TravelsComparison sortedTravels={travelsSortedByCo2} selectedTravel={selectedTravel} />
-        <QuickTravelDetails travel={selectedTravel} />
+        <TravelsStepsTimeline travel={selectedTravel} />
         <TravelStepDetails selectedTravel={selectedTravel} />
       </div>
       <Footer />

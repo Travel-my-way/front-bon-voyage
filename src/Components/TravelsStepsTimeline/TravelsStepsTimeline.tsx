@@ -60,7 +60,7 @@ type Props = {
   travel: Travel;
 };
 
-const QuickTravelDetails = ({ travel }: Props): JSX.Element | null => {
+const TravelsStepsTimeline = ({ travel }: Props): JSX.Element | null => {
   const styles = useStyles();
 
   if (!travel) {
@@ -99,4 +99,4 @@ const QuickTravelDetails = ({ travel }: Props): JSX.Element | null => {
   );
 };
 
-export default QuickTravelDetails;
+export default TravelsStepsTimeline;
