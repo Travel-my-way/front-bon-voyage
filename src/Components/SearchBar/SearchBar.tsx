@@ -53,10 +53,12 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
     flexGrow: 2,
     height: 64,
     justifyContent: 'space-between',
+    position: 'relative',
     margin: 'auto',
     marginBottom: 44,
     maxWidth: 1040,
     paddingLeft: 20,
+    paddingRight: 110,
   },
   inlineleftBorder: {
     backgroundPosition: '0 16px !important',
@@ -124,10 +126,12 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
     display: 'flex',
     justifyContent: 'space-between',
     marginLeft: 30,
+    position: 'relative',
+    height: 51,
   },
   travellerCTAContainer: {
-    height: 51,
     display: 'flex',
+    height: 51,
   },
 }));
 

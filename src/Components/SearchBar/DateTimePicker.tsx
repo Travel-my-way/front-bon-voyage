@@ -17,6 +17,7 @@ const useStyles = makeStyles(({ palette }) => ({
   textInput: {
     color: palette.blue,
     fontFamily: 'Libre Franklin',
+    width: 240,
   },
 }));
 
