@@ -59,8 +59,8 @@ jobs:
           # Use Docker `latest` tag convention
           [ "$VERSION" == "master" ] && VERSION=latest
 
-          echo VERSION=$VERSION
-          echo "VERSION=${VERSION}" >> $GITHUB_ENV
+          echo "VERSION=$VERSION"
+          echo "image_version=${VERSION}" >> $GITHUB_ENV
 
 
       - name: Kaniko build
@@ -69,7 +69,7 @@ jobs:
           registry: ghcr.io/travel-my-way
           password: ${{ secrets.GITHUB_TOKEN }}
           image: bonvoyage-front
-          tag: ${{ env.VERSION }}
+          tag: ${{ env.image_version }}
           cache: true
           cache_registry: cache
           build_file: ./Dockerfile
@@ -80,10 +80,23 @@ jobs:
     if: github.event_name == 'push'
 
     steps:
+      - name: Compute image tag to use
+        run: |
+          # Strip git ref prefix from version
+          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+
+          # Strip "v" prefix from tag name
+          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
+
+          # Use Docker `latest` tag convention
+          [ "$VERSION" == "master" ] && VERSION=latest
+
+          echo "VERSION=$VERSION"
+          echo "image_version=${VERSION}" >> $GITHUB_ENV
       - name: Publish to cluster
         run: |
           export ARGOCD_SERVER=argocd.bonvoyage-eco.net
           export ARGOCD_AUTH_TOKEN=${{ secrets.ARGOCD_AUTH_TOKEN }}
           curl -sSL -o ~/argocd-cli https://${ARGOCD_SERVER}/download/argocd-linux-amd64
           chmod +x ~/argocd-cli
-          ~/argocd-cli app set front -p image.tag=${{ env.VERSION }}
+          ~/argocd-cli app set front -p image.tag=${{ env.image_version }}
