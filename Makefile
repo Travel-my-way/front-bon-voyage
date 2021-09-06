@@ -10,7 +10,7 @@ step ?= "minor"
 clean:
 	rm -Rf dist
 build: clean
-	npm i && npm run build
+	yarn install && yarn build
 image: build
 	docker build -t ${image_name}/${component}:${version} .
 
