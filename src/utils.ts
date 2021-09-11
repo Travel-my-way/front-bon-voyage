@@ -17,3 +17,8 @@ export const formatHoursAndMinutes = (duration: number, options: Record<string, 
 export const convertToPercent = (numerator: number, denominateur: number): number => {
   return Math.round((numerator * 100) / denominateur);
 };
+
+export const formatCo2 = (total_gCO2: number) =>
+  `${String(total_gCO2 / 1000)
+    .replace('.', ',')
+    .slice(0, 4)} Kg co2e`;

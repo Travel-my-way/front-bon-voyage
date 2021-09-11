@@ -11,7 +11,7 @@ const useStyles = makeStyles(({ palette }) => ({
   container: {
     position: 'fixed',
     top: -4,
-    transform: 'rotate(90deg) translate(48vw, calc(-50vw + 24px))',
+    transform: 'rotate(90deg) translate(48vw, calc(50vw - 24px))',
     width: '100vw',
     zIndex: 3,
   },
