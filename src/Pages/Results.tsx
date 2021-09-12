@@ -49,7 +49,7 @@ const sortCrescendo = (int1: number, int2: number): number => int1 - int2;
 
 const Results = (): JSX.Element => {
   //@ts-ignore
-  const travels: Travel[] = MockedResponse.results;
+  const travels: Travel[] = MockedResponse.journeys;
   const styles = useStyles();
   const [travelsSortedByCo2, setTravelsSortedByCo2] = useState<Travel[]>([]);
   const [selectedTravel, setSelectedTravel] = useState<Travel>(travelsSortedByCo2[0]);

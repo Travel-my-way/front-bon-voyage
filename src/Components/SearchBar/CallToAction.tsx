@@ -34,6 +34,9 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
     },
     borderRadius: 'unset',
   },
+  white: {
+    color: 'white',
+  },
 }));
 
 type Props = {
@@ -50,15 +53,17 @@ const CallToAction = ({ handleClick, isDisable, isLoading }: Props): JSX.Element
       className={styles.button}
       fullWidth
       disabled={!!isDisable}
-      onClick={() => {
-        handleClick();
-      }}
+      onClick={handleClick}
       classes={{
         root: styles.root,
         disabled: styles.disabled,
       }}
     >
-      {isLoading ? <CircularProgress size={20} /> : <img src={Arrow} className={styles.logo} />}
+      {isLoading ? (
+        <CircularProgress color="secondary" size={20} className={styles.white} />
+      ) : (
+        <img src={Arrow} className={styles.logo} />
+      )}
     </Button>
   );
 };
