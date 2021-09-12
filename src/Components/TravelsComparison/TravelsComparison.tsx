@@ -98,7 +98,7 @@ const TravelsComparison = ({ sortedTravels, selectedTravel }: Props): JSX.Elemen
           });
 
           return (
-            <div key={travel.id} className={styles.graphOccurence} style={{ left: graphPositionInPercent }}>
+            <div key={travel.id} className={styles.graphOccurence} style={{ left: `${graphPositionInPercent}%` }}>
               <Zoom in={travel.id === selectedTravel.id}>
                 <span className={styles.icons} style={{ left: rightPosition }}>
                   {Icons}

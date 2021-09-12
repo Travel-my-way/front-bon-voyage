@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Button, Link } from '@material-ui/core';
 
@@ -7,6 +7,7 @@ import { handleSearchBarValidation } from '../api';
 import WhySection from '../Components/WhySection/WhySection';
 import Flag from '../Assets/Logos/flag_bon_voyage.svg';
 import TravelLine from '../Assets/Logos/travel_line.svg';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles(({ palette, breakpoints }: Theme) => ({
   basCarboneButton: {
@@ -77,7 +78,16 @@ const useStyles = makeStyles(({ palette, breakpoints }: Theme) => ({
 
 function Homepage(): JSX.Element {
   const styles = useStyles();
+  const [loading, setIsLoading] = useState(false);
+  const history = useHistory();
 
+  const handleValidation = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      history.push('/resultats');
+      setIsLoading(false);
+    }, 5000);
+  };
   return (
     <ShapeBackground>
       <Fragment>
@@ -86,7 +96,7 @@ function Homepage(): JSX.Element {
             <img src={Flag} className={styles.flag} />
             <h1 className={styles.title1}>En route pour des voyages</h1>
             <h2 className={styles.title2}>bas carbone</h2>
-            <SearchBar handleSearchBarValidation={handleSearchBarValidation} />
+            <SearchBar handleSearchBarValidation={handleValidation} loading={loading} />
             <div className={styles.buttonContainer}>
               <Link>
                 <Button color="primary" variant="contained" className={styles.basCarboneButton}>
