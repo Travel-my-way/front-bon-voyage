@@ -11,8 +11,10 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
       width: 80,
     },
     backgroundColor: palette.blue,
+    bottom: 0,
     minHeight: '100%',
-    position: 'relative',
+    position: 'absolute',
+    right: 0,
     width: 110,
   },
   disabled: {

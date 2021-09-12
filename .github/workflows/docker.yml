@@ -44,9 +44,9 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '12'
-          cache: 'npm'
+          cache: 'yarn'
       - name: Build package
-        run: npm install && npm run build
+        run: yarn install && yarn run build
 
       - name: Set Image tag
         run: |
@@ -61,7 +61,6 @@ jobs:
 
           echo "VERSION=$VERSION"
           echo "image_version=${VERSION}" >> $GITHUB_ENV
-
 
       - name: Kaniko build
         uses: aevea/action-kaniko@master

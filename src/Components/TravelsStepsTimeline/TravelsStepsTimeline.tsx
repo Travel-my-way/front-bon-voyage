@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 
-import { formatHoursAndMinutes } from '../../utils';
+import { formatHoursAndMinutes, formatCo2 } from '../../utils';
 import TravelSteps from './TravelSteps';
 import TravelIcon from '../TravelIcon';
 import TravelMap from '../TravelMap/LeafletMap';
@@ -60,7 +60,7 @@ type Props = {
   travel: Travel;
 };
 
-const QuickTravelDetails = ({ travel }: Props): JSX.Element | null => {
+const TravelsStepsTimeline = ({ travel }: Props): JSX.Element | null => {
   const styles = useStyles();
 
   if (!travel) {
@@ -69,9 +69,7 @@ const QuickTravelDetails = ({ travel }: Props): JSX.Element | null => {
 
   const formattedTravelCategories = travel.category.join(' + ');
   const duration = formatHoursAndMinutes(travel.total_duration);
-  const formattedCo2 = `${String(travel.total_gCO2 / 1000)
-    .replace('.', ',')
-    .slice(0, 4)} Kg co2e`;
+  const formattedCo2 = formatCo2(travel.total_gCO2);
 
   return (
     <div className={styles.container}>
@@ -99,4 +97,4 @@ const QuickTravelDetails = ({ travel }: Props): JSX.Element | null => {
   );
 };
 
-export default QuickTravelDetails;
+export default TravelsStepsTimeline;
