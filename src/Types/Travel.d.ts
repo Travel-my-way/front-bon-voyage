@@ -4,6 +4,7 @@ interface TravelStep {
   arrival_date: number;
   arrival_point: [number, number];
   arrival_stop_name: string;
+  booking_link?: string;
   departure_date: number;
   departure_point: [number, number];
   departure_stop_name: string;
@@ -20,7 +21,6 @@ interface TravelStep {
 interface Travel {
   arrival_date: number;
   arrival_point: [number, number];
-  booking_link: string;
   category: TravelCategory[];
   departure_date: number;
   departure_point: [number, number];

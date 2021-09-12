@@ -81,8 +81,8 @@ const TravelStepDetails = ({ selectedTravel }: Props): JSX.Element | null => {
         return (
           <Grid container className={styles.row} key={step.departure_date}>
             <Grid item xs={3} className={styles.textContainer}>
-              <Typography className={`${styles.hour}`}>
-                {format(step.departure_date, "HH'h'mm")} - {format(step.arrival_date, "HH'h'mm")}
+              <Typography className={styles.hour}>
+                {format(step.departure_date * 1000, "HH'h'mm")} - {format(step.arrival_date * 1000, "HH'h'mm")}
               </Typography>
             </Grid>
             <Grid item xs={3} className={styles.textContainer}>
@@ -94,11 +94,13 @@ const TravelStepDetails = ({ selectedTravel }: Props): JSX.Element | null => {
               <Typography className={styles.text}>{step.price_EUR} €</Typography>
             </Grid>
             <Grid item xs={4} className={styles.textContainer}>
-              <Link className={styles.bookButton} href={selectedTravel.booking_link}>
-                <Button color="primary" variant="contained">
-                  Voir le trajet
-                </Button>
-              </Link>
+              {step.booking_link && (
+                <Link className={styles.bookButton} href={step.booking_link} target="_blank">
+                  <Button color="primary" variant="contained">
+                    Voir le trajet
+                  </Button>
+                </Link>
+              )}
             </Grid>
           </Grid>
         );

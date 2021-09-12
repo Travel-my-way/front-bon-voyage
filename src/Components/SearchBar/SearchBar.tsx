@@ -148,9 +148,17 @@ type Props = {
   withoutLogo?: boolean;
   inlineDisplay?: boolean;
   handleSearchBarValidation: any;
+  loading?: boolean;
 } & WithWidth;
 
-const SearchBar = ({ handleSearchBarValidation, customStylesWrapper, inlineDisplay, width, withoutLogo }: Props) => {
+const SearchBar = ({
+  handleSearchBarValidation,
+  customStylesWrapper,
+  loading,
+  inlineDisplay,
+  width,
+  withoutLogo,
+}: Props) => {
   const styles = useStyles();
 
   const placeholder = {
@@ -227,7 +235,7 @@ const SearchBar = ({ handleSearchBarValidation, customStylesWrapper, inlineDispl
             </Select>
           </div>
         )}
-        <CallToAction isDisable={isButtonDisable} handleClick={handleSubmit} />
+        <CallToAction isDisable={isButtonDisable} handleClick={handleSubmit} isLoading={loading} />
       </div>
     );
   }
@@ -266,7 +274,7 @@ const SearchBar = ({ handleSearchBarValidation, customStylesWrapper, inlineDispl
               </Select>
             </div>
           )}
-          <CallToAction isDisable={isButtonDisable} handleClick={handleSubmit} />
+          <CallToAction isDisable={isButtonDisable} handleClick={handleSubmit} isLoading={loading} />
         </div>
       </div>
     </div>
