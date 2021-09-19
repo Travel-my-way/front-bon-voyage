@@ -20,7 +20,6 @@ const useStyles = makeStyles(({ palette }) => ({
   },
   container: {
     border: `1px solid ${palette.green}`,
-    height: 132,
     margin: 'auto',
     maxWidth: 920,
     padding: '30px 50px',
