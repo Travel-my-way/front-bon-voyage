@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
+import { Link } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 import {
@@ -66,7 +67,9 @@ const Results = (): JSX.Element => {
   return (
     <Fragment>
       <div className={styles.container}>
-        <img src={Flag} className={styles.flag} />
+        <Link href="/">
+          <img src={Flag} className={styles.flag} />
+        </Link>
         <SearchBar
           handleSearchBarValidation={handleSearchBarValidation}
           inlineDisplay

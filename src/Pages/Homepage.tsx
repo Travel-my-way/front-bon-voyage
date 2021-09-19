@@ -3,7 +3,6 @@ import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Button, Link } from '@material-ui/core';
 
 import { BlueBoxes, Co2Comparison, Footer, Questions, SearchBar, ShapeBackground } from '../Components';
-import { handleSearchBarValidation } from '../api';
 import WhySection from '../Components/WhySection/WhySection';
 import Flag from '../Assets/Logos/flag_bon_voyage.svg';
 import TravelLine from '../Assets/Logos/travel_line.svg';
@@ -93,7 +92,9 @@ function Homepage(): JSX.Element {
       <Fragment>
         <div className={styles.travelLine}>
           <div className={styles.container}>
-            <img src={Flag} className={styles.flag} />
+            <Link href="/">
+              <img src={Flag} className={styles.flag} />
+            </Link>
             <h1 className={styles.title1}>En route pour des voyages</h1>
             <h2 className={styles.title2}>bas carbone</h2>
             <SearchBar handleSearchBarValidation={handleValidation} loading={loading} />
