@@ -123,16 +123,16 @@ const Footer = ({ backgroundColor = 'blue', logo = Flag }: Props): JSX.Element =
         <div className={styles.flexbox}>
           <img src={logo} className={styles.logo} />
           <ul className={styles.links}>
-            <Link href={'www.google.com'} color="inherit">
-              À propos
+            <Link href={'https://blog.bonvoyage-eco.net/la-tribu'} target="_blank" color="inherit">
+              La tribu
             </Link>
-            <Link href={'www.google.com'} color="inherit">
+            <Link href={'https://blog.bonvoyage-eco.net'} target="_blank" color="inherit">
               Blog
             </Link>
-            <Link href={'www.google.com'} color="inherit">
+            <Link href={'https://blog.bonvoyage-eco.net/le-forum'} target="_blank" color="inherit">
               Forum
             </Link>
-            <Link href={'www.google.com'} color="inherit">
+            <Link href={'https://www.instagram.com/bon.voyage.eco'} target="_blank" color="inherit">
               Instagram
             </Link>
           </ul>
