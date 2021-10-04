@@ -2,8 +2,7 @@ import { delay } from './utils';
 
 const fetchRequestId = async (from: string, to: string, at: number, numberOfPassenger: number) => {
   return await fetch(
-    // `https://api.bonvoyage-eco.net/journey?from=${from}&to=${to}&start=${at}&nb_passenger=${numberOfPassenger}`,
-    `https://api.bonvoyage-eco.net/journey?from=48.838944,2.353358&to=47.217518,-1.589960&start=1634716085&nb_passenger=1`,
+    `https://api.bonvoyage-eco.net/journey?from=${from}&to=${to}&start=${at}&nb_passenger=${numberOfPassenger}`,
     {
       method: 'POST',
     }
