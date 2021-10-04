@@ -97,6 +97,12 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
     height: 48,
     marginTop: 8,
   },
+  nbPassengersInput: {
+    [breakpoints.down('sm')]: {
+      marginRight: 80,
+    },
+    marginRight: 110,
+  },
   textField: {
     '&:before': {
       borderBottom: 'none',
@@ -135,19 +141,11 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
   },
 }));
 
-type SelectedDestination = {
-  latlng: {
-    lat: number;
-    lng: number;
-  };
-  name: string;
-};
-
 type Props = {
   customStylesWrapper?: string;
   withoutLogo?: boolean;
   inlineDisplay?: boolean;
-  handleSearchBarValidation: any;
+  handleSearchBarValidation: (from: AlgoliaResponse, to: AlgoliaResponse, at: Date, numberOfPassenger: number) => void;
   loading?: boolean;
 } & WithWidth;
 
@@ -162,27 +160,20 @@ const SearchBar = ({
   const styles = useStyles();
 
   const placeholder = {
-    arrival: 'Porto-Vecchio, Corse, France',
+    arrival: 'Destination en Europe',
     date: 'Maintenant',
-    departure: 'Cours Vitton, Lyon, France',
+    departure: 'Point de départ',
     travellers: isWidthUp('md', width) ? '2 voyageurs' : '2',
   };
 
   const [numberOfVoyagers, setNumberOfVoyager] = useState(1);
-  const [arrivalLatlng, setArrivalLatlng] = useState<SelectedDestination | undefined>();
-  const [departureLatlng, setDepartureLatlng] = useState<SelectedDestination | undefined>();
+  const [arrivalLatlng, setArrivalLatlng] = useState<AlgoliaResponse | undefined>();
+  const [departureLatlng, setDepartureLatlng] = useState<AlgoliaResponse | undefined>();
   const [selectedDate, handleDateChange] = useState<Date | null>(new Date());
 
-  const isButtonDisable = [numberOfVoyagers, arrivalLatlng, departureLatlng, selectedDate?.valueOf()].some(
-    (value) => !value
-  );
-
+  const isButtonDisable = ![numberOfVoyagers, arrivalLatlng, departureLatlng, selectedDate?.valueOf()].every(Boolean);
   const handleSubmit = () => {
-    handleSearchBarValidation({
-      from: departureLatlng,
-      to: arrivalLatlng,
-      selectedDate: selectedDate,
-    });
+    return handleSearchBarValidation(departureLatlng, arrivalLatlng, selectedDate, numberOfVoyagers);
   };
 
   const renderDropdownLabel = (number: number) => {
@@ -267,7 +258,14 @@ const SearchBar = ({
         <DateTimePicker handleChange={handleDateChange} logo={RedWatch} selectedDate={selectedDate} />
         <div className={styles.travellerCTAContainer}>
           {config.isFeatureTravelersActivated && (
-            <div className={classNames(styles.textFieldContainer, styles.leftBorder, styles.thirdRow)}>
+            <div
+              className={classNames(
+                styles.textFieldContainer,
+                styles.leftBorder,
+                styles.thirdRow,
+                styles.nbPassengersInput
+              )}
+            >
               <img className={styles.textFieldLogo} src={MSN} />
               <Select value={numberOfVoyagers} className={styles.textField} defaultValue={1} fullWidth>
                 {getSelectItems(config.maxTravelers)}

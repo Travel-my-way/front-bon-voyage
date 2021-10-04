@@ -34,3 +34,11 @@ interface Travel {
   total_gCO2: number;
   total_price_EUR: string;
 }
+
+type AlgoliaResponse = {
+  name: string;
+  latlng: {
+    lat: number;
+    lng: number;
+  };
+};
