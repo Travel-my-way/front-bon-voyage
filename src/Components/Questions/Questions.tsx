@@ -43,6 +43,7 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
     color: palette.blue,
     display: 'flex',
     justifyContent: 'space-between',
+    marginBottom: 172,
   },
   icon: {
     marginLeft: 28,

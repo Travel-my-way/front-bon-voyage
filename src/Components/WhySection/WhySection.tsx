@@ -32,10 +32,10 @@ const useStyles = makeStyles(({ breakpoints, spacing }: Theme) => ({
 const WhySection = (): JSX.Element => {
   const styles = useStyles();
   const boxLabels = [
-    'Je marche seul (si je veux) mais je roule toujours à plusieurs.',
-    'Les bons plans c’est pas comme les coins à champignons. Ça se partage !',
-    'No plane, no pain. Parce que des vacances réussies sans prendre l’avion, c’est possible.',
-    'Ceux qui m’aiment prendront le train. Le plus écolo, c’est incontestable !',
+    'Ceux qui m’aiment prendront le train, moyen de transport le plus climato-compatible après le vélo et la marche à pied.',
+    'Je marche seul.e (si je veux) mais je roule avec un maximum de passagers. Vive le co-voiturage !',
+    'Je ralentis la cadence et me donne le temps de voyager. Moins loin c’est tout aussi bien.',
+    'Je partage mes bons plans pour faire grandir la communauté des voyageur.ses du vrai monde d’après.',
   ];
 
   return (

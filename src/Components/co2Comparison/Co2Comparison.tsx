@@ -1,7 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
-import { Button, Link } from '@material-ui/core';
 
 import TravelIcon from '../TravelIcon';
 import { convertToPercent } from '../../utils';
@@ -9,12 +8,6 @@ import { convertToPercent } from '../../utils';
 import OuiAuTrainBlue from '../../Assets/Logos/oui_au_train_blue.svg';
 
 const useStyles = makeStyles(({ breakpoints, palette }) => ({
-  basCarboneButton: {
-    borderRadius: 0,
-    fontFamily: 'Libre Franklin',
-    marginTop: 48,
-    textTransform: 'none',
-  },
   container: {
     background: palette.paper,
     border: `solid 10px ${palette.yellow}`,
@@ -73,9 +66,14 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
     fontFamily: 'Monument Extended',
     color: palette.blue,
     fontSize: 45,
-  },
-  to: {
-    color: palette.yellow,
+    '&::after': {
+      borderBottom: `solid 8px ${palette.yellow}`,
+      content: "''",
+      display: 'block',
+      marginBottom: 40,
+      marginTop: '20px !important',
+      width: '50px',
+    },
   },
 }));
 
@@ -95,12 +93,10 @@ const Co2Comparison = (): JSX.Element => {
   return (
     <div className={styles.container}>
       <img src={OuiAuTrainBlue} className={styles.logo} />
-      <h3 className={styles.title}>
-        Paris<span className={styles.to}>{' > '}</span>Barcelone
-      </h3>
+      <h3 className={styles.title}>Billets pour le climat</h3>
       <p className={styles.explanation}>
-        Pour mieux comprendre les différentes options de voyage qui s’offrent à vous, comparez les émissions de CO2 pour
-        un trajet de 1000 km.
+        Parce que tous les chemins ne mènent pas au paradis climatique, notre comparateur permet de se rendre compte des
+        émissions de chaque moyen de transport. Tenez, prenons un Paris - Barcelone, soit un trajet de 1000 km
       </p>
       {modeOfTransportations.map((mode) => {
         const width = convertToPercent(mode.value, MAX_VALUE);
@@ -121,11 +117,6 @@ const Co2Comparison = (): JSX.Element => {
           </div>
         );
       })}
-      <Link>
-        <Button color="primary" variant="contained" className={styles.basCarboneButton}>
-          C’est quoi, voyager bas carbone ?
-        </Button>
-      </Link>
     </div>
   );
 };

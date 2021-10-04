@@ -36,10 +36,11 @@ const DateTimePicker = ({ customClasses, logo, selectedDate, handleChange }: Pro
       <div className={classNames(styles.container, customClasses)}>
         {logo && <img src={logo} className={styles.logo} />}
         <MuiDatePicker
+          cancelLabel="Annuler"
           ampm={false}
           disablePast
           disableToolbar
-          format={'dd MMMM yyyy p'}
+          format={'dd MMMM yyyy'}
           value={selectedDate}
           onChange={(value: Date | null) => {
             handleChange(value);
