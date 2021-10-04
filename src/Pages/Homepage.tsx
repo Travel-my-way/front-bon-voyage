@@ -3,24 +3,13 @@ import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Button, Link } from '@material-ui/core';
 
 import { BlueBoxes, Co2Comparison, Footer, Questions, SearchBar, ShapeBackground } from '../Components';
+import { getTravels } from '../api';
 import WhySection from '../Components/WhySection/WhySection';
 import Flag from '../Assets/Logos/flag_bon_voyage.svg';
 import TravelLine from '../Assets/Logos/travel_line.svg';
 import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles(({ palette, breakpoints }: Theme) => ({
-  basCarboneButton: {
-    borderRadius: 0,
-    fontFamily: 'Libre Franklin',
-    marginBottom: 172,
-    marginTop: 88,
-    textTransform: 'none',
-  },
-  buttonContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    width: '100%',
-  },
   container: {
     [breakpoints.up('md')]: {
       paddingLeft: 200,
@@ -75,18 +64,31 @@ const useStyles = makeStyles(({ palette, breakpoints }: Theme) => ({
   },
 }));
 
-function Homepage(): JSX.Element {
+type Props = {
+  setTravels: (travels: Travel[]) => void;
+};
+
+function Homepage({ setTravels }: Props): JSX.Element {
   const styles = useStyles();
   const [loading, setIsLoading] = useState(false);
   const history = useHistory();
 
-  const handleValidation = () => {
+  const handleValidation = (
+    { latlng: fromLatlng }: AlgoliaResponse,
+    { latlng: toLatlng }: AlgoliaResponse,
+    at: Date,
+    numberOfPassenger: number
+  ) => {
     setIsLoading(true);
-    setTimeout(() => {
-      history.push('/resultats');
-      setIsLoading(false);
-    }, 5000);
+
+    const from = `${fromLatlng.lat},${fromLatlng.lng}`;
+    const to = `${toLatlng.lat},${toLatlng.lng}`;
+    getTravels(from, to, at, numberOfPassenger)
+      .then(setTravels)
+      .then(() => history.push('/resultats'))
+      .finally(() => setIsLoading(false));
   };
+
   return (
     <ShapeBackground>
       <Fragment>
@@ -98,17 +100,10 @@ function Homepage(): JSX.Element {
             <h1 className={styles.title1}>En route pour des voyages</h1>
             <h2 className={styles.title2}>bas carbone</h2>
             <SearchBar handleSearchBarValidation={handleValidation} loading={loading} />
-            <div className={styles.buttonContainer}>
-              <Link>
-                <Button color="primary" variant="contained" className={styles.basCarboneButton}>
-                  C’est quoi, voyager bas carbone ?
-                </Button>
-              </Link>
-            </div>
-            <BlueBoxes />
             <Co2Comparison />
             <WhySection />
             <Questions />
+            <BlueBoxes />
           </div>
         </div>
         <Footer />

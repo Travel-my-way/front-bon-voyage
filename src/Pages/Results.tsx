@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { Link } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { useHistory } from 'react-router-dom';
 
 import {
   Footer,
@@ -10,9 +11,8 @@ import {
   TravelsMiniatures,
   TravelStepDetails,
 } from '../Components';
-import { handleSearchBarValidation } from '../api';
+import { getTravels } from '../api';
 import Flag from '../Assets/Logos/flag_bon_voyage.svg';
-import MockedResponse from './MockedResponse.json';
 
 const useStyles = makeStyles(({ breakpoints, palette }) => ({
   container: {
@@ -48,12 +48,34 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
 
 const sortCrescendo = (int1: number, int2: number): number => int1 - int2;
 
-const Results = (): JSX.Element => {
-  //@ts-ignore
-  const travels: Travel[] = MockedResponse.journeys;
+type Props = {
+  travels: Travel[] | undefined;
+  setTravels: (travels: Travel[]) => void;
+};
+
+const Results = ({ travels, setTravels }: Props): JSX.Element => {
+  if (!travels) return <div>design me ! there is no travel this times.</div>;
   const styles = useStyles();
   const [travelsSortedByCo2, setTravelsSortedByCo2] = useState<Travel[]>([]);
   const [selectedTravel, setSelectedTravel] = useState<Travel>(travelsSortedByCo2[0]);
+  const [loading, setIsLoading] = useState(false);
+  const history = useHistory();
+
+  const handleValidation = (
+    { latlng: fromLatlng }: AlgoliaResponse,
+    { latlng: toLatlng }: AlgoliaResponse,
+    at: Date,
+    numberOfPassenger: number
+  ) => {
+    setIsLoading(true);
+
+    const from = `${fromLatlng.lat},${fromLatlng.lng}`;
+    const to = `${toLatlng.lat},${toLatlng.lng}`;
+    getTravels(from, to, at, numberOfPassenger)
+      .then(setTravels)
+      .then(() => history.push('/resultats'))
+      .finally(() => setIsLoading(false));
+  };
 
   useEffect(() => {
     const sortedTravels: Travel[] = travels
@@ -71,10 +93,11 @@ const Results = (): JSX.Element => {
           <img src={Flag} className={styles.flag} />
         </Link>
         <SearchBar
-          handleSearchBarValidation={handleSearchBarValidation}
+          handleSearchBarValidation={handleValidation}
           inlineDisplay
           customStylesWrapper={styles.customSearchBarWrapper}
           withoutLogo
+          loading={loading}
         />
         <TravelsMiniatures
           selectedTravel={selectedTravel}
