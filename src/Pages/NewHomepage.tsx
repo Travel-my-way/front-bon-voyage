@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Link } from '@material-ui/core';
 
-import { BlueBoxes, Co2Comparison, Footer, NewSearchBar, Questions, ShapeBackground } from '../Components';
+import { BlueBoxes, Co2Comparison, Footer, NewSearchBar, Questions, ShapeBackground, FirstBanner } from '../Components';
 import { getTravels } from '../api';
 import WhySection from '../Components/WhySection/WhySection';
 import Flag from '../Assets/Logos/flag_bon_voyage.svg';
@@ -92,6 +92,7 @@ function NewHomepage({ setTravels }: Props): JSX.Element {
               <h1 className={styles.title1}>En route pour des voyages bas carbone</h1>
               <NewSearchBar handleSearchBarValidation={handleValidation} loading={loading} />
             </div>
+            <FirstBanner />
             <Co2Comparison />
             <WhySection />
             <Questions />

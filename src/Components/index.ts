@@ -11,3 +11,4 @@ export { default as TravelMap } from './TravelMap/LeafletMap';
 export { default as TravelsComparison } from './TravelsComparison/TravelsComparison';
 export { default as TravelsMiniatures } from './TravelsMiniatures/TravelsMiniatures';
 export { default as TravelStepDetails } from './TravelStepDetails/TravelStepDetails';
+export { default as FirstBanner } from './FirstBanner/FirstBanner';
