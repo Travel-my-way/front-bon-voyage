@@ -2,11 +2,24 @@ import React, { Fragment, useState } from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Link } from '@material-ui/core';
 
-import { BlueBoxes, Co2Comparison, Footer, NewSearchBar, Questions, ShapeBackground, FirstBanner } from '../Components';
+import {
+  BlueBoxes,
+  Co2Comparison,
+  Footer,
+  NewSearchBar,
+  NewQuestions,
+  ShapeBackground,
+  FirstBanner,
+  SecondBanner,
+} from '../Components';
 import { getTravels } from '../api';
 import WhySection from '../Components/WhySection/WhySection';
 import Flag from '../Assets/Logos/flag_bon_voyage.svg';
 import TravelLine from '../Assets/Logos/travel_line.svg';
+import CountriesComparator from '../Assets/Images/countries-comparator.png';
+import MeansComparator from '../Assets/Images/means-comparator.png';
+import Car from '../Assets/Icons/car.svg';
+import Train from '../Assets/Icons/train.svg';
 import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles(({ palette, breakpoints }: Theme) => ({
@@ -81,27 +94,119 @@ function NewHomepage({ setTravels }: Props): JSX.Element {
   };
 
   return (
-    <ShapeBackground>
-      <Fragment>
-        <div className={styles.travelLine}>
-          <div className={styles.container}>
-            <Link href="/">
-              <img src={Flag} className={styles.flag} />
-            </Link>
-            <div className={styles.subcontainer}>
-              <h1 className={styles.title1}>En route pour des voyages bas carbone</h1>
-              <NewSearchBar handleSearchBarValidation={handleValidation} loading={loading} />
-            </div>
-            <FirstBanner />
-            <Co2Comparison />
-            <WhySection />
-            <Questions />
-            <BlueBoxes />
+    <Fragment>
+      <div className={styles.travelLine}>
+        <div className={styles.container}>
+          <Link href="/">
+            <img src={Flag} className={styles.flag} />
+          </Link>
+          <div className={styles.subcontainer}>
+            <h1 className={styles.title1}>En route pour des voyages bas carbone</h1>
+            <NewSearchBar handleSearchBarValidation={handleValidation} loading={loading} />
           </div>
+          <FirstBanner />
+          <div className={styles.subcontainer}>
+            <h1 className={styles.title1}>
+              <span style={{ fontSize: '24px' }}>HONTE DE L'AVION ?</span>
+              <br />
+              Si le transport aérien était un pays, il occuperait la place de 7ème pollueur au monde.
+            </h1>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <img src={CountriesComparator} />
+              <span style={{ fontSize: 18, marginTop: 12 }}>Source : Carbon Brief</span>
+            </div>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: 128 }}>
+            <h1 className={styles.title1} style={{ paddingRight: 0 }}>
+              Billets pour le climat
+            </h1>
+            <div style={{ fontSize: 18, padding: '36px 72px', textAlign: 'center', maxWidth: 762, lineHeight: '27px' }}>
+              Notre comparateur permet de se rendre compte des émissions de chaque moyen de transport. Prenons l’exemple
+              d’un Paris - Barcelone et comparons leurs émissions de CO2.
+            </div>
+            <img src={MeansComparator} style={{ width: 720 }} />
+          </div>
+          <SecondBanner />
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: 128 }}>
+            <h1 className={styles.title1} style={{ paddingRight: 0 }}>
+              Les principes du bon voyage
+            </h1>
+            <div style={{ fontSize: 18, padding: '36px 72px', textAlign: 'center', maxWidth: 762, lineHeight: '27px' }}>
+              Voici 4 idées à retenir pour inventer 1000 voyages. On essaye ?
+            </div>
+            <div style={{ alignItems: 'flex-start', display: 'flex', flexDirection: 'row', marginBottom: 172 }}>
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'flexStart',
+                  padding: '30px 20px 20px',
+                  background: 'white',
+                  border: '3px solid #2D3134',
+                  boxShadow: '-4px 5px 0px #0AAA93',
+                  flexBasis: '25%',
+                  marginRight: 24,
+                }}
+              >
+                <img src={Train} style={{ marginBottom: 24 }} width={24} />
+                Ceux qui m’aiment prendront le train. Le moyen de transport le plus climato-compatible (après le vélo et
+                la marche à pied).
+              </div>
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'flexStart',
+                  padding: '30px 20px 20px',
+                  background: 'white',
+                  border: '3px solid #2D3134',
+                  boxShadow: '-4px 5px 0px #0AAA93',
+                  flexBasis: '25%',
+                  marginRight: 24,
+                }}
+              >
+                <img src={Car} style={{ marginBottom: 24 }} width={24} />
+                Je marche seul.e mais je roule avec un maximum de passagers. Vive le co-voiturage !
+              </div>
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'flexStart',
+                  padding: '30px 20px 20px',
+                  background: 'white',
+                  border: '3px solid #2D3134',
+                  boxShadow: '-4px 5px 0px #0AAA93',
+                  flexBasis: '25%',
+                  marginRight: 24,
+                }}
+              >
+                <img src={Train} style={{ marginBottom: 24 }} width={24} />
+                Je partage mes bons plans pour faire grandir la communauté des voyageur.ses du vrai monde d’après.
+              </div>
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'flexStart',
+                  padding: '30px 20px 20px',
+                  background: 'white',
+                  border: '3px solid #2D3134',
+                  boxShadow: '-4px 5px 0px #0AAA93',
+                  flexBasis: '25%',
+                  marginRight: 24,
+                }}
+              >
+                <img src={Train} style={{ marginBottom: 24 }} width={24} />
+                Je ralentis la cadence et me donne le temps de voyager. Moins loin c’est tout aussi bien.
+              </div>
+            </div>
+          </div>
+          <NewQuestions />
         </div>
-        <Footer />
-      </Fragment>
-    </ShapeBackground>
+      </div>
+      <Footer />
+    </Fragment>
   );
 }
 

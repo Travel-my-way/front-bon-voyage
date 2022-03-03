@@ -18,6 +18,7 @@ const useStyles = makeStyles(({ breakpoints, palette }: Theme) => ({
     width: '2000px',
     transform: 'rotate(-1deg) translate(-192px)',
     marginTop: 172,
+    marginBottom: 172,
   },
   text: {
     marginLeft: 48,

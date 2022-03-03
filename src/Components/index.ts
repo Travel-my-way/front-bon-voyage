@@ -12,3 +12,5 @@ export { default as TravelsComparison } from './TravelsComparison/TravelsCompari
 export { default as TravelsMiniatures } from './TravelsMiniatures/TravelsMiniatures';
 export { default as TravelStepDetails } from './TravelStepDetails/TravelStepDetails';
 export { default as FirstBanner } from './FirstBanner/FirstBanner';
+export { default as SecondBanner } from './SecondBanner/SecondBanner';
+export { default as NewQuestions } from './NewQuestions/Questions';
