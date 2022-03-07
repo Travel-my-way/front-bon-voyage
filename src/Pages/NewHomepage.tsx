@@ -18,7 +18,9 @@ import Flag from '../Assets/Logos/flag_bon_voyage.svg';
 import TravelLine from '../Assets/Logos/travel_line.svg';
 import CountriesComparator from '../Assets/Images/countries-comparator.png';
 import MeansComparator from '../Assets/Images/means-comparator.png';
-import Car from '../Assets/Icons/car.svg';
+import Car2 from '../Assets/Icons/car-2.svg';
+import Bubbles from '../Assets/Icons/bubbles.svg';
+import Feet from '../Assets/Icons/feet.svg';
 import Train from '../Assets/Icons/train.svg';
 import { useHistory } from 'react-router-dom';
 
@@ -165,7 +167,7 @@ function NewHomepage({ setTravels }: Props): JSX.Element {
                   marginRight: 24,
                 }}
               >
-                <img src={Car} style={{ marginBottom: 24 }} width={24} />
+                <img src={Car2} style={{ marginBottom: 24 }} width={24} />
                 Je marche seul.e mais je roule avec un maximum de passagers. Vive le co-voiturage !
               </div>
               <div
@@ -181,7 +183,7 @@ function NewHomepage({ setTravels }: Props): JSX.Element {
                   marginRight: 24,
                 }}
               >
-                <img src={Train} style={{ marginBottom: 24 }} width={24} />
+                <img src={Bubbles} style={{ marginBottom: 24 }} width={24} />
                 Je partage mes bons plans pour faire grandir la communauté des voyageur.ses du vrai monde d’après.
               </div>
               <div
@@ -197,7 +199,7 @@ function NewHomepage({ setTravels }: Props): JSX.Element {
                   marginRight: 24,
                 }}
               >
-                <img src={Train} style={{ marginBottom: 24 }} width={24} />
+                <img src={Feet} style={{ marginBottom: 24 }} width={24} />
                 Je ralentis la cadence et me donne le temps de voyager. Moins loin c’est tout aussi bien.
               </div>
             </div>
