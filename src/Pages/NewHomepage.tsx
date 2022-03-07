@@ -2,18 +2,8 @@ import React, { Fragment, useState } from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { Link } from '@material-ui/core';
 
-import {
-  BlueBoxes,
-  Co2Comparison,
-  Footer,
-  NewSearchBar,
-  NewQuestions,
-  ShapeBackground,
-  FirstBanner,
-  SecondBanner,
-} from '../Components';
+import { NewFooter, NewSearchBar, NewQuestions, FirstBanner, SecondBanner } from '../Components';
 import { getTravels } from '../api';
-import WhySection from '../Components/WhySection/WhySection';
 import Flag from '../Assets/Logos/flag_bon_voyage.svg';
 import TravelLine from '../Assets/Logos/travel_line.svg';
 import CountriesComparator from '../Assets/Images/countries-comparator.png';
@@ -51,7 +41,7 @@ const useStyles = makeStyles(({ palette, breakpoints }: Theme) => ({
     width: 240,
   },
   title1: {
-    color: palette.black,
+    color: palette.black2,
     fontFamily: 'Monument Extended',
     fontSize: 50,
     fontStyle: 'normal',
@@ -207,7 +197,7 @@ function NewHomepage({ setTravels }: Props): JSX.Element {
           <NewQuestions />
         </div>
       </div>
-      <Footer />
+      <NewFooter />
     </Fragment>
   );
 }

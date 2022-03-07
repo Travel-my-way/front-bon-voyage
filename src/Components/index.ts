@@ -1,6 +1,7 @@
 export { default as BlueBoxes } from './BlueBoxes';
 export { default as Co2Comparison } from './co2Comparison/Co2Comparison';
 export { default as Footer } from './Footer';
+export { default as NewFooter } from './NewFooter';
 export { default as Questions } from './Questions/Questions';
 export { default as TravelsStepsTimeline } from './TravelsStepsTimeline/TravelsStepsTimeline';
 export { default as NewSearchBar } from './NewSearchBar/NewSearchBar';

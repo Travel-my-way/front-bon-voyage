@@ -3,6 +3,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 declare module '@material-ui/core/styles/createPalette' {
   interface Palette {
     black: string;
+    black2: string;
     blue: string;
     green: string;
     paper: string;
@@ -11,6 +12,7 @@ declare module '@material-ui/core/styles/createPalette' {
   }
   interface PaletteOptions {
     black: string;
+    black2: string;
     blue: string;
     green: string;
     paper: string;
@@ -30,6 +32,7 @@ const theme = createMuiTheme({
     primary: {
       main: '#002CC7',
     },
+    black2: '#2D3134',
   },
   breakpoints: {
     values: {

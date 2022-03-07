@@ -2,8 +2,8 @@ import React, { Fragment, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Collapse, Hidden } from '@material-ui/core';
 
-import ArrowInCircle from '../../Assets/Icons/ArrowInCircle.svg';
-import AddIconInCircle from '../../Assets/Icons/AddIconInCircle.svg';
+import ArrowInCircle2 from '../../Assets/Icons/ArrowInCircle2.svg';
+import AddIconInCircle2 from '../../Assets/Icons/AddIconInCircle2.svg';
 
 import questions from './Questions.json';
 
@@ -22,14 +22,6 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
     width: '50%',
   },
   answerTitle: {
-    '&::after': {
-      borderBottom: `solid 8px ${palette.yellow}`,
-      content: "''",
-      display: 'block',
-      marginBottom: '35px !important',
-      marginTop: '25px !important',
-      width: '35px',
-    },
     fontFamily: 'Monument Extended',
     fontSize: '30px',
     fontWeight: 900,
@@ -39,8 +31,9 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
     [breakpoints.only('xs')]: {
       padding: 20,
     },
-    border: `solid 10px ${palette.yellow}`,
-    color: palette.black,
+    border: `solid 3px ${palette.black2}`,
+    boxShadow: '-4px 5px 0px #F2CD70',
+    color: palette.black2,
     display: 'flex',
     justifyContent: 'space-between',
     marginBottom: 172,
@@ -93,7 +86,7 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
       marginTop: '20px !important',
       width: '50px',
     },
-    color: palette.black,
+    color: palette.black2,
     fontFamily: 'Monument Extended',
     fontSize: '45px',
     textAlign: 'center',
@@ -121,11 +114,11 @@ const SmallScreenQuestions = (): JSX.Element => {
     <div className={styles.questions}>
       {questions.map(({ question }: Question, index: number) => {
         let customTextStyles = styles.question;
-        let Icon = AddIconInCircle;
+        let Icon = AddIconInCircle2;
 
         if (index === answerIndex) {
           customTextStyles = styles.selectedQuestion;
-          Icon = ArrowInCircle;
+          Icon = ArrowInCircle2;
         }
 
         return (
@@ -162,11 +155,11 @@ const LargeScreenQuestions = () => {
       <div className={styles.questions}>
         {questions.map(({ question }: Question, index: number) => {
           let customTextStyles = styles.question;
-          let Icon = AddIconInCircle;
+          let Icon = AddIconInCircle2;
 
           if (index === answerIndex) {
             customTextStyles = styles.selectedQuestion;
-            Icon = ArrowInCircle;
+            Icon = ArrowInCircle2;
           }
 
           return (
