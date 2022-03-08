@@ -2,20 +2,21 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from '@material-ui/core';
 import Flag from '../Assets/Logos/flag_bon_voyage.svg';
-import { Palette } from '@material-ui/icons';
+import Instagram from '../Assets/Icons/instagram.svg';
+import NoPlaneNoPain from '../Assets/Icons/no-plane-no-pain.svg';
 
 const useStyles = makeStyles(({ breakpoints, palette }) => ({
   citation: {
     [breakpoints.up('sm')]: {
-      textAlign: 'end',
+      textAlign: 'left',
     },
-    color: palette.yellow,
+    color: 'white',
     fontFamily: 'Libre Franklin',
-    fontSize: 35,
+    fontSize: 16,
     fontStyle: 'italic',
     fontWeight: 900,
-    lineHeight: '120%',
-    margin: 0,
+    lineHeight: '100%',
+    marginTop: 24,
   },
   citationContainer: {
     [breakpoints.up('md')]: {
@@ -64,12 +65,8 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
   },
   initialling: {
     color: palette.paper,
-    fontFamily: 'Clattering',
-    fontSize: 25,
-    fontStyle: 'normal',
-    fontWeight: 'normal',
-    lineHeight: '27px',
-    textAlign: 'right',
+    fontFamily: 'Libre Franklin',
+    fontSize: 16,
   },
   links: {
     [breakpoints.up('sm')]: {
@@ -116,15 +113,25 @@ const NewFooter = ({ logo = Flag }: Props): JSX.Element => {
         <div className={styles.flexbox}>
           <div>
             <div style={{ color: 'white', fontSize: 30 }}>
-              Bon voyage !
-              <Link
-                href={'https://www.instagram.com/bon.voyage.eco'}
-                target="_blank"
-                color="inherit"
-                style={{ marginRight: 24 }}
+              <div style={{ marginBottom: 24 }}>Bon voyage !</div>
+              <div
+                style={{
+                  alignItems: 'center',
+                  border: '1px solid #FBF8EE',
+                  boxSizing: 'border-box',
+                  borderRadius: 40,
+                  display: 'flex',
+                  fontSize: 14,
+                  gap: 12,
+                  padding: '12px 24px',
+                  width: 'fit-content',
+                }}
               >
-                Instagram
-              </Link>
+                <Link href={'https://www.instagram.com/bon.voyage.eco'} target="_blank" color="inherit">
+                  Suivez-nous
+                </Link>
+                <img src={Instagram} />
+              </div>
             </div>
             <ul className={styles.links}>
               <Link href="#" color="inherit" style={{ marginRight: 24 }}>
@@ -152,8 +159,9 @@ const NewFooter = ({ logo = Flag }: Props): JSX.Element => {
             </ul>
           </div>
           <div className={styles.citationContainer}>
-            <p className={styles.citation}>L’important ce n’est pas la destination c’est le voyage.</p>
-            <p className={styles.initialling}>Robert Louis Stevenson</p>
+            <img src={NoPlaneNoPain} width={126} />
+            <p className={styles.citation}>“L’important ce n’est pas la destination c’est le voyage.”</p>
+            <p className={styles.initialling}>R. L. Stevenson</p>
           </div>
         </div>
       </div>
