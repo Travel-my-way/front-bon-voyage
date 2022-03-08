@@ -1,0 +1,64 @@
+[
+  {
+    "question": "C’est quoi un trajet bas carbone ?",
+    "answers": [
+      "C’est choisir un ou des moyens de transports qui n’engendrent pas beaucoup de CO2, c’est-à-dire qui fonctionnent avec peu d’énergies fossiles responsables pendant leur combustion du réchauffement climatique.",
+      "Si l’on devait classer les transports en fonction de leur impact carbone il y aurait (du top au flop) : le TGV, le train, le bus, la voiture individuelle et l’avion."
+    ]
+  },
+  {
+    "question": "Vous faites référence régulièrement au plafond des 2 tonnes de CO2, c’est quoi ?",
+    "answers": [
+      "C’est le poids d’un bébé baleine un peu maigrichon et surtout celui fatidique des émissions de CO2 à ne pas dépasser par an et par personne si l’on veut respecter les Accords de Paris et contenir la hausse de la température mondiale en dessous de +2°C d’ici 2100.",
+      "En 2015, 195 pays ont signé cet engagement mais il reste pas mal d’efforts à faire. En France, par exemple, on flirte avec les 12 tonnes de CO2 par an et par habitant. "
+    ]
+  },
+  {
+    "question": "Vous nous dites de ne pas prendre l’avion mais 9 fois sur 10 sur les petits trajets c’est bien moins cher que le train…",
+    "answers": [
+      "Vous avez tout à fait raison, on n’est pas loin du scandale. En fait, l’avion bénéficie de plusieurs passe-droits tout à fait contestables. D’abord, contrairement au train, il n’a besoin d’aucune infrastructure pour voler et les cumulus n’ont pas encore installé de droits de péage.",
+      "Ensuite, depuis la convention internationale de Chicago de 1944, la taxation du kérosène est interdite sur les vols internationaux et les vols intérieurs de certains pays comme la France.",
+      "Pendant ce temps-là, la fiscalité pèse pour 57,1 % dans le prix d'un litre de SP 95 à la pompe. Vous avez dit bizarre ?"
+    ]
+  },
+  {
+    "question": "Après une année de confinement, on a bien le droit de partir loin, non ?",
+    "answers": [
+      "C’est vrai qu’on a carrément envie de mettre les voiles. Mais le dépaysement est-il une question de kilomètres ?",
+      "Avec Bon voyage, on a envie de vous prouver le contraire.",
+      "Et puis, ça serait dommage d’altérer le seul bienfait de cette pandémie. En 2020, les émissions de CO2 dans le monde ont chuté de 7%, un record !"
+    ]
+  },
+  {
+    "question": "Je trie mes déchets, roule à vélo et mange des topinambours bio, j’ai bien le droit de prendre l’avion de temps en temps ?",
+    "answers": [
+      "Si seulement... En fait, pour atteindre les objectifs des Accords de Paris et réussir à ne produire que 2 tonnes de CO2 par an et par habitant, il nous faut faire des efforts tous azimuts.",
+      "Un régime végétarien c’est bien, très bien même quand on sait que l’élevage est responsable de 14,5% des gaz à effet de serre soit autant que le secteur du transport. Mais si l’on s’offre 2 vols par an pour compenser, tous nos efforts tombent à l’eau.",
+      "En fait, le grand voyage, c’est comme la côte de bœuf, on doit désormais le réserver aux très grandes occasions. "
+    ]
+  },
+  {
+    "question": "Je n’ai que trois jours, je suis bien obligé de prendre l’avion, je n’ai pas le temps de prendre le train.",
+    "answers": [
+      "C’est vrai que prendre le train pour une soirée à Barcelone, ça peut sembler compliqué mais ce qui l’est plus encore c’est de justifier l’organisation de cette fête à 2500 kilomètres du domicile de l’ensemble des invité.es.",
+      "Et si vous tentiez une contre-offensive à portée de TER et en profitiez pour mettre le paquet sur la ripaille locale et un jaja bio millésimé ?",
+      "Vous pouvez aussi inventer de nouveaux concepts de fête ou tenter l’un des voyages expérimentaux de Lonely Planet."
+    ]
+  },
+  {
+    "question": "Qu’est ce que ça m’apporte de voyager bas carbone ?",
+    "answers": [
+      "Voyager sans faire exploser son compteur carbone, ça apporte mille choses en plus d’un sésame pour le paradis des sauveurs et sauveuses de la planète.",
+      "D’abord, ça permet de revisiter ce qu’il y a de bien près de chez soi et comme dirait Tatie Jeanine : “elle est belle la France !”",
+      "Ensuite, c’est un bon moyen de lever le pied et de ne pas envisager ses vacances en mode optimisation et rentabilisation. C’est prendre le temps de ralentir, de se renseigner sur la destination, d'arrêter de se projeter d’un point à un autre sans comprendre ce qu’il y a entre les deux. C'est se rendre compte de ce qui nous sépare de la destination.",
+      "Voyager bas carbone c’est souvent la garantie d’un périple plus authentique, dans des endroits moins fréquentés. C’est aussi la possibilité de faire de belles rencontres pas très loin de chez soi. Pratique pour rester en contact, non ?"
+    ]
+  },
+  {
+    "question": "Vous êtes qui pour nous dire comment voyager ?",
+    "answers": [
+      "On est comme vous ! Le voyage, dans l’équipe, on adore ça et c’est même ce qui nous a poussé à créer cette application. On aime tellement préparer nos sacs, gonfler nos vélos, prendre les petites routes pour parcourir la terre entière qu’on voudrait que tout le monde puisse en faire autant, nos enfants comme nos arrières petits enfants. Mais pour cela, on sait qu’on doit tous et toutes mettre la pédale douce sur les transports polluants pour éviter à la planète de griller (et nous avec). Alors on s’est documenté, on a compilé les données de la très sérieuse agence de la transition écologique et des experts de Carbone 4 pour calculer l’impact carbone des trajets. On s’est nous-mêmes mis à voyager sans avion et à passer les meilleures vacances de notre vie.",
+      "Attendez, on ne vous a pas dit ? Bon voyage est une appli collaborative pour faire tourner les bons plans et on compte bien vous embarquer dans notre aventure. Vous en êtes ?"
+    ]
+  }
+]

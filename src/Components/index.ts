@@ -1,8 +1,10 @@
 export { default as BlueBoxes } from './BlueBoxes';
 export { default as Co2Comparison } from './co2Comparison/Co2Comparison';
 export { default as Footer } from './Footer';
+export { default as NewFooter } from './NewFooter';
 export { default as Questions } from './Questions/Questions';
 export { default as TravelsStepsTimeline } from './TravelsStepsTimeline/TravelsStepsTimeline';
+export { default as NewSearchBar } from './NewSearchBar/NewSearchBar';
 export { default as SearchBar } from './SearchBar/SearchBar';
 export { default as ShapeBackground } from './ShapeBackground/ShapeBackground';
 export { default as SideMenus } from './SideMenus/SideMenus';
@@ -10,3 +12,6 @@ export { default as TravelMap } from './TravelMap/LeafletMap';
 export { default as TravelsComparison } from './TravelsComparison/TravelsComparison';
 export { default as TravelsMiniatures } from './TravelsMiniatures/TravelsMiniatures';
 export { default as TravelStepDetails } from './TravelStepDetails/TravelStepDetails';
+export { default as FirstBanner } from './FirstBanner/FirstBanner';
+export { default as SecondBanner } from './SecondBanner/SecondBanner';
+export { default as NewQuestions } from './NewQuestions/Questions';

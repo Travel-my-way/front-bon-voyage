@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import { Homepage, Results } from './Pages';
+import { Homepage, Results, NewHomepage } from './Pages';
 import { SideMenus } from './Components';
 
 function App(): JSX.Element {
@@ -12,6 +12,10 @@ function App(): JSX.Element {
         <Route path="/resultats">
           <SideMenus />
           <Results travels={travels} setTravels={setTravels} />
+        </Route>
+        <Route path="/new-homepage">
+          <SideMenus />
+          <NewHomepage setTravels={setTravels} />
         </Route>
         <Route path="/">
           <SideMenus />
