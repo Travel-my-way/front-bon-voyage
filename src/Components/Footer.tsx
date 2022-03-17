@@ -142,6 +142,9 @@ const Footer = ({ backgroundColor = 'blue', logo = Flag }: Props): JSX.Element =
           </div>
         </div>
       </div>
+      <a style={{ position: 'absolute', top: '0', left: '0', color: 'transparent' }} href="/new-homepage">
+        beta
+      </a>
     </div>
   );
 };
