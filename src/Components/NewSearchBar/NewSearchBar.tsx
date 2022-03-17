@@ -7,7 +7,7 @@ import YellowFlag from '../../Assets/Icons/yellowFlag.svg';
 import GreenFlag from '../../Assets/Icons/greenFlag.svg';
 import RedWatch from '../../Assets/Icons/redWatch.svg';
 import MSN from '../../Assets/Icons/MSN.svg';
-import OuiAuTrain from '../../Assets/Logos/oui_au_train.svg';
+import OuiAuTrain from '../../Assets/Logos/oui-train-train.svg';
 import config from '../../config';
 
 import { CallToAction } from './CallToAction';
@@ -39,8 +39,11 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
   fullContainer: {
     background: 'white',
     margin: 'auto',
-    maxWidth: 420,
     position: 'relative',
+    maxWidth: '100%',
+    [breakpoints.up('sm')]: {
+      maxWidth: 420,
+    },
   },
   inlineBorderPosition: {
     backgroundPosition: '0 16px',
@@ -178,10 +181,10 @@ const NewSearchBar = ({
 
   const renderDropdownLabel = (number: number) => {
     if (number === 1) {
-      return isWidthUp('md', width) ? '1 voyageur' : 1;
+      return isWidthUp('md', width) ? '1' : 1;
     }
 
-    return isWidthUp('md', width) ? `${number} voyageurs` : number;
+    return isWidthUp('md', width) ? `${number}` : number;
   };
 
   const getSelectItems = (numberOfItem = 10) => {

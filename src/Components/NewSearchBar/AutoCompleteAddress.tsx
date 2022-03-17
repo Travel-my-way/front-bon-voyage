@@ -15,8 +15,6 @@ const useStyles = makeStyles(({ palette }) => ({
   },
   input: {
     position: 'relative',
-
-    background: palette.paper,
     border: 0,
     color: palette.blue,
     paddingLeft: 0,

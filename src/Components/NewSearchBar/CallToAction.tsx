@@ -8,7 +8,7 @@ import Arrow from '../../Assets/Icons/Arrow.svg';
 const useStyles = makeStyles(({ breakpoints, palette }) => ({
   button: {
     [breakpoints.down('sm')]: {
-      width: 80,
+      width: '100%',
     },
     backgroundColor: palette.blue,
     color: 'white',

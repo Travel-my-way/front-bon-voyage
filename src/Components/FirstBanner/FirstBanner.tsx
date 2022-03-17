@@ -17,8 +17,12 @@ const useStyles = makeStyles(({ breakpoints, palette }: Theme) => ({
     marginRight: -72,
     width: '2000px',
     transform: 'rotate(-1deg) translate(-192px)',
-    marginTop: 172,
-    marginBottom: 172,
+    marginTop: 72,
+    marginBottom: 72,
+    [breakpoints.up('sm')]: {
+      marginTop: 172,
+      marginBottom: 172,
+    },
   },
   text: {
     marginLeft: 48,
@@ -28,7 +32,7 @@ const useStyles = makeStyles(({ breakpoints, palette }: Theme) => ({
   },
 }));
 
-const FirstBanner = ({}) => {
+const FirstBanner = () => {
   const styles = useStyles();
 
   return (
