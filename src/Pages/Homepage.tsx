@@ -89,9 +89,16 @@ function Homepage({ setTravels }: Props): JSX.Element {
       .finally(() => setIsLoading(false));
   };
 
+  const goToNewHomepage = () => {
+    history.push('/new-homepage');
+  };
+
   return (
     <ShapeBackground>
       <Fragment>
+        <Button onClick={goToNewHomepage} style={{ position: 'absolute', top: '0', left: '0', color: 'transparent' }}>
+          beta
+        </Button>
         <div className={styles.travelLine}>
           <div className={styles.container}>
             <Link href="/">
