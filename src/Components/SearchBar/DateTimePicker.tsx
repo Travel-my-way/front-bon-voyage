@@ -1,5 +1,5 @@
 import React from 'react';
-import { DateTimePicker as MuiDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
+import { DatePicker as MuiDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import { makeStyles } from '@material-ui/core/styles';
 import DateFnsUtils from '@date-io/date-fns';
 import { fr } from 'date-fns/locale';
@@ -37,7 +37,6 @@ const DateTimePicker = ({ customClasses, logo, selectedDate, handleChange }: Pro
         {logo && <img src={logo} className={styles.logo} />}
         <MuiDatePicker
           cancelLabel="Annuler"
-          ampm={false}
           disablePast
           disableToolbar
           format={'dd MMMM yyyy'}

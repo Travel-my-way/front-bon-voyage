@@ -71,6 +71,7 @@ const Results = ({ travels, setTravels }: Props): JSX.Element => {
 
     const from = `${fromLatlng.lat},${fromLatlng.lng}`;
     const to = `${toLatlng.lat},${toLatlng.lng}`;
+
     getTravels(from, to, at, numberOfPassenger)
       .then(setTravels)
       .then(() => history.push('/resultats'))

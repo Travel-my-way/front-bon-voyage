@@ -7,6 +7,7 @@ import { IconButton } from '@material-ui/core';
 import TravelMiniature from './TravelMiniature';
 
 import 'pure-react-carousel/dist/react-carousel.es.css';
+import { areTravelsCategoryEqual } from '../../utils';
 
 const useStyles = makeStyles(() => ({
   container: {
@@ -113,15 +114,32 @@ const TravelsMiniatures = ({ sortedTravels, selectedTravel, selectTravel }: Prop
           {'<'}
         </IconButton>
         <Slider className={styles.slider}>
-          {sortedTravels?.map((travel: Travel, index: number) => (
-            <TravelMiniature
-              index={index}
-              selectedTravel={selectedTravel}
-              handleClick={handleCardClick}
-              travel={travel}
-              key={travel.id}
-            />
-          ))}
+          {sortedTravels
+            .map((travel: Travel, index: number, travels: Travel[]) => {
+              const isNextTravelCategoryEqual = areTravelsCategoryEqual(travel, travels[index + 1]);
+              const isPreviousTravelCategoryEqual = areTravelsCategoryEqual(travel, travels[index - 1]);
+              const previousTravel = travels[index - 1];
+
+              let numberToRender = isPreviousTravelCategoryEqual ? previousTravel.numberToRender : null;
+              if (isNextTravelCategoryEqual) {
+                numberToRender = isPreviousTravelCategoryEqual ? previousTravel.numberToRender + 1 : 1;
+              } else if (isPreviousTravelCategoryEqual) {
+                numberToRender = previousTravel.numberToRender + 1;
+              }
+
+              travel.numberToRender = numberToRender;
+
+              return travel;
+            })
+            .map((travel: Travel, index: number) => (
+              <TravelMiniature
+                index={index}
+                selectedTravel={selectedTravel}
+                handleClick={handleCardClick}
+                travel={travel}
+                key={travel.id}
+              />
+            ))}
         </Slider>
         <IconButton className={nextButtonCustomClasses} onClick={handleNextButtonClick}>
           {'>'}

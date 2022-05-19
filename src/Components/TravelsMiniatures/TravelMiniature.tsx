@@ -60,6 +60,17 @@ type Props = {
   handleClick: (travel: Travel, index: number) => void;
 };
 
+const categoryTranslation = {
+  Bus: 'Bus',
+  Car: 'Voiture',
+  Carpooling: 'Covoiturage',
+  Coach: 'Autocar',
+  Ferry: 'Ferry',
+  Plane: 'Avion',
+  Train: 'Train',
+  Metro: 'Metro',
+};
+
 const TravelMiniature = ({ travel, index, selectedTravel, handleClick }: Props): JSX.Element => {
   const styles = useStyles();
   const isTravelSelected = selectedTravel.id === travel.id;
@@ -75,12 +86,13 @@ const TravelMiniature = ({ travel, index, selectedTravel, handleClick }: Props):
       >
         <div className={styles.cardContent}>
           <div>
+            {travel.numberToRender}
             {travel.category.map((category: TravelCategory) => (
               <TravelIcon category={category} classes={styles.logo} key={category} />
             ))}
           </div>
           <div>
-            <div>{travel?.category?.join(' + ')}</div>
+            <div>{travel?.category?.map((category) => categoryTranslation[category]).join(' + ')}</div>
             <div className={classnames({ [styles.selectedCo2Emission]: isTravelSelected })}>{formattedCo2}</div>
           </div>
         </div>

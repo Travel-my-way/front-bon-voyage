@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 25,
   },
   container: {
-    color: theme.palette.blue,
+    color: theme.palette.black2,
     margin: 'auto',
     maxWidth: 865,
     marginTop: 30,
@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   row: {
-    backgroundImage: `repeating-linear-gradient(to right, ${theme.palette.blue} 0 3px, transparent 3px 12px)`,
+    backgroundImage: `repeating-linear-gradient(to right, ${theme.palette.black2} 0 3px, transparent 3px 12px)`,
     backgroundPosition: 'bottom',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'auto 1px',
@@ -66,6 +66,24 @@ const formatTitle = (steps: Array<TravelStep>) => {
   return `${steps.length} étapes ${allStepType}`;
 };
 
+const formatPrice = (prices: TravelStep['price_EUR']) => {
+  if (prices.length <= 1) {
+    return ' - ';
+  }
+
+  const unformatedPrices = String(
+    prices.reduce((acc, price) => {
+      return acc + price;
+    }, 0)
+  ).split('.');
+
+  if (unformatedPrices.length > 1) {
+    unformatedPrices[1] = unformatedPrices[1].slice(0, 2);
+  }
+
+  return `${unformatedPrices.join()} €`;
+};
+
 const TravelStepDetails = ({ selectedTravel }: Props): JSX.Element | null => {
   if (!selectedTravel) {
     return null;
@@ -79,7 +97,7 @@ const TravelStepDetails = ({ selectedTravel }: Props): JSX.Element | null => {
       <Separator className={styles.className} />
       {selectedTravel.journey_steps.map((step: TravelStep) => {
         return (
-          <Grid container className={styles.row} key={step.departure_date}>
+          <Grid container className={styles.row} key={step.departure_point}>
             <Grid item xs={3} className={styles.textContainer}>
               <Typography className={styles.hour}>
                 {format(step.departure_date * 1000, "HH'h'mm")} - {format(step.arrival_date * 1000, "HH'h'mm")}
@@ -91,7 +109,7 @@ const TravelStepDetails = ({ selectedTravel }: Props): JSX.Element | null => {
               </Typography>
             </Grid>
             <Grid item xs={2} className={styles.textContainer}>
-              <Typography className={styles.text}>{step.price_EUR} €</Typography>
+              <Typography className={styles.text}>{formatPrice(step.price_EUR)}</Typography>
             </Grid>
             <Grid item xs={4} className={styles.textContainer}>
               {step.booking_link && (

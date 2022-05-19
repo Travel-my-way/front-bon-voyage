@@ -24,7 +24,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
       justifyContent: 'space-between',
     },
     alignItems: 'center',
-    color: palette.blue,
+    color: palette.black2,
     display: 'flex',
     flexDirection: 'column-reverse',
     justifyContent: 'center',
@@ -34,7 +34,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     maxWidth: 810,
   },
   icon: {
-    color: palette.blue,
+    color: palette.black2,
     height: 45,
     width: 45,
   },
@@ -51,7 +51,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     fontSize: 14,
   },
   travelSteps: {
-    color: palette.blue,
+    color: palette.black2,
     marginTop: 16,
   },
 }));

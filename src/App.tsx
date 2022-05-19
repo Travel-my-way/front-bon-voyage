@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import { Homepage, Results, NewHomepage } from './Pages';
+import { Results, NewHomepage } from './Pages';
 import { SideMenus } from './Components';
 
 function App(): JSX.Element {
-  const [travels, setTravels] = useState();
+  const [travels, setTravels] = useState<Travel[]>([]);
   return (
     <Router>
       <Switch>
@@ -13,13 +13,9 @@ function App(): JSX.Element {
           <SideMenus />
           <Results travels={travels} setTravels={setTravels} />
         </Route>
-        <Route path="/new-homepage">
-          <SideMenus />
-          <NewHomepage setTravels={setTravels} />
-        </Route>
         <Route path="/">
           <SideMenus />
-          <Homepage setTravels={setTravels} />
+          <NewHomepage setTravels={setTravels} />
         </Route>
       </Switch>
     </Router>
