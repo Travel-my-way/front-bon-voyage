@@ -36,12 +36,10 @@ const useStyles = makeStyles(({ palette }) => ({
 }));
 
 type Suggestion = {
-  suggestion: {
-    value: string;
-    latlng: {
-      lat: number;
-      lng: number;
-    };
+  value: string;
+  latlng: {
+    lat: number;
+    lng: number;
   };
 };
 
