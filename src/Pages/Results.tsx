@@ -69,8 +69,8 @@ const Results = ({ travels, setTravels }: Props): JSX.Element => {
   ) => {
     setIsLoading(true);
 
-    const from = `${fromLatlng.lat},${fromLatlng.lng}`;
-    const to = `${toLatlng.lat},${toLatlng.lng}`;
+    const from = `${fromLatlng.lng},${fromLatlng.lat}`;
+    const to = `${toLatlng.lng},${toLatlng.lat}`;
 
     getTravels(from, to, at, numberOfPassenger)
       .then(setTravels)
