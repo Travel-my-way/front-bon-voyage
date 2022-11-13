@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
-
-import config from '../../config';
 
 const useStyles = makeStyles(({ palette }) => ({
   container: {
@@ -27,15 +25,25 @@ const useStyles = makeStyles(({ palette }) => ({
     position: 'absolute',
     top: 12,
   },
+  typeAhead: {
+    position: 'absolute',
+    backgroundColor: "white",
+    zIndex: 100,
+    margin: 0,
+    padding: 5,
+    listStyle: "none",
+  },
+  textInput: {
+    border: "none",
+    fontSize: "18px",
+  },
 }));
 
 type Suggestion = {
-  suggestion: {
-    value: string;
-    latlng: {
-      lat: number;
-      lng: number;
-    };
+  value: string;
+  latlng: {
+    lat: number;
+    lng: number;
   };
 };
 
@@ -56,30 +64,62 @@ type Props = {
 };
 
 const PlaceInput = ({ placeholder, onChange }) => {
-  const [value, setValue] = useState('');
-  const [suggestions, setSuggestions] = useState([]);
+  const styles = useStyles();
+  const [search, setSearch] = useState('');
+  const [selected, setSelected] = useState<any>()
+  const [suggestions, setSuggestions] = useState<any[]>([]);
   useEffect(() => {
-    if (value.length < 3) return;
-    fetch(`https://photon.komoot.io/api/?q=${value}&limit=6&layer=city&lang=fr`)
+    if (selected) return;
+    if (search.length < 3) {
+      setSuggestions([]);
+      return;
+    }
+    let cancelled = false;
+    fetch(`https://photon.komoot.io/api/?q=${search}&limit=6&layer=city&lang=fr`)
       .then((res) => res.json())
       .then((json) => {
-        setSuggestions(json.features);
+        if (!cancelled) {
+          setSuggestions(json.features);
+        }
       });
-  }, [value]);
+    return () => {
+      cancelled = true
+    };
+  }, [search, selected]);
+
+  const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setSelected(undefined);
+    setSearch(value);
+  }
+  const onSuggestionClicked = (suggestion: any) => {
+    const selected = {
+      value: suggestion.properties.name,
+      latlng: {
+        lat: suggestion.geometry.coordinates[0],
+        lng: suggestion.geometry.coordinates[1]
+      }
+    }
+    setSearch(selected.value);
+    setSelected(selected);
+    onChange(selected);
+  }
   return (
     <div>
-      <input value={value} onChange={(e) => setValue(e.target.value)} placeholder={placeholder} />
-      <ul>
+      <input className={styles.textInput} value={search} onChange={onInputChange} placeholder={placeholder} onBlur={() => {
+        console.log(suggestions);
+        if (suggestions.length) {
+          onSuggestionClicked(suggestions[0]);
+        } else {
+          setSuggestions([]);
+        }
+      }}/>
+      <ul hidden={selected || !suggestions.length} className={styles.typeAhead}>
         {suggestions.map((s) => (
           <li
             key={s.properties.osm_id}
             style={{ cursor: 'pointer' }}
-            onClick={() =>
-              onChange({
-                value: s.properties.name,
-                latlng: { lat: s.geometry.coordinates[0], lng: s.geometry.coordinates[1] },
-              })
-            }
+            onClick={() => onSuggestionClicked(s)}
           >
             {s.properties.name} - {s.properties.country}
           </li>
@@ -94,7 +134,7 @@ const AutoCompleteAddress = ({ customClasses = '', handleChanges, logo, placehol
 
   return (
     <div className={classNames(customClasses, styles.container)}>
-      {logo && <img src={logo} className={styles.logo} />}
+      {logo && <img src={logo} className={styles.logo}/>}
       <div className={styles.inputContainer}>
         <PlaceInput
           onChange={(suggestion: Suggestion) => {
