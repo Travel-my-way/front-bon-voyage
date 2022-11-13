@@ -107,7 +107,6 @@ const PlaceInput = ({ placeholder, onChange }) => {
   return (
     <div>
       <input className={styles.textInput} value={search} onChange={onInputChange} placeholder={placeholder} onBlur={() => {
-        console.log(suggestions);
         if (suggestions.length) {
           onSuggestionClicked(suggestions[0]);
         } else {
