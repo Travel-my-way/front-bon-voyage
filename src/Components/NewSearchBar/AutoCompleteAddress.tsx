@@ -32,7 +32,11 @@ const useStyles = makeStyles(({ palette }) => ({
     margin: 0,
     padding: 5,
     listStyle: "none",
-  }
+  },
+  textInput: {
+    border: "none",
+    fontSize: "18px",
+  },
 }));
 
 type Suggestion = {
@@ -66,7 +70,10 @@ const PlaceInput = ({ placeholder, onChange }) => {
   const [suggestions, setSuggestions] = useState<any[]>([]);
   useEffect(() => {
     if (selected) return;
-    if (search.length < 3) return;
+    if (search.length < 3) {
+      setSuggestions([]);
+      return;
+    }
     let cancelled = false;
     fetch(`https://photon.komoot.io/api/?q=${search}&limit=6&layer=city&lang=fr`)
       .then((res) => res.json())
@@ -99,8 +106,15 @@ const PlaceInput = ({ placeholder, onChange }) => {
   }
   return (
     <div>
-      <input value={search} onChange={onInputChange} placeholder={placeholder}/>
-      <ul hidden={selected} className={styles.typeAhead}>
+      <input className={styles.textInput} value={search} onChange={onInputChange} placeholder={placeholder} onBlur={() => {
+        console.log(suggestions);
+        if (suggestions.length) {
+          onSuggestionClicked(suggestions[0]);
+        } else {
+          setSuggestions([]);
+        }
+      }}/>
+      <ul hidden={selected || !suggestions.length} className={styles.typeAhead}>
         {suggestions.map((s) => (
           <li
             key={s.properties.osm_id}
