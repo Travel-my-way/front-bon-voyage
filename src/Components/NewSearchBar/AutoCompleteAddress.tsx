@@ -25,6 +25,14 @@ const useStyles = makeStyles(({ palette }) => ({
     position: 'absolute',
     top: 12,
   },
+  typeAhead: {
+    position: 'absolute',
+    backgroundColor: "white",
+    zIndex: 100,
+    margin: 0,
+    padding: 5,
+    listStyle: "none",
+  }
 }));
 
 type Suggestion = {
@@ -54,6 +62,7 @@ type Props = {
 };
 
 const PlaceInput = ({ placeholder, onChange }) => {
+  const styles = useStyles();
   const [search, setSearch] = useState('');
   const [selected, setSelected] = useState<any>()
   const [suggestions, setSuggestions] = useState<any[]>([]);
@@ -93,7 +102,7 @@ const PlaceInput = ({ placeholder, onChange }) => {
   return (
     <div>
       <input value={search} onChange={onInputChange} placeholder={placeholder}/>
-      <ul hidden={selected}>
+      <ul hidden={selected} className={styles.typeAhead}>
         {suggestions.map((s) => (
           <li
             key={s.properties.osm_id}
